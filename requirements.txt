@@ -1,0 +1,4 @@
+gps-time
+numpy
+numba
+scipy

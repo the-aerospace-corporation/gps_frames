@@ -1,0 +1,2655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>gps_frames.rotations API documentation</title>
+<meta name="description" content="Representation for Rotations …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gps_frames.rotations</code></h1>
+</header>
+<section id="section-intro">
+<p>Representation for Rotations.</p>
+<p>The purpose of this submodule is to provide representations for rotations.
+This is meant to be a low-level library that uses
+<a href="http://numba.pydata.org/">Numba</a> compilation to speed up execution. As such,
+much of the code in this submodule should be considered strictly-typed.</p>
+<p>The main externally used componentes are the Rotation class, which is a
+non-Numba class that serves as a wrapper to Numba JIT compiled functions, and
+the standard_rotation() function, which is a Numba JIT compiled function that
+provides a means for rotating a vector around a principal axis.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Representation for Rotations.
+
+The purpose of this submodule is to provide representations for rotations.
+This is meant to be a low-level library that uses
+[Numba](http://numba.pydata.org/) compilation to speed up execution. As such,
+much of the code in this submodule should be considered strictly-typed.
+
+The main externally used componentes are the Rotation class, which is a
+non-Numba class that serves as a wrapper to Numba JIT compiled functions, and
+the standard_rotation() function, which is a Numba JIT compiled function that
+provides a means for rotating a vector around a principal axis.
+
+&#34;&#34;&#34;
+
+from __future__ import annotations
+
+from numba import jit, float64
+from numba.experimental import jitclass
+import numpy as np
+
+from typing import Tuple
+from logging import getLogger
+
+
+logger = getLogger(__name__)
+
+
+class Rotation:
+    r&#34;&#34;&#34;Represention of rotations.
+
+    This class is used to represent a rotation. The rotation is internally
+    represented by a _Rotator object, which is a Numba optimized class that is
+    used to handle the actual rotations.
+
+    Attributes
+    ----------
+    _rotator : _Rotator
+        A numba optimized class used to describe rotations.
+
+    Todo
+    ----
+    Consider adding to_yaml() and from_yaml() methods to enable storing as a
+    YAML object.
+
+    &#34;&#34;&#34;
+
+    _rotator: _Rotator
+
+    def __init__(self, *args, **kwargs) -&gt; None:
+        r&#34;&#34;&#34;Construct a Rotation Object
+
+        .. note:: Types
+            Because this acts as an interface to a numba object (which is
+            strictly typed), it is recommended that all inputs contain only
+            floats. This should be corrected automatically, but success cannot
+            be guarenteed.
+
+        This constructor is able to take a various numbers of input arguments
+        to create a _Rotator object. These can either be positional or keyword
+        arguments. It is recommended to use the keyword arguments to avoid
+        ambiguity.
+
+        .. warning:: Duplicate Definitions
+            There can only be one definition of the rotation. If multiple
+            definitions are given, it will raise an error. This includes
+            having both positional and keyword arguments.
+
+        This constructor functions by taking the input arguments and
+        converting the rotation representation to a direction cosine matrix,
+        which is then used to instantiate a _Rotator object.
+
+        .. tip:: Quaternion Ordering
+            The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),
+            \(q_{j}\), \(q_{k}\)) where
+            \(\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
+
+        Parameters
+        ----------
+        *args
+            If one positional argument is provided, it is assumed to be either
+            a unit quaternion (if its length is 4) or a direction cosine
+            matrix (otherwise). If two positional arguments are provided, then
+            the first positional argument is assumed to be the axis of
+            rotation and the second argument is assumed to be the angle of
+            rotation. If four positional arguments are given, the values are
+            assumed to be the components of the unit quaternion.
+        **kwargs
+            The rotation can be defined using keyword arguments. The valid
+            keyword arguments are:
+
+            - &#39;dcm&#39;: A direction cosine matrix (3x3 array)
+            - &#39;axis&#39;, &#39;angle&#39;: The euler axis (3 element vector) and angle of
+              rotation (float)
+            - &#39;standard_axis&#39;, &#39;angle&#39;: The principal axis of rotation
+              (int, 1,2,3) and angle of rotation (float)
+            - &#39;quaternion&#39;: A unit quaternion (4 element vector)
+
+        &#34;&#34;&#34;
+
+        if len(args) != 0:
+            assert (
+                len(kwargs) == 0
+            ), &#34;Only positional or keyword arguments accepted, not both&#34;
+
+            if len(args) == 1:
+                _input = np.array(args[0])
+                if len(_input) == 4:  # Infer Quaternion
+                    _dcm = quaternion2direction_cosine_matrix(_input)
+                else:  # Infer DCM
+                    _dcm = _input
+            elif len(args) == 2:  # Euler Axis Angle
+                _dcm = euler_axis_angle2direction_cosine_matrix(args[0], args[1])
+            elif len(args) == 4:  # Quaternions
+                _dcm = quaternion2direction_cosine_matrix(np.array(args))
+            else:
+                raise ValueError(f&#34;Cannot handle {len(args)} positional arguments&#34;)
+        else:
+            if &#34;dcm&#34; in kwargs:
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;angle&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _dcm = kwargs[&#34;dcm&#34;]
+
+            elif &#34;axis&#34; in kwargs:
+                assert &#34;angle&#34; in kwargs, &#34;No angle provided&#34;
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;standard_axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _dcm = euler_axis_angle2direction_cosine_matrix(
+                    kwargs[&#34;axis&#34;], kwargs[&#34;angle&#34;]
+                )
+
+            elif &#34;standard_axis&#34; in kwargs:
+                assert &#34;angle&#34; in kwargs, &#34;No angle provided&#34;
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _standard_axis = {
+                    1: np.array((1.0, 0.0, 0.0), dtype=float),
+                    2: np.array((0.0, 1.0, 0.0), dtype=float),
+                    3: np.array((0.0, 0.0, 1.0), dtype=float),
+                }
+
+                assert (
+                    kwargs[&#34;standard_axis&#34;] in _standard_axis
+                ), f&#39;Invalid standard axis {kwargs[&#34;standard_axis&#34;]}&#39;
+
+                _dcm = euler_axis_angle2direction_cosine_matrix(
+                    _standard_axis[kwargs[&#34;standard_axis&#34;]], kwargs[&#34;angle&#34;]
+                )
+
+            elif &#34;quaternion&#34; in kwargs:
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;angle&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _quaternion = np.array(kwargs[&#34;quaternion&#34;])
+                _dcm = quaternion2direction_cosine_matrix(_quaternion)
+
+        self._check_dcm(_dcm)
+        self._rotator = _Rotator(np.array(_dcm, dtype=float))
+
+    @staticmethod
+    def _check_dcm(dcm: np.ndarray) -&gt; None:
+        &#34;&#34;&#34;Check to see if a Direction Cosine Matrix is valid.
+
+        Specifically, this static method checks to ensure that the input
+        direction cosine matrix is a 3x3 matrix that is both right-handed and
+        orthonormal.
+
+        Parameters
+        ----------
+        dcm : np.ndarray
+            The Direction Cosine Matrix of interest.
+
+        &#34;&#34;&#34;
+        assert np.shape(dcm) == (3, 3), &#34;Direction Cosine Matrix must be 3x3&#34;
+        assert np.isclose(
+            abs(np.linalg.det(dcm) - 1), 0
+        ), &#34;Direction Cosine Matrix must be right-handed and orthonormal&#34;
+
+    def rotate(self, vector: np.array) -&gt; np.array:
+        &#34;&#34;&#34;Rotate a vector by this rotaion.
+
+        .. note:: Vector Objects
+            gps_frames.vectors includes an object called Vector. This method
+            takes a numpy array that represents a vector. This is deliberate
+            because rotations are dependant on a frame and the Vector object
+            requires a frame
+
+        Parameters
+        ----------
+        vector : np.array
+            The 3-element 1D numpy array representing a vector
+
+        Returns
+        -------
+        np.array
+            The vector rotated into the new frame
+
+        &#34;&#34;&#34;
+        return self._rotator.rotate(np.array(vector, dtype=float))
+
+
+_rotator_spec = [
+    (&#34;dcm&#34;, float64[:, :]),
+]
+&#34;&#34;&#34;The numba specification for the _Rotator jitclass.&#34;&#34;&#34;
+
+
+@jitclass(_rotator_spec)
+class _Rotator:
+    &#34;&#34;&#34;The numba-optimized rotation.
+
+    This class is used to enable numba optimization on a rotation. It contains
+    a direction cosine matrix that can be used to rotate a vector to a new
+    frame.
+
+    .. note:: Numba JIT Compiled
+        This class is compiled using Numba. Use care when providing inputs as
+        Numba is strictly typed. Unless otherwise stated, all inputs should be
+        float arrays.
+
+    Attributes
+    ----------
+    dcm : np.ndarray (float64[:, :])
+        The direction cosine matrix
+
+    &#34;&#34;&#34;
+
+    def __init__(self, dcm: np.ndarray) -&gt; None:
+        &#34;&#34;&#34;The object constructor.
+
+        Parameters
+        ----------
+        dcm : np.ndarray
+            The direction cosine matrix.
+        &#34;&#34;&#34;
+        self.dcm = dcm
+
+    def rotate(self, vector: np.ndarray) -&gt; np.ndarray:
+        &#34;&#34;&#34;Rotate a vector by the direction cosine matrix.
+
+        Parameters
+        ----------
+        vector : np.ndarray
+            The vector to be rotated.
+
+        Returns
+        -------
+        np.ndarray
+            The vector in the new frame.
+
+        &#34;&#34;&#34;
+        return self.dcm @ vector
+        # # If issues occur, switch to this, which is the expansion of matrix
+        # # multiplication.
+        # return [self.dcm[0, 0] * vector[0]
+        #         + self.dcm[0, 1] * vector[1]
+        #         + self.dcm[0, 2] * vector[2],
+        #         self.dcm[1, 0] * vector[0]
+        #         + self.dcm[1, 1] * vector[1]
+        #         + self.dcm[1, 2] * vector[2],
+        #         self.dcm[2, 0] * vector[0]
+        #         + self.dcm[2, 1] * vector[1]
+        #         + self.dcm[2, 2] * vector[2]]
+
+
+@jit(&#34;float64[:](float64[:], float64)&#34;, nopython=True, cache=True)
+def euler_axis_angle2quaternion(
+    euler_axis: np.ndarray, euler_angle: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Convert an Euler axis and angle to a quaternion.
+
+    Let the Euler axis and angle be \(\hat{\boldsymbol{e}}\) and
+    \(\Phi\), respectively. The equivalent quaternion is
+    $$
+        \bar{\boldsymbol{q}} =
+            \left[\begin{array}{c}
+                q_{w} \\
+                q_{i} \\
+                q_{j} \\
+                q_{k}
+            \end{array}\right]
+            =
+            \left[\begin{array}{c}
+                \cos\frac{\Phi}{2} \\
+                \hat{\boldsymbol{e}}\sin\frac{\Phi}{2}
+            \end{array}\right]
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    euler_axis : np.ndarray
+        The axis of rotation. Will be normalized to a magnitude of 1
+    euler_angle : float
+        The angle of rotation in radians
+
+    Returns
+    -------
+    np.ndarray
+        The quaternion equivalent to the the euler axis and angle
+
+    &#34;&#34;&#34;
+    euler_axis = euler_axis / np.linalg.norm(euler_axis)  # Normialize length
+    qijk = euler_axis * np.sin(euler_angle / 2) / np.linalg.norm(euler_axis)
+    quaternion = np.append(np.cos(euler_angle / 2), qijk)
+
+    return quaternion / np.linalg.norm(quaternion)
+
+
+@jit(&#34;float64[:](float64[:,:])&#34;, nopython=True, cache=True)
+def direction_cosine_matrix2quaternion(dcm: np.ndarray) -&gt; np.array:
+    r&#34;&#34;&#34;Create a rotation object from a Direction Cosine Matrix.
+
+    Let the direction cosine matrix be \(\mathbf{R}\). The \(q_{w}\)
+    element of the quaternion can be computed as
+    $$
+        q_{w} = \frac{
+                \sqrt{1 + \text{trace}\mathbf{R}}
+            }{
+                2
+            }
+    $$
+    The remaining elements of the quaternion are then computed as
+    $$
+        \begin{split}
+            q_{i} = &amp; \frac{
+                \mathbf{R}_{23} - \mathbf{R}_{32}}{4q_{w}} \\
+            q_{j} = &amp; \frac{
+                \mathbf{R}_{31} - \mathbf{R}_{13}}{4q_{w}} \\
+            q_{k} = &amp; \frac{
+                \mathbf{R}_{12} - \mathbf{R}_{21}}{4q_{w}} \\
+        \end{split}
+    $$
+    The quaternion is represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+
+    There a singulariy when the rotation is by an angle of \(\pi\).
+    This occurs because \(q_{w} = \cos\left(\theta / 2\right)\), so
+    \(q_{w}=0\) when \(\theta=\pi\). In the previous expression, the other
+    quaternion elements were found by dividing the difference of various DCM
+    elements by \(4q_{w}\), which cannot be done of \(q_{w}=0\). Thus, for
+    these cases, an alternate approach is used. The angle of rotation is known
+    (because \(\cos(\pi/2) = \cos(-\pi/2) = 0\) to be \(\pi\). The axis of
+    rotation is found by find the eigenvector to the DCM corresponding the
+    eigenvalue with a value of 1. This is done by calling
+    euler_axis_angle2quaternion().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    dcm : np.ndarray
+        The direction cosine matrix (a 3x3 matrix)
+
+    Returns
+    -------
+    np.ndarray
+        The corresponding unit quaternion
+
+    &#34;&#34;&#34;
+
+    qw = np.sqrt(1 + np.trace(dcm)) / 2
+    if qw == 0.0:
+        euler_angle = np.pi
+
+        eig_val, eig_axis = np.linalg.eigh(dcm)
+
+        for _i in range(3):
+            if eig_val[_i] == 1:
+                euler_axis = eig_axis[:, _i]
+                break
+        else:
+            raise ValueError(&#34;Encountered singular DCM&#34;)
+
+        return euler_axis_angle2quaternion(euler_axis, euler_angle)
+
+    else:
+        qi = (dcm[1, 2] - dcm[2, 1]) / (4 * qw)
+        qj = (dcm[2, 0] - dcm[0, 2]) / (4 * qw)
+        qk = (dcm[0, 1] - dcm[1, 0]) / (4 * qw)
+
+        return np.array([qw, qi, qj, qk])
+
+
+@jit(&#34;float64[:,:](float64[:])&#34;, nopython=True, cache=True)
+def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Convert quaternions to a direction cosine matrix.
+
+    A quaternions can be represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+    The equivalent direction cosine matrix can then be computed as
+    $$
+        \mathbf{R} =
+            \left[\begin{array}{ccc}
+                q_{w}^{2} + q_{i}^{2} - q_{j}^{2} - q_{k}^{2} &amp;
+                2 \left( q_{i}q_{j} - q_{k}q_{w} \right) &amp;
+                2 \left( q_{i}q_{k} + q_{j}q_{w} \right) \\
+                2 \left( q_{i}q_{j} + q_{k}q_{w} \right) &amp;
+                q_{w}^{2} - q_{i}^{2} + q_{j}^{2} - q_{k}^{2} &amp;
+                2 \left( q_{j}q_{k} - q_{i}q_{w} \right) \\
+                2 \left( q_{i}q_{k} - q_{j}q_{w} \right) &amp;
+                2 \left( q_{j}q_{k} + q_{i}q_{w} \right) &amp;
+                q_{w}^{2} - q_{i}^{2} - q_{j}^{2} + q_{k}^{2}
+            \end{array}\right]
+    $$
+
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    quaternion : np.ndarray
+        The unit quaternion to convert
+
+    Returns
+    -------
+    np.ndarray
+        The 3x3 Direction Cosine Matrix that represents the rotation
+
+    &#34;&#34;&#34;
+    assert len(quaternion) == 4, &#34;Quaternions must have 4 elements&#34;
+
+    # Normalize
+    quaternion = quaternion / np.linalg.norm(quaternion)
+
+    qw = quaternion[0]
+    qi = quaternion[1]
+    qj = quaternion[2]
+    qk = quaternion[3]
+
+    dcm = np.array(
+        [
+            [
+                qw ** 2 + qi ** 2 - qj ** 2 - qk ** 2,
+                2 * (qi * qj - qk * qw),
+                2 * (qi * qk + qj * qw),
+            ],
+            [
+                2 * (qi * qj + qk * qw),
+                qw ** 2 - qi ** 2 + qj ** 2 - qk ** 2,
+                2 * (qj * qk - qi * qw),
+            ],
+            [
+                2 * (qi * qk - qj * qw),
+                2 * (qj * qk + qi * qw),
+                qw ** 2 - qi ** 2 - qj ** 2 + qk ** 2,
+            ],
+        ]
+    )
+    return np.transpose(dcm)
+
+
+@jit(&#34;Tuple((float64[:], float64))(float64[:])&#34;, nopython=True, cache=True)
+def quaternion2euler_axis_angle(quaternion: np.ndarray) -&gt; Tuple[np.ndarray, float]:
+    r&#34;&#34;&#34;Convert a quaternion to an euler axis and angle.
+
+    .. warning:: Directional Ambiguity
+        There is directional ambitguity when using this function. This occurs
+        because rotating by an angle about a given axis is equivalent to
+        rotating by the same angle in the opposite direction about the
+        opposite axis. There is no way to resolve this ambitguity, but it
+        should not effect anything in the simulation.
+
+    A quaternions can be represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+    with \(\boldsymbol{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
+    rotation that this represents can be computed (using a 4-quadrant
+    arctangent function) as
+    $$
+        \Phi = 2 \tan^{-1}\frac{
+            ||\boldsymbol{q}||
+        }{
+            q_{w}
+        }
+    $$
+    The axis of the rotation is then computed as
+    $$
+        \hat{\boldsymbol{e}} = \frac{
+                \boldsymbol{q}
+            }{
+                ||\boldsymbol{q}||
+            }
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    quaternion : np.ndarray
+        The unit quaternion to convert
+
+    Returns
+    -------
+    Tuple[np.ndarray, float]
+        A tuple where the first element is a 3-element 1D numpy array
+        representing the rotation axis and the second element is the angle
+        of rotation, in radians.
+
+    &#34;&#34;&#34;
+    qw = quaternion[0]
+    qijk = quaternion[1:]
+
+    euler_angle = 2 * np.arctan2(np.linalg.norm(qijk), qw)
+    euler_axis = qijk / np.linalg.norm(qijk)
+
+    return euler_axis, euler_angle
+
+
+@jit(&#34;Tuple((float64[:], float64))(float64[:,:])&#34;, nopython=True, cache=True)
+def direction_cosine_matrix2euler_axis_angle(
+    dcm: np.ndarray,
+) -&gt; Tuple[np.ndarray, float]:
+    &#34;&#34;&#34;Convert a Direction Cosine Matrix to an Euler axis and angle.
+
+    This function simply calls direction_cosine_matrix2quaternion() to convert
+    the input DCM to the corresponding unit quaternion. From there, the
+    quaternion is converted to the corresponding Euler axis and angle using
+    quaternion2euler_axis_angle().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    dcm : np.ndarray
+        The direction cosine matrix
+
+    Returns
+    -------
+    Tuple[np.ndarray, float]
+        A tuple where the first element is a 3-element 1D numpy array
+        representing the rotation axis and the second element is the angle
+        of rotation, in radians.
+
+    &#34;&#34;&#34;
+    quaternion = direction_cosine_matrix2quaternion(dcm)
+    return quaternion2euler_axis_angle(quaternion)
+
+
+@jit(&#34;float64[:,:](float64[:], float64)&#34;, nopython=True, cache=True)
+def euler_axis_angle2direction_cosine_matrix(
+    euler_axis: np.ndarray, euler_angle: float
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Convert an Euler axis and angle to a Direction Cosine Matrix.
+
+    This function simply calls euler_axis_angle2quaternion() to convert
+    the input Euler axis and angle to the corresponding unit quaternion. From
+    there, the quaternion is converted to the corresponding DCM using
+    quaternion2direction_cosine_matrix().
+
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    euler_axis : np.ndarray
+        The axis of rotation. Will be normalized to a magnitude of 1
+    euler_angle : float
+        The angle of rotation in radians
+    Returns
+    -------
+    np.ndarray
+        The direction cosine matrix (a 3x3 matrix)
+
+    &#34;&#34;&#34;
+    return quaternion2direction_cosine_matrix(
+        euler_axis_angle2quaternion(euler_axis, euler_angle)
+    )
+
+
+@jit(&#34;float64[:](int8, float64, float64[:])&#34;, nopython=True, cache=True)
+def standard_rotation(
+    rotation_axis: int, angle: float, vector: np.ndarray
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Rotate a vector about a principal axis.
+
+    This function is an optimized way to rotate about one of the principal
+    axes. The inputs are the axis to rotate around and the angle of rotation,
+    along with the vector be rotated.
+
+    For a single rotation, this class is faster to use than the Rotation class
+    as it is signficantly simpler to instantiate. However, if a rotation needs
+    to be performed repeatedly, the Rotation class may be faster.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int, a
+        float, and a float array.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation. Must be 1, 2, or 3 (corresponding to x,y, and x)
+    angle : float
+        The angle of rotation in radians
+    vector : np.ndarray
+        The vector to rotate
+
+    Returns
+    -------
+    np.ndarray
+        The vector rotated to the new frame
+
+    &#34;&#34;&#34;
+    _c = np.cos(angle)
+    _s = np.sin(angle)
+
+    assert rotation_axis in [1, 2, 3], &#34;rotation_axis must be 1, 2, or 3&#34;
+    if rotation_axis == 1:
+        dcm = np.array([[1.0, 0.0, 0.0], [0.0, _c, _s], [0.0, -_s, _c]])
+    elif rotation_axis == 2:
+        dcm = np.array([[_c, 0.0, -_s], [0.0, 1.0, 0.0], [_s, 0.0, _c]])
+    elif rotation_axis == 3:
+        dcm = np.array([[_c, _s, 0.0], [-_s, _c, 0.0], [0.0, 0.0, 1.0]])
+
+    return dcm @ vector
+
+
+@jit(&#34;float64[:,:](int8, float64)&#34;, nopython=True, cache=True)
+def standard_rotation_matrix(rotation_axis: int, angle: float) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Get a standard rotation matrix.
+
+    This function is used to compute the rotation matrix (direction cosine
+    matrix) for a rotation about one of the principle axes.
+
+    That is, if the angle of rotation is \(\theta\), the returned rotation
+    matrix is
+    $$
+        \begin{split}
+            R_{1}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    1 &amp; 0 &amp; 0 \\
+                    0 &amp; \cos\theta &amp; \sin\theta \\
+                    0 &amp; -\sin\theta &amp; \cos\theta
+                \end{array}\right] \\
+            R_{2}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    \cos\theta &amp; 0 &amp; -\sin\theta \\
+                    0 &amp; 1 &amp; 0 \\
+                    \sin\theta &amp; 0 &amp; \cos\theta
+                \end{array}\right] \\
+            R_{3}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    \cos\theta &amp; \sin\theta &amp; 0 \\
+                    -\sin\theta &amp; \cos\theta &amp; 0 \\
+                    0 &amp; 0 &amp; 1
+                \end{array}\right]
+        \end{split}
+    $$
+    respectively for rotations about the 1, 2, or 3 axis.
+
+    To simply the actual code, this is actually accomplished by expressing the
+    rotation as a rotation about an Euler axis and simply converting to a
+    direction cosine matrix using euler_axis_angle2direction_cosion_matrix().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int and
+        a float.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation
+    angle : float
+        The angle of rotation in radians
+
+    Returns
+    -------
+    np.ndarray
+        The rotation matrix (DCM) for the axis and angle of rotation
+
+    Raises
+    ------
+    ValueError
+        If the rotation axis is not 1, 2, or 3
+
+    &#34;&#34;&#34;
+
+    assert rotation_axis in [1, 2, 3], &#34;rotation_axis must be 1, 2, or 3&#34;
+    euler_axis = np.zeros(3)
+    euler_axis[rotation_axis - 1] = 1.0
+
+    return euler_axis_angle2direction_cosine_matrix(euler_axis, angle)
+
+
+@jit(&#34;float64[:,:](int8, float64, float64)&#34;, nopython=True, cache=True)
+def standard_rotation_matrix_rates(
+    rotation_axis: int, angle: float, rate: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Get the derivated of a standard rotation matrix.
+
+    This function is used to compute the derivative of a rotation matrix
+    (direction cosine matrix) for a rotation about one of the principle axes.
+
+    That is, if the angle of rotation is \(\theta\), the returned matrix is
+    $$
+        \begin{split}
+            R_{1}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    0 &amp; 0 &amp; 0 \\
+                    0 &amp;
+                    -\dot{\theta}\sin\theta &amp;
+                    \dot{\theta}\cos\theta \\
+                    0 &amp;
+                    -\dot{\theta}\cos\theta &amp;
+                    -\dot{\theta}\sin\theta
+                \end{array}\right] \\
+            R_{2}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    -\dot{\theta}\sin\theta &amp;
+                    0 &amp;
+                    -\dot{\theta}\cos\theta\\
+                    0 &amp;
+                    0 &amp;
+                    0 \\
+                    \dot{\theta}\cos\theta &amp;
+                    0 &amp;
+                    -\dot{\theta}\sin\theta
+                \end{array}\right] \\
+            R_{3}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    -\dot{\theta}\sin\theta
+                    &amp; \dot{\theta}\cos\theta &amp;
+                    0 \\
+                    -\dot{\theta}\cos\theta &amp;
+                    -\dot{\theta}\sin\theta &amp;
+                    0 \\
+                    0 &amp; 0 &amp; 0
+                \end{array}\right]
+        \end{split}
+    $$
+    respectively for rotations about the 1, 2, or 3 axis.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int and
+        two floats.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation
+    angle : float
+        The angle of rotation in radians
+    rate : float
+        The angular rotation rate in radians per second
+
+    Returns
+    -------
+    np.ndarray
+        The rate of change of the rotation matrix (DCM) for the axis, angle,
+        and rate of rotation
+
+    Raises
+    ------
+    ValueError
+        If the rotation axis is not 1, 2, or 3
+
+    &#34;&#34;&#34;
+    c = np.cos(angle)
+    s = np.sin(angle)
+
+    if rotation_axis == 1:
+        return np.array(
+            [[0.0, 0.0, 0.0], [0.0, -s * rate, c * rate], [0.0, -c * rate, -s * rate]]
+        )
+    elif rotation_axis == 2:
+        return np.array(
+            [[-s * rate, 0.0, -c * rate], [0.0, 0.0, 0.0], [c * rate, 0.0, -s * rate]]
+        )
+    elif rotation_axis == 3:
+        return np.array(
+            [[-s * rate, c * rate, 0.0], [-c * rate, -s * rate, 0.0], [0.0, 0.0, 0.0]]
+        )
+    else:
+        raise ValueError(&#34;rotation_axis must be 1, 2, or 3&#34;)
+
+
+@jit(&#34;float64[:, :](float64, float64, float64)&#34;, nopython=True, cache=True)
+def roll_pitch_yaw_matrix(
+    roll_angle: float, pitch_angle: float, yaw_angle: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Create the Direction Cosine Matrix fo a roll-pitch-yaw sequence.
+
+    This function is a way to generate the direction cosine matrix
+    representing a roll-pitch-yaw sequence. This sequence is a rotation about
+    the 1, 2, and 3 axes in that order, that is first it it rolled, then
+    pitched, then yawed.
+
+    Let \(\theta,\phi,\psi\) be the roll, pitch, and yaw angles, respectively.
+    The corresponding direction cosine matrix is
+    $$
+        \boldsymbol{R}(\theta,\phi,\psi) =
+            \left[\begin{array}{ccc}
+                \cos\psi \cos\phi &amp;
+                \cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &amp;
+                \cos\psi \sin\phi \cos\theta + \sin\psi \sin\theta \\
+                \sin\psi \cos\phi &amp;
+                \sin\psi \sin\phi \sin\theta + \cos\psi \cos\theta &amp;
+                \sin\psi \sin\phi \cos\theta - \cos\psi \sin\theta \\
+                -\sin\phi &amp;
+                \cos\phi \sin\theta &amp;
+                \cos\phi \cos\theta
+            \end{array}\right]
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are three
+        floats and a float array.
+
+    Parameters
+    ----------
+    roll_angle : float
+        Angle of rotation about the roll axis in radians
+    pitch_angle : float
+        Angle of rotation about the pitch axis in radians
+    yaw_angle : float
+        Angle of rotation about the yaw axis in radians
+
+    Returns
+    -------
+    np.ndarray
+        The direction cosine matrix representing the rotation.
+
+    &#34;&#34;&#34;
+    _c_roll = np.cos(roll_angle)
+    _s_roll = np.sin(roll_angle)
+
+    _c_pitch = np.cos(pitch_angle)
+    _s_pitch = np.sin(pitch_angle)
+
+    _c_yaw = np.cos(yaw_angle)
+    _s_yaw = np.sin(yaw_angle)
+
+    dcm = np.array(
+        [
+            [
+                _c_yaw * _c_pitch,
+                _c_yaw * _s_pitch * _s_roll - _s_yaw * _c_roll,
+                _c_yaw * _s_pitch * _c_roll + _s_yaw * _s_roll,
+            ],
+            [
+                _s_yaw * _c_pitch,
+                _s_yaw * _s_pitch * _s_roll + _c_yaw * _c_roll,
+                _s_yaw * _s_pitch * _c_roll - _c_yaw * _s_roll,
+            ],
+            [-_s_pitch, _c_pitch * _s_roll, _c_pitch * _c_roll],
+        ]
+    )
+
+    return dcm
+
+
+@jit(&#34;float64[:](float64, float64, float64, float64[:])&#34;, nopython=True, cache=True)
+def roll_pitch_yaw(
+    roll_angle: float, pitch_angle: float, yaw_angle: float, vector: np.ndarray
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Rotate a vector through a roll-pitch-yaw sequence.
+
+    This function is an optimized way to rotate a vector through a
+    roll-ptich-yaw sequence. This sequence is a rotation about the 1, 2, and 3
+    axes in that order, that is first it it rolled, then pitched, then yawed.
+
+    For a single rotation, this class is faster to use than the Rotation class
+    as it is signficantly simpler to instantiate. However, if a rotation needs
+    to be performed repeatedly, the Rotation class may be faster.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are three
+        floats and a float array.
+
+    Parameters
+    ----------
+    roll_angle : float
+        Angle of rotation about the roll axis in radians
+    pitch_angle : float
+        Angle of rotation about the pitch axis in radians
+    yaw_angle : float
+        Angle of rotation about the yaw axis in radians
+    vector : np.ndarray
+        The vector to rotate
+
+    Returns
+    -------
+    np.ndarray
+        The vector rotated to the new frame
+
+    &#34;&#34;&#34;
+
+    return roll_pitch_yaw_matrix(roll_angle, pitch_angle, yaw_angle) @ vector</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gps_frames.rotations.direction_cosine_matrix2euler_axis_angle"><code class="name flex">
+<span>def <span class="ident">direction_cosine_matrix2euler_axis_angle</span></span>(<span>dcm: np.ndarray) ‑> Tuple[numpy.ndarray, float]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a Direction Cosine Matrix to an Euler axis and angle.</p>
+<p>This function simply calls direction_cosine_matrix2quaternion() to convert
+the input DCM to the corresponding unit quaternion. From there, the
+quaternion is converted to the corresponding Euler axis and angle using
+quaternion2euler_axis_angle().</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>dcm</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The direction cosine matrix</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[np.ndarray, float]</code></dt>
+<dd>A tuple where the first element is a 3-element 1D numpy array
+representing the rotation axis and the second element is the angle
+of rotation, in radians.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;Tuple((float64[:], float64))(float64[:,:])&#34;, nopython=True, cache=True)
+def direction_cosine_matrix2euler_axis_angle(
+    dcm: np.ndarray,
+) -&gt; Tuple[np.ndarray, float]:
+    &#34;&#34;&#34;Convert a Direction Cosine Matrix to an Euler axis and angle.
+
+    This function simply calls direction_cosine_matrix2quaternion() to convert
+    the input DCM to the corresponding unit quaternion. From there, the
+    quaternion is converted to the corresponding Euler axis and angle using
+    quaternion2euler_axis_angle().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    dcm : np.ndarray
+        The direction cosine matrix
+
+    Returns
+    -------
+    Tuple[np.ndarray, float]
+        A tuple where the first element is a 3-element 1D numpy array
+        representing the rotation axis and the second element is the angle
+        of rotation, in radians.
+
+    &#34;&#34;&#34;
+    quaternion = direction_cosine_matrix2quaternion(dcm)
+    return quaternion2euler_axis_angle(quaternion)</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.direction_cosine_matrix2quaternion"><code class="name flex">
+<span>def <span class="ident">direction_cosine_matrix2quaternion</span></span>(<span>dcm: np.ndarray) ‑> <built-in function array></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a rotation object from a Direction Cosine Matrix.</p>
+<p>Let the direction cosine matrix be <span><span class="MathJax_Preview">\mathbf{R}</span><script type="math/tex">\mathbf{R}</script></span>. The <span><span class="MathJax_Preview">q_{w}</span><script type="math/tex">q_{w}</script></span>
+element of the quaternion can be computed as
+<span><span class="MathJax_Preview">
+q_{w} = \frac{
+\sqrt{1 + \text{trace}\mathbf{R}}
+}{
+2
+}
+</span><script type="math/tex; mode=display">
+q_{w} = \frac{
+\sqrt{1 + \text{trace}\mathbf{R}}
+}{
+2
+}
+</script></span>
+The remaining elements of the quaternion are then computed as
+<span><span class="MathJax_Preview">
+\begin{split}
+q_{i} = &amp; \frac{
+\mathbf{R}_{23} - \mathbf{R}_{32}}{4q_{w}} \\
+q_{j} = &amp; \frac{
+\mathbf{R}_{31} - \mathbf{R}_{13}}{4q_{w}} \\
+q_{k} = &amp; \frac{
+\mathbf{R}_{12} - \mathbf{R}_{21}}{4q_{w}} \\
+\end{split}
+</span><script type="math/tex; mode=display">
+\begin{split}
+q_{i} = & \frac{
+\mathbf{R}_{23} - \mathbf{R}_{32}}{4q_{w}} \\
+q_{j} = & \frac{
+\mathbf{R}_{31} - \mathbf{R}_{13}}{4q_{w}} \\
+q_{k} = & \frac{
+\mathbf{R}_{12} - \mathbf{R}_{21}}{4q_{w}} \\
+\end{split}
+</script></span>
+The quaternion is represented as
+<span><span class="MathJax_Preview">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</span><script type="math/tex; mode=display">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</script></span></p>
+<p>There a singulariy when the rotation is by an angle of <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>.
+This occurs because <span><span class="MathJax_Preview">q_{w} = \cos\left(\theta / 2\right)</span><script type="math/tex">q_{w} = \cos\left(\theta / 2\right)</script></span>, so
+<span><span class="MathJax_Preview">q_{w}=0</span><script type="math/tex">q_{w}=0</script></span> when <span><span class="MathJax_Preview">\theta=\pi</span><script type="math/tex">\theta=\pi</script></span>. In the previous expression, the other
+quaternion elements were found by dividing the difference of various DCM
+elements by <span><span class="MathJax_Preview">4q_{w}</span><script type="math/tex">4q_{w}</script></span>, which cannot be done of <span><span class="MathJax_Preview">q_{w}=0</span><script type="math/tex">q_{w}=0</script></span>. Thus, for
+these cases, an alternate approach is used. The angle of rotation is known
+(because <span><span class="MathJax_Preview">\cos(\pi/2) = \cos(-\pi/2) = 0</span><script type="math/tex">\cos(\pi/2) = \cos(-\pi/2) = 0</script></span> to be <span><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span>. The axis of
+rotation is found by find the eigenvector to the DCM corresponding the
+eigenvalue with a value of 1. This is done by calling
+euler_axis_angle2quaternion().</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>dcm</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The direction cosine matrix (a 3x3 matrix)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The corresponding unit quaternion</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:](float64[:,:])&#34;, nopython=True, cache=True)
+def direction_cosine_matrix2quaternion(dcm: np.ndarray) -&gt; np.array:
+    r&#34;&#34;&#34;Create a rotation object from a Direction Cosine Matrix.
+
+    Let the direction cosine matrix be \(\mathbf{R}\). The \(q_{w}\)
+    element of the quaternion can be computed as
+    $$
+        q_{w} = \frac{
+                \sqrt{1 + \text{trace}\mathbf{R}}
+            }{
+                2
+            }
+    $$
+    The remaining elements of the quaternion are then computed as
+    $$
+        \begin{split}
+            q_{i} = &amp; \frac{
+                \mathbf{R}_{23} - \mathbf{R}_{32}}{4q_{w}} \\
+            q_{j} = &amp; \frac{
+                \mathbf{R}_{31} - \mathbf{R}_{13}}{4q_{w}} \\
+            q_{k} = &amp; \frac{
+                \mathbf{R}_{12} - \mathbf{R}_{21}}{4q_{w}} \\
+        \end{split}
+    $$
+    The quaternion is represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+
+    There a singulariy when the rotation is by an angle of \(\pi\).
+    This occurs because \(q_{w} = \cos\left(\theta / 2\right)\), so
+    \(q_{w}=0\) when \(\theta=\pi\). In the previous expression, the other
+    quaternion elements were found by dividing the difference of various DCM
+    elements by \(4q_{w}\), which cannot be done of \(q_{w}=0\). Thus, for
+    these cases, an alternate approach is used. The angle of rotation is known
+    (because \(\cos(\pi/2) = \cos(-\pi/2) = 0\) to be \(\pi\). The axis of
+    rotation is found by find the eigenvector to the DCM corresponding the
+    eigenvalue with a value of 1. This is done by calling
+    euler_axis_angle2quaternion().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    dcm : np.ndarray
+        The direction cosine matrix (a 3x3 matrix)
+
+    Returns
+    -------
+    np.ndarray
+        The corresponding unit quaternion
+
+    &#34;&#34;&#34;
+
+    qw = np.sqrt(1 + np.trace(dcm)) / 2
+    if qw == 0.0:
+        euler_angle = np.pi
+
+        eig_val, eig_axis = np.linalg.eigh(dcm)
+
+        for _i in range(3):
+            if eig_val[_i] == 1:
+                euler_axis = eig_axis[:, _i]
+                break
+        else:
+            raise ValueError(&#34;Encountered singular DCM&#34;)
+
+        return euler_axis_angle2quaternion(euler_axis, euler_angle)
+
+    else:
+        qi = (dcm[1, 2] - dcm[2, 1]) / (4 * qw)
+        qj = (dcm[2, 0] - dcm[0, 2]) / (4 * qw)
+        qk = (dcm[0, 1] - dcm[1, 0]) / (4 * qw)
+
+        return np.array([qw, qi, qj, qk])</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.euler_axis_angle2direction_cosine_matrix"><code class="name flex">
+<span>def <span class="ident">euler_axis_angle2direction_cosine_matrix</span></span>(<span>euler_axis: np.ndarray, euler_angle: float) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert an Euler axis and angle to a Direction Cosine Matrix.</p>
+<p>This function simply calls euler_axis_angle2quaternion() to convert
+the input Euler axis and angle to the corresponding unit quaternion. From
+there, the quaternion is converted to the corresponding DCM using
+quaternion2direction_cosine_matrix().</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>euler_axis</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The axis of rotation. Will be normalized to a magnitude of 1</dd>
+<dt><strong><code>euler_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angle of rotation in radians</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The direction cosine matrix (a 3x3 matrix)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:,:](float64[:], float64)&#34;, nopython=True, cache=True)
+def euler_axis_angle2direction_cosine_matrix(
+    euler_axis: np.ndarray, euler_angle: float
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Convert an Euler axis and angle to a Direction Cosine Matrix.
+
+    This function simply calls euler_axis_angle2quaternion() to convert
+    the input Euler axis and angle to the corresponding unit quaternion. From
+    there, the quaternion is converted to the corresponding DCM using
+    quaternion2direction_cosine_matrix().
+
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    euler_axis : np.ndarray
+        The axis of rotation. Will be normalized to a magnitude of 1
+    euler_angle : float
+        The angle of rotation in radians
+    Returns
+    -------
+    np.ndarray
+        The direction cosine matrix (a 3x3 matrix)
+
+    &#34;&#34;&#34;
+    return quaternion2direction_cosine_matrix(
+        euler_axis_angle2quaternion(euler_axis, euler_angle)
+    )</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.euler_axis_angle2quaternion"><code class="name flex">
+<span>def <span class="ident">euler_axis_angle2quaternion</span></span>(<span>euler_axis: np.ndarray, euler_angle: float) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert an Euler axis and angle to a quaternion.</p>
+<p>Let the Euler axis and angle be <span><span class="MathJax_Preview">\hat{\boldsymbol{e}}</span><script type="math/tex">\hat{\boldsymbol{e}}</script></span> and
+<span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span>, respectively. The equivalent quaternion is
+<span><span class="MathJax_Preview">
+\bar{\boldsymbol{q}} =
+\left[\begin{array}{c}
+q_{w} \\
+q_{i} \\
+q_{j} \\
+q_{k}
+\end{array}\right]
+=
+\left[\begin{array}{c}
+\cos\frac{\Phi}{2} \\
+\hat{\boldsymbol{e}}\sin\frac{\Phi}{2}
+\end{array}\right]
+</span><script type="math/tex; mode=display">
+\bar{\boldsymbol{q}} =
+\left[\begin{array}{c}
+q_{w} \\
+q_{i} \\
+q_{j} \\
+q_{k}
+\end{array}\right]
+=
+\left[\begin{array}{c}
+\cos\frac{\Phi}{2} \\
+\hat{\boldsymbol{e}}\sin\frac{\Phi}{2}
+\end{array}\right]
+</script></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>euler_axis</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The axis of rotation. Will be normalized to a magnitude of 1</dd>
+<dt><strong><code>euler_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angle of rotation in radians</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The quaternion equivalent to the the euler axis and angle</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:](float64[:], float64)&#34;, nopython=True, cache=True)
+def euler_axis_angle2quaternion(
+    euler_axis: np.ndarray, euler_angle: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Convert an Euler axis and angle to a quaternion.
+
+    Let the Euler axis and angle be \(\hat{\boldsymbol{e}}\) and
+    \(\Phi\), respectively. The equivalent quaternion is
+    $$
+        \bar{\boldsymbol{q}} =
+            \left[\begin{array}{c}
+                q_{w} \\
+                q_{i} \\
+                q_{j} \\
+                q_{k}
+            \end{array}\right]
+            =
+            \left[\begin{array}{c}
+                \cos\frac{\Phi}{2} \\
+                \hat{\boldsymbol{e}}\sin\frac{\Phi}{2}
+            \end{array}\right]
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    euler_axis : np.ndarray
+        The axis of rotation. Will be normalized to a magnitude of 1
+    euler_angle : float
+        The angle of rotation in radians
+
+    Returns
+    -------
+    np.ndarray
+        The quaternion equivalent to the the euler axis and angle
+
+    &#34;&#34;&#34;
+    euler_axis = euler_axis / np.linalg.norm(euler_axis)  # Normialize length
+    qijk = euler_axis * np.sin(euler_angle / 2) / np.linalg.norm(euler_axis)
+    quaternion = np.append(np.cos(euler_angle / 2), qijk)
+
+    return quaternion / np.linalg.norm(quaternion)</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.quaternion2direction_cosine_matrix"><code class="name flex">
+<span>def <span class="ident">quaternion2direction_cosine_matrix</span></span>(<span>quaternion: np.ndarray) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert quaternions to a direction cosine matrix.</p>
+<p>A quaternions can be represented as
+<span><span class="MathJax_Preview">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</span><script type="math/tex; mode=display">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</script></span>
+The equivalent direction cosine matrix can then be computed as
+<span><span class="MathJax_Preview">
+\mathbf{R} =
+\left[\begin{array}{ccc}
+q_{w}^{2} + q_{i}^{2} - q_{j}^{2} - q_{k}^{2} &amp;
+2 \left( q_{i}q_{j} - q_{k}q_{w} \right) &amp;
+2 \left( q_{i}q_{k} + q_{j}q_{w} \right) \\
+2 \left( q_{i}q_{j} + q_{k}q_{w} \right) &amp;
+q_{w}^{2} - q_{i}^{2} + q_{j}^{2} - q_{k}^{2} &amp;
+2 \left( q_{j}q_{k} - q_{i}q_{w} \right) \\
+2 \left( q_{i}q_{k} - q_{j}q_{w} \right) &amp;
+2 \left( q_{j}q_{k} + q_{i}q_{w} \right) &amp;
+q_{w}^{2} - q_{i}^{2} - q_{j}^{2} + q_{k}^{2}
+\end{array}\right]
+</span><script type="math/tex; mode=display">
+\mathbf{R} =
+\left[\begin{array}{ccc}
+q_{w}^{2} + q_{i}^{2} - q_{j}^{2} - q_{k}^{2} &
+2 \left( q_{i}q_{j} - q_{k}q_{w} \right) &
+2 \left( q_{i}q_{k} + q_{j}q_{w} \right) \\
+2 \left( q_{i}q_{j} + q_{k}q_{w} \right) &
+q_{w}^{2} - q_{i}^{2} + q_{j}^{2} - q_{k}^{2} &
+2 \left( q_{j}q_{k} - q_{i}q_{w} \right) \\
+2 \left( q_{i}q_{k} - q_{j}q_{w} \right) &
+2 \left( q_{j}q_{k} + q_{i}q_{w} \right) &
+q_{w}^{2} - q_{i}^{2} - q_{j}^{2} + q_{k}^{2}
+\end{array}\right]
+</script></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>quaternion</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The unit quaternion to convert</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The 3x3 Direction Cosine Matrix that represents the rotation</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:,:](float64[:])&#34;, nopython=True, cache=True)
+def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Convert quaternions to a direction cosine matrix.
+
+    A quaternions can be represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+    The equivalent direction cosine matrix can then be computed as
+    $$
+        \mathbf{R} =
+            \left[\begin{array}{ccc}
+                q_{w}^{2} + q_{i}^{2} - q_{j}^{2} - q_{k}^{2} &amp;
+                2 \left( q_{i}q_{j} - q_{k}q_{w} \right) &amp;
+                2 \left( q_{i}q_{k} + q_{j}q_{w} \right) \\
+                2 \left( q_{i}q_{j} + q_{k}q_{w} \right) &amp;
+                q_{w}^{2} - q_{i}^{2} + q_{j}^{2} - q_{k}^{2} &amp;
+                2 \left( q_{j}q_{k} - q_{i}q_{w} \right) \\
+                2 \left( q_{i}q_{k} - q_{j}q_{w} \right) &amp;
+                2 \left( q_{j}q_{k} + q_{i}q_{w} \right) &amp;
+                q_{w}^{2} - q_{i}^{2} - q_{j}^{2} + q_{k}^{2}
+            \end{array}\right]
+    $$
+
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    quaternion : np.ndarray
+        The unit quaternion to convert
+
+    Returns
+    -------
+    np.ndarray
+        The 3x3 Direction Cosine Matrix that represents the rotation
+
+    &#34;&#34;&#34;
+    assert len(quaternion) == 4, &#34;Quaternions must have 4 elements&#34;
+
+    # Normalize
+    quaternion = quaternion / np.linalg.norm(quaternion)
+
+    qw = quaternion[0]
+    qi = quaternion[1]
+    qj = quaternion[2]
+    qk = quaternion[3]
+
+    dcm = np.array(
+        [
+            [
+                qw ** 2 + qi ** 2 - qj ** 2 - qk ** 2,
+                2 * (qi * qj - qk * qw),
+                2 * (qi * qk + qj * qw),
+            ],
+            [
+                2 * (qi * qj + qk * qw),
+                qw ** 2 - qi ** 2 + qj ** 2 - qk ** 2,
+                2 * (qj * qk - qi * qw),
+            ],
+            [
+                2 * (qi * qk - qj * qw),
+                2 * (qj * qk + qi * qw),
+                qw ** 2 - qi ** 2 - qj ** 2 + qk ** 2,
+            ],
+        ]
+    )
+    return np.transpose(dcm)</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.quaternion2euler_axis_angle"><code class="name flex">
+<span>def <span class="ident">quaternion2euler_axis_angle</span></span>(<span>quaternion: np.ndarray) ‑> Tuple[numpy.ndarray, float]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a quaternion to an euler axis and angle.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning:&ensp;Directional Ambiguity</p>
+<p>There is directional ambitguity when using this function. This occurs
+because rotating by an angle about a given axis is equivalent to
+rotating by the same angle in the opposite direction about the
+opposite axis. There is no way to resolve this ambitguity, but it
+should not effect anything in the simulation.</p>
+</div>
+<p>A quaternions can be represented as
+<span><span class="MathJax_Preview">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</span><script type="math/tex; mode=display">
+\bar{\boldsymbol{q}} = \left[
+q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+\right]
+</script></span>
+with <span><span class="MathJax_Preview">\boldsymbol{q}=[q_{i}, q_{j}, q_{k}]^{T}</span><script type="math/tex">\boldsymbol{q}=[q_{i}, q_{j}, q_{k}]^{T}</script></span>. The angle of
+rotation that this represents can be computed (using a 4-quadrant
+arctangent function) as
+<span><span class="MathJax_Preview">
+\Phi = 2 \tan^{-1}\frac{
+||\boldsymbol{q}||
+}{
+q_{w}
+}
+</span><script type="math/tex; mode=display">
+\Phi = 2 \tan^{-1}\frac{
+||\boldsymbol{q}||
+}{
+q_{w}
+}
+</script></span>
+The axis of the rotation is then computed as
+<span><span class="MathJax_Preview">
+\hat{\boldsymbol{e}} = \frac{
+\boldsymbol{q}
+}{
+||\boldsymbol{q}||
+}
+</span><script type="math/tex; mode=display">
+\hat{\boldsymbol{e}} = \frac{
+\boldsymbol{q}
+}{
+||\boldsymbol{q}||
+}
+</script></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. Unless otherwise stated, all inputs should
+be float arrays.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>quaternion</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The unit quaternion to convert</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple[np.ndarray, float]</code></dt>
+<dd>A tuple where the first element is a 3-element 1D numpy array
+representing the rotation axis and the second element is the angle
+of rotation, in radians.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;Tuple((float64[:], float64))(float64[:])&#34;, nopython=True, cache=True)
+def quaternion2euler_axis_angle(quaternion: np.ndarray) -&gt; Tuple[np.ndarray, float]:
+    r&#34;&#34;&#34;Convert a quaternion to an euler axis and angle.
+
+    .. warning:: Directional Ambiguity
+        There is directional ambitguity when using this function. This occurs
+        because rotating by an angle about a given axis is equivalent to
+        rotating by the same angle in the opposite direction about the
+        opposite axis. There is no way to resolve this ambitguity, but it
+        should not effect anything in the simulation.
+
+    A quaternions can be represented as
+    $$
+        \bar{\boldsymbol{q}} = \left[
+            q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
+        \right]
+    $$
+    with \(\boldsymbol{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
+    rotation that this represents can be computed (using a 4-quadrant
+    arctangent function) as
+    $$
+        \Phi = 2 \tan^{-1}\frac{
+            ||\boldsymbol{q}||
+        }{
+            q_{w}
+        }
+    $$
+    The axis of the rotation is then computed as
+    $$
+        \hat{\boldsymbol{e}} = \frac{
+                \boldsymbol{q}
+            }{
+                ||\boldsymbol{q}||
+            }
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. Unless otherwise stated, all inputs should
+        be float arrays.
+
+    Parameters
+    ----------
+    quaternion : np.ndarray
+        The unit quaternion to convert
+
+    Returns
+    -------
+    Tuple[np.ndarray, float]
+        A tuple where the first element is a 3-element 1D numpy array
+        representing the rotation axis and the second element is the angle
+        of rotation, in radians.
+
+    &#34;&#34;&#34;
+    qw = quaternion[0]
+    qijk = quaternion[1:]
+
+    euler_angle = 2 * np.arctan2(np.linalg.norm(qijk), qw)
+    euler_axis = qijk / np.linalg.norm(qijk)
+
+    return euler_axis, euler_angle</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.roll_pitch_yaw"><code class="name flex">
+<span>def <span class="ident">roll_pitch_yaw</span></span>(<span>roll_angle: float, pitch_angle: float, yaw_angle: float, vector: np.ndarray) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Rotate a vector through a roll-pitch-yaw sequence.</p>
+<p>This function is an optimized way to rotate a vector through a
+roll-ptich-yaw sequence. This sequence is a rotation about the 1, 2, and 3
+axes in that order, that is first it it rolled, then pitched, then yawed.</p>
+<p>For a single rotation, this class is faster to use than the Rotation class
+as it is signficantly simpler to instantiate. However, if a rotation needs
+to be performed repeatedly, the Rotation class may be faster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are three
+floats and a float array.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>roll_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the roll axis in radians</dd>
+<dt><strong><code>pitch_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the pitch axis in radians</dd>
+<dt><strong><code>yaw_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the yaw axis in radians</dd>
+<dt><strong><code>vector</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The vector to rotate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The vector rotated to the new frame</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:](float64, float64, float64, float64[:])&#34;, nopython=True, cache=True)
+def roll_pitch_yaw(
+    roll_angle: float, pitch_angle: float, yaw_angle: float, vector: np.ndarray
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Rotate a vector through a roll-pitch-yaw sequence.
+
+    This function is an optimized way to rotate a vector through a
+    roll-ptich-yaw sequence. This sequence is a rotation about the 1, 2, and 3
+    axes in that order, that is first it it rolled, then pitched, then yawed.
+
+    For a single rotation, this class is faster to use than the Rotation class
+    as it is signficantly simpler to instantiate. However, if a rotation needs
+    to be performed repeatedly, the Rotation class may be faster.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are three
+        floats and a float array.
+
+    Parameters
+    ----------
+    roll_angle : float
+        Angle of rotation about the roll axis in radians
+    pitch_angle : float
+        Angle of rotation about the pitch axis in radians
+    yaw_angle : float
+        Angle of rotation about the yaw axis in radians
+    vector : np.ndarray
+        The vector to rotate
+
+    Returns
+    -------
+    np.ndarray
+        The vector rotated to the new frame
+
+    &#34;&#34;&#34;
+
+    return roll_pitch_yaw_matrix(roll_angle, pitch_angle, yaw_angle) @ vector</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.roll_pitch_yaw_matrix"><code class="name flex">
+<span>def <span class="ident">roll_pitch_yaw_matrix</span></span>(<span>roll_angle: float, pitch_angle: float, yaw_angle: float) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the Direction Cosine Matrix fo a roll-pitch-yaw sequence.</p>
+<p>This function is a way to generate the direction cosine matrix
+representing a roll-pitch-yaw sequence. This sequence is a rotation about
+the 1, 2, and 3 axes in that order, that is first it it rolled, then
+pitched, then yawed.</p>
+<p>Let <span><span class="MathJax_Preview">\theta,\phi,\psi</span><script type="math/tex">\theta,\phi,\psi</script></span> be the roll, pitch, and yaw angles, respectively.
+The corresponding direction cosine matrix is
+<span><span class="MathJax_Preview">
+\boldsymbol{R}(\theta,\phi,\psi) =
+\left[\begin{array}{ccc}
+\cos\psi \cos\phi &amp;
+\cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &amp;
+\cos\psi \sin\phi \cos\theta + \sin\psi \sin\theta \\
+\sin\psi \cos\phi &amp;
+\sin\psi \sin\phi \sin\theta + \cos\psi \cos\theta &amp;
+\sin\psi \sin\phi \cos\theta - \cos\psi \sin\theta \\
+-\sin\phi &amp;
+\cos\phi \sin\theta &amp;
+\cos\phi \cos\theta
+\end{array}\right]
+</span><script type="math/tex; mode=display">
+\boldsymbol{R}(\theta,\phi,\psi) =
+\left[\begin{array}{ccc}
+\cos\psi \cos\phi &
+\cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &
+\cos\psi \sin\phi \cos\theta + \sin\psi \sin\theta \\
+\sin\psi \cos\phi &
+\sin\psi \sin\phi \sin\theta + \cos\psi \cos\theta &
+\sin\psi \sin\phi \cos\theta - \cos\psi \sin\theta \\
+-\sin\phi &
+\cos\phi \sin\theta &
+\cos\phi \cos\theta
+\end{array}\right]
+</script></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are three
+floats and a float array.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>roll_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the roll axis in radians</dd>
+<dt><strong><code>pitch_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the pitch axis in radians</dd>
+<dt><strong><code>yaw_angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>Angle of rotation about the yaw axis in radians</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The direction cosine matrix representing the rotation.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:, :](float64, float64, float64)&#34;, nopython=True, cache=True)
+def roll_pitch_yaw_matrix(
+    roll_angle: float, pitch_angle: float, yaw_angle: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Create the Direction Cosine Matrix fo a roll-pitch-yaw sequence.
+
+    This function is a way to generate the direction cosine matrix
+    representing a roll-pitch-yaw sequence. This sequence is a rotation about
+    the 1, 2, and 3 axes in that order, that is first it it rolled, then
+    pitched, then yawed.
+
+    Let \(\theta,\phi,\psi\) be the roll, pitch, and yaw angles, respectively.
+    The corresponding direction cosine matrix is
+    $$
+        \boldsymbol{R}(\theta,\phi,\psi) =
+            \left[\begin{array}{ccc}
+                \cos\psi \cos\phi &amp;
+                \cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &amp;
+                \cos\psi \sin\phi \cos\theta + \sin\psi \sin\theta \\
+                \sin\psi \cos\phi &amp;
+                \sin\psi \sin\phi \sin\theta + \cos\psi \cos\theta &amp;
+                \sin\psi \sin\phi \cos\theta - \cos\psi \sin\theta \\
+                -\sin\phi &amp;
+                \cos\phi \sin\theta &amp;
+                \cos\phi \cos\theta
+            \end{array}\right]
+    $$
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are three
+        floats and a float array.
+
+    Parameters
+    ----------
+    roll_angle : float
+        Angle of rotation about the roll axis in radians
+    pitch_angle : float
+        Angle of rotation about the pitch axis in radians
+    yaw_angle : float
+        Angle of rotation about the yaw axis in radians
+
+    Returns
+    -------
+    np.ndarray
+        The direction cosine matrix representing the rotation.
+
+    &#34;&#34;&#34;
+    _c_roll = np.cos(roll_angle)
+    _s_roll = np.sin(roll_angle)
+
+    _c_pitch = np.cos(pitch_angle)
+    _s_pitch = np.sin(pitch_angle)
+
+    _c_yaw = np.cos(yaw_angle)
+    _s_yaw = np.sin(yaw_angle)
+
+    dcm = np.array(
+        [
+            [
+                _c_yaw * _c_pitch,
+                _c_yaw * _s_pitch * _s_roll - _s_yaw * _c_roll,
+                _c_yaw * _s_pitch * _c_roll + _s_yaw * _s_roll,
+            ],
+            [
+                _s_yaw * _c_pitch,
+                _s_yaw * _s_pitch * _s_roll + _c_yaw * _c_roll,
+                _s_yaw * _s_pitch * _c_roll - _c_yaw * _s_roll,
+            ],
+            [-_s_pitch, _c_pitch * _s_roll, _c_pitch * _c_roll],
+        ]
+    )
+
+    return dcm</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.standard_rotation"><code class="name flex">
+<span>def <span class="ident">standard_rotation</span></span>(<span>rotation_axis: int, angle: float, vector: np.ndarray) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Rotate a vector about a principal axis.</p>
+<p>This function is an optimized way to rotate about one of the principal
+axes. The inputs are the axis to rotate around and the angle of rotation,
+along with the vector be rotated.</p>
+<p>For a single rotation, this class is faster to use than the Rotation class
+as it is signficantly simpler to instantiate. However, if a rotation needs
+to be performed repeatedly, the Rotation class may be faster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are an int, a
+float, and a float array.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>rotation_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>The axis of rotation. Must be 1, 2, or 3 (corresponding to x,y, and x)</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angle of rotation in radians</dd>
+<dt><strong><code>vector</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The vector to rotate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The vector rotated to the new frame</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:](int8, float64, float64[:])&#34;, nopython=True, cache=True)
+def standard_rotation(
+    rotation_axis: int, angle: float, vector: np.ndarray
+) -&gt; np.ndarray:
+    &#34;&#34;&#34;Rotate a vector about a principal axis.
+
+    This function is an optimized way to rotate about one of the principal
+    axes. The inputs are the axis to rotate around and the angle of rotation,
+    along with the vector be rotated.
+
+    For a single rotation, this class is faster to use than the Rotation class
+    as it is signficantly simpler to instantiate. However, if a rotation needs
+    to be performed repeatedly, the Rotation class may be faster.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int, a
+        float, and a float array.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation. Must be 1, 2, or 3 (corresponding to x,y, and x)
+    angle : float
+        The angle of rotation in radians
+    vector : np.ndarray
+        The vector to rotate
+
+    Returns
+    -------
+    np.ndarray
+        The vector rotated to the new frame
+
+    &#34;&#34;&#34;
+    _c = np.cos(angle)
+    _s = np.sin(angle)
+
+    assert rotation_axis in [1, 2, 3], &#34;rotation_axis must be 1, 2, or 3&#34;
+    if rotation_axis == 1:
+        dcm = np.array([[1.0, 0.0, 0.0], [0.0, _c, _s], [0.0, -_s, _c]])
+    elif rotation_axis == 2:
+        dcm = np.array([[_c, 0.0, -_s], [0.0, 1.0, 0.0], [_s, 0.0, _c]])
+    elif rotation_axis == 3:
+        dcm = np.array([[_c, _s, 0.0], [-_s, _c, 0.0], [0.0, 0.0, 1.0]])
+
+    return dcm @ vector</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.standard_rotation_matrix"><code class="name flex">
+<span>def <span class="ident">standard_rotation_matrix</span></span>(<span>rotation_axis: int, angle: float) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a standard rotation matrix.</p>
+<p>This function is used to compute the rotation matrix (direction cosine
+matrix) for a rotation about one of the principle axes.</p>
+<p>That is, if the angle of rotation is <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>, the returned rotation
+matrix is
+<span><span class="MathJax_Preview">
+\begin{split}
+R_{1}(\theta) = &amp;
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; \cos\theta &amp; \sin\theta \\
+0 &amp; -\sin\theta &amp; \cos\theta
+\end{array}\right] \\
+R_{2}(\theta) = &amp;
+\left[\begin{array}{ccc}
+\cos\theta &amp; 0 &amp; -\sin\theta \\
+0 &amp; 1 &amp; 0 \\
+\sin\theta &amp; 0 &amp; \cos\theta
+\end{array}\right] \\
+R_{3}(\theta) = &amp;
+\left[\begin{array}{ccc}
+\cos\theta &amp; \sin\theta &amp; 0 \\
+-\sin\theta &amp; \cos\theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{split}
+</span><script type="math/tex; mode=display">
+\begin{split}
+R_{1}(\theta) = &
+\left[\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & \cos\theta & \sin\theta \\
+0 & -\sin\theta & \cos\theta
+\end{array}\right] \\
+R_{2}(\theta) = &
+\left[\begin{array}{ccc}
+\cos\theta & 0 & -\sin\theta \\
+0 & 1 & 0 \\
+\sin\theta & 0 & \cos\theta
+\end{array}\right] \\
+R_{3}(\theta) = &
+\left[\begin{array}{ccc}
+\cos\theta & \sin\theta & 0 \\
+-\sin\theta & \cos\theta & 0 \\
+0 & 0 & 1
+\end{array}\right]
+\end{split}
+</script></span>
+respectively for rotations about the 1, 2, or 3 axis.</p>
+<p>To simply the actual code, this is actually accomplished by expressing the
+rotation as a rotation about an Euler axis and simply converting to a
+direction cosine matrix using euler_axis_angle2direction_cosion_matrix().</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are an int and
+a float.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>rotation_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>The axis of rotation</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angle of rotation in radians</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The rotation matrix (DCM) for the axis and angle of rotation</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the rotation axis is not 1, 2, or 3</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:,:](int8, float64)&#34;, nopython=True, cache=True)
+def standard_rotation_matrix(rotation_axis: int, angle: float) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Get a standard rotation matrix.
+
+    This function is used to compute the rotation matrix (direction cosine
+    matrix) for a rotation about one of the principle axes.
+
+    That is, if the angle of rotation is \(\theta\), the returned rotation
+    matrix is
+    $$
+        \begin{split}
+            R_{1}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    1 &amp; 0 &amp; 0 \\
+                    0 &amp; \cos\theta &amp; \sin\theta \\
+                    0 &amp; -\sin\theta &amp; \cos\theta
+                \end{array}\right] \\
+            R_{2}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    \cos\theta &amp; 0 &amp; -\sin\theta \\
+                    0 &amp; 1 &amp; 0 \\
+                    \sin\theta &amp; 0 &amp; \cos\theta
+                \end{array}\right] \\
+            R_{3}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    \cos\theta &amp; \sin\theta &amp; 0 \\
+                    -\sin\theta &amp; \cos\theta &amp; 0 \\
+                    0 &amp; 0 &amp; 1
+                \end{array}\right]
+        \end{split}
+    $$
+    respectively for rotations about the 1, 2, or 3 axis.
+
+    To simply the actual code, this is actually accomplished by expressing the
+    rotation as a rotation about an Euler axis and simply converting to a
+    direction cosine matrix using euler_axis_angle2direction_cosion_matrix().
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int and
+        a float.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation
+    angle : float
+        The angle of rotation in radians
+
+    Returns
+    -------
+    np.ndarray
+        The rotation matrix (DCM) for the axis and angle of rotation
+
+    Raises
+    ------
+    ValueError
+        If the rotation axis is not 1, 2, or 3
+
+    &#34;&#34;&#34;
+
+    assert rotation_axis in [1, 2, 3], &#34;rotation_axis must be 1, 2, or 3&#34;
+    euler_axis = np.zeros(3)
+    euler_axis[rotation_axis - 1] = 1.0
+
+    return euler_axis_angle2direction_cosine_matrix(euler_axis, angle)</code></pre>
+</details>
+</dd>
+<dt id="gps_frames.rotations.standard_rotation_matrix_rates"><code class="name flex">
+<span>def <span class="ident">standard_rotation_matrix_rates</span></span>(<span>rotation_axis: int, angle: float, rate: float) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the derivated of a standard rotation matrix.</p>
+<p>This function is used to compute the derivative of a rotation matrix
+(direction cosine matrix) for a rotation about one of the principle axes.</p>
+<p>That is, if the angle of rotation is <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>, the returned matrix is
+<span><span class="MathJax_Preview">
+\begin{split}
+R_{1}(\theta) = &amp;
+\left[\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp;
+-\dot{\theta}\sin\theta &amp;
+\dot{\theta}\cos\theta \\
+0 &amp;
+-\dot{\theta}\cos\theta &amp;
+-\dot{\theta}\sin\theta
+\end{array}\right] \\
+R_{2}(\theta) = &amp;
+\left[\begin{array}{ccc}
+-\dot{\theta}\sin\theta &amp;
+0 &amp;
+-\dot{\theta}\cos\theta\\
+0 &amp;
+0 &amp;
+0 \\
+\dot{\theta}\cos\theta &amp;
+0 &amp;
+-\dot{\theta}\sin\theta
+\end{array}\right] \\
+R_{3}(\theta) = &amp;
+\left[\begin{array}{ccc}
+-\dot{\theta}\sin\theta
+&amp; \dot{\theta}\cos\theta &amp;
+0 \\
+-\dot{\theta}\cos\theta &amp;
+-\dot{\theta}\sin\theta &amp;
+0 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]
+\end{split}
+</span><script type="math/tex; mode=display">
+\begin{split}
+R_{1}(\theta) = &
+\left[\begin{array}{ccc}
+0 & 0 & 0 \\
+0 &
+-\dot{\theta}\sin\theta &
+\dot{\theta}\cos\theta \\
+0 &
+-\dot{\theta}\cos\theta &
+-\dot{\theta}\sin\theta
+\end{array}\right] \\
+R_{2}(\theta) = &
+\left[\begin{array}{ccc}
+-\dot{\theta}\sin\theta &
+0 &
+-\dot{\theta}\cos\theta\\
+0 &
+0 &
+0 \\
+\dot{\theta}\cos\theta &
+0 &
+-\dot{\theta}\sin\theta
+\end{array}\right] \\
+R_{3}(\theta) = &
+\left[\begin{array}{ccc}
+-\dot{\theta}\sin\theta
+& \dot{\theta}\cos\theta &
+0 \\
+-\dot{\theta}\cos\theta &
+-\dot{\theta}\sin\theta &
+0 \\
+0 & 0 & 0
+\end{array}\right]
+\end{split}
+</script></span>
+respectively for rotations about the 1, 2, or 3 axis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are an int and
+two floats.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>rotation_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>The axis of rotation</dd>
+<dt><strong><code>angle</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angle of rotation in radians</dd>
+<dt><strong><code>rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>The angular rotation rate in radians per second</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The rate of change of the rotation matrix (DCM) for the axis, angle,
+and rate of rotation</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the rotation axis is not 1, 2, or 3</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(&#34;float64[:,:](int8, float64, float64)&#34;, nopython=True, cache=True)
+def standard_rotation_matrix_rates(
+    rotation_axis: int, angle: float, rate: float
+) -&gt; np.ndarray:
+    r&#34;&#34;&#34;Get the derivated of a standard rotation matrix.
+
+    This function is used to compute the derivative of a rotation matrix
+    (direction cosine matrix) for a rotation about one of the principle axes.
+
+    That is, if the angle of rotation is \(\theta\), the returned matrix is
+    $$
+        \begin{split}
+            R_{1}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    0 &amp; 0 &amp; 0 \\
+                    0 &amp;
+                    -\dot{\theta}\sin\theta &amp;
+                    \dot{\theta}\cos\theta \\
+                    0 &amp;
+                    -\dot{\theta}\cos\theta &amp;
+                    -\dot{\theta}\sin\theta
+                \end{array}\right] \\
+            R_{2}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    -\dot{\theta}\sin\theta &amp;
+                    0 &amp;
+                    -\dot{\theta}\cos\theta\\
+                    0 &amp;
+                    0 &amp;
+                    0 \\
+                    \dot{\theta}\cos\theta &amp;
+                    0 &amp;
+                    -\dot{\theta}\sin\theta
+                \end{array}\right] \\
+            R_{3}(\theta) = &amp;
+                \left[\begin{array}{ccc}
+                    -\dot{\theta}\sin\theta
+                    &amp; \dot{\theta}\cos\theta &amp;
+                    0 \\
+                    -\dot{\theta}\cos\theta &amp;
+                    -\dot{\theta}\sin\theta &amp;
+                    0 \\
+                    0 &amp; 0 &amp; 0
+                \end{array}\right]
+        \end{split}
+    $$
+    respectively for rotations about the 1, 2, or 3 axis.
+
+    .. note:: Numba JIT Compiled
+        This function is compiled using Numba. Use care when providing inputs
+        as Numba is strictly typed. The inputs to this function are an int and
+        two floats.
+
+    Parameters
+    ----------
+    rotation_axis : int
+        The axis of rotation
+    angle : float
+        The angle of rotation in radians
+    rate : float
+        The angular rotation rate in radians per second
+
+    Returns
+    -------
+    np.ndarray
+        The rate of change of the rotation matrix (DCM) for the axis, angle,
+        and rate of rotation
+
+    Raises
+    ------
+    ValueError
+        If the rotation axis is not 1, 2, or 3
+
+    &#34;&#34;&#34;
+    c = np.cos(angle)
+    s = np.sin(angle)
+
+    if rotation_axis == 1:
+        return np.array(
+            [[0.0, 0.0, 0.0], [0.0, -s * rate, c * rate], [0.0, -c * rate, -s * rate]]
+        )
+    elif rotation_axis == 2:
+        return np.array(
+            [[-s * rate, 0.0, -c * rate], [0.0, 0.0, 0.0], [c * rate, 0.0, -s * rate]]
+        )
+    elif rotation_axis == 3:
+        return np.array(
+            [[-s * rate, c * rate, 0.0], [-c * rate, -s * rate, 0.0], [0.0, 0.0, 0.0]]
+        )
+    else:
+        raise ValueError(&#34;rotation_axis must be 1, 2, or 3&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gps_frames.rotations.Rotation"><code class="flex name class">
+<span>class <span class="ident">Rotation</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represention of rotations.</p>
+<p>This class is used to represent a rotation. The rotation is internally
+represented by a _Rotator object, which is a Numba optimized class that is
+used to handle the actual rotations.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>_rotator</code></strong> :&ensp;<code>_Rotator</code></dt>
+<dd>A numba optimized class used to describe rotations.</dd>
+</dl>
+<h2 id="todo">Todo</h2>
+<p>Consider adding to_yaml() and from_yaml() methods to enable storing as a
+YAML object.</p>
+<p>Construct a Rotation Object</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Types</p>
+<p>Because this acts as an interface to a numba object (which is
+strictly typed), it is recommended that all inputs contain only
+floats. This should be corrected automatically, but success cannot
+be guarenteed.</p>
+</div>
+<p>This constructor is able to take a various numbers of input arguments
+to create a _Rotator object. These can either be positional or keyword
+arguments. It is recommended to use the keyword arguments to avoid
+ambiguity.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning:&ensp;Duplicate Definitions</p>
+<p>There can only be one definition of the rotation. If multiple
+definitions are given, it will raise an error. This includes
+having both positional and keyword arguments.</p>
+</div>
+<p>This constructor functions by taking the input arguments and
+converting the rotation representation to a direction cosine matrix,
+which is then used to instantiate a _Rotator object.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip:&ensp;Quaternion Ordering</p>
+<p>The order of the unit quaternion inputs are ((q_{w}), <span><span class="MathJax_Preview">q_{i}</span><script type="math/tex">q_{i}</script></span>,
+<span><span class="MathJax_Preview">q_{j}</span><script type="math/tex">q_{j}</script></span>, <span><span class="MathJax_Preview">q_{k}</span><script type="math/tex">q_{k}</script></span>) where
+<span><span class="MathJax_Preview">\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k</span><script type="math/tex">\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k</script></span>.</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>*args</code></strong></dt>
+<dd>If one positional argument is provided, it is assumed to be either
+a unit quaternion (if its length is 4) or a direction cosine
+matrix (otherwise). If two positional arguments are provided, then
+the first positional argument is assumed to be the axis of
+rotation and the second argument is assumed to be the angle of
+rotation. If four positional arguments are given, the values are
+assumed to be the components of the unit quaternion.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>
+<p>The rotation can be defined using keyword arguments. The valid
+keyword arguments are:</p>
+<ul>
+<li>'dcm': A direction cosine matrix (3x3 array)</li>
+<li>'axis', 'angle': The euler axis (3 element vector) and angle of
+rotation (float)</li>
+<li>'standard_axis', 'angle': The principal axis of rotation
+(int, 1,2,3) and angle of rotation (float)</li>
+<li>'quaternion': A unit quaternion (4 element vector)</li>
+</ul>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Rotation:
+    r&#34;&#34;&#34;Represention of rotations.
+
+    This class is used to represent a rotation. The rotation is internally
+    represented by a _Rotator object, which is a Numba optimized class that is
+    used to handle the actual rotations.
+
+    Attributes
+    ----------
+    _rotator : _Rotator
+        A numba optimized class used to describe rotations.
+
+    Todo
+    ----
+    Consider adding to_yaml() and from_yaml() methods to enable storing as a
+    YAML object.
+
+    &#34;&#34;&#34;
+
+    _rotator: _Rotator
+
+    def __init__(self, *args, **kwargs) -&gt; None:
+        r&#34;&#34;&#34;Construct a Rotation Object
+
+        .. note:: Types
+            Because this acts as an interface to a numba object (which is
+            strictly typed), it is recommended that all inputs contain only
+            floats. This should be corrected automatically, but success cannot
+            be guarenteed.
+
+        This constructor is able to take a various numbers of input arguments
+        to create a _Rotator object. These can either be positional or keyword
+        arguments. It is recommended to use the keyword arguments to avoid
+        ambiguity.
+
+        .. warning:: Duplicate Definitions
+            There can only be one definition of the rotation. If multiple
+            definitions are given, it will raise an error. This includes
+            having both positional and keyword arguments.
+
+        This constructor functions by taking the input arguments and
+        converting the rotation representation to a direction cosine matrix,
+        which is then used to instantiate a _Rotator object.
+
+        .. tip:: Quaternion Ordering
+            The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),
+            \(q_{j}\), \(q_{k}\)) where
+            \(\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
+
+        Parameters
+        ----------
+        *args
+            If one positional argument is provided, it is assumed to be either
+            a unit quaternion (if its length is 4) or a direction cosine
+            matrix (otherwise). If two positional arguments are provided, then
+            the first positional argument is assumed to be the axis of
+            rotation and the second argument is assumed to be the angle of
+            rotation. If four positional arguments are given, the values are
+            assumed to be the components of the unit quaternion.
+        **kwargs
+            The rotation can be defined using keyword arguments. The valid
+            keyword arguments are:
+
+            - &#39;dcm&#39;: A direction cosine matrix (3x3 array)
+            - &#39;axis&#39;, &#39;angle&#39;: The euler axis (3 element vector) and angle of
+              rotation (float)
+            - &#39;standard_axis&#39;, &#39;angle&#39;: The principal axis of rotation
+              (int, 1,2,3) and angle of rotation (float)
+            - &#39;quaternion&#39;: A unit quaternion (4 element vector)
+
+        &#34;&#34;&#34;
+
+        if len(args) != 0:
+            assert (
+                len(kwargs) == 0
+            ), &#34;Only positional or keyword arguments accepted, not both&#34;
+
+            if len(args) == 1:
+                _input = np.array(args[0])
+                if len(_input) == 4:  # Infer Quaternion
+                    _dcm = quaternion2direction_cosine_matrix(_input)
+                else:  # Infer DCM
+                    _dcm = _input
+            elif len(args) == 2:  # Euler Axis Angle
+                _dcm = euler_axis_angle2direction_cosine_matrix(args[0], args[1])
+            elif len(args) == 4:  # Quaternions
+                _dcm = quaternion2direction_cosine_matrix(np.array(args))
+            else:
+                raise ValueError(f&#34;Cannot handle {len(args)} positional arguments&#34;)
+        else:
+            if &#34;dcm&#34; in kwargs:
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;angle&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _dcm = kwargs[&#34;dcm&#34;]
+
+            elif &#34;axis&#34; in kwargs:
+                assert &#34;angle&#34; in kwargs, &#34;No angle provided&#34;
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;standard_axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _dcm = euler_axis_angle2direction_cosine_matrix(
+                    kwargs[&#34;axis&#34;], kwargs[&#34;angle&#34;]
+                )
+
+            elif &#34;standard_axis&#34; in kwargs:
+                assert &#34;angle&#34; in kwargs, &#34;No angle provided&#34;
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;quaternion&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _standard_axis = {
+                    1: np.array((1.0, 0.0, 0.0), dtype=float),
+                    2: np.array((0.0, 1.0, 0.0), dtype=float),
+                    3: np.array((0.0, 0.0, 1.0), dtype=float),
+                }
+
+                assert (
+                    kwargs[&#34;standard_axis&#34;] in _standard_axis
+                ), f&#39;Invalid standard axis {kwargs[&#34;standard_axis&#34;]}&#39;
+
+                _dcm = euler_axis_angle2direction_cosine_matrix(
+                    _standard_axis[kwargs[&#34;standard_axis&#34;]], kwargs[&#34;angle&#34;]
+                )
+
+            elif &#34;quaternion&#34; in kwargs:
+                assert &#34;dcm&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;axis&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+                assert &#34;angle&#34; not in kwargs, &#34;Duplicate rotation definitions&#34;
+
+                _quaternion = np.array(kwargs[&#34;quaternion&#34;])
+                _dcm = quaternion2direction_cosine_matrix(_quaternion)
+
+        self._check_dcm(_dcm)
+        self._rotator = _Rotator(np.array(_dcm, dtype=float))
+
+    @staticmethod
+    def _check_dcm(dcm: np.ndarray) -&gt; None:
+        &#34;&#34;&#34;Check to see if a Direction Cosine Matrix is valid.
+
+        Specifically, this static method checks to ensure that the input
+        direction cosine matrix is a 3x3 matrix that is both right-handed and
+        orthonormal.
+
+        Parameters
+        ----------
+        dcm : np.ndarray
+            The Direction Cosine Matrix of interest.
+
+        &#34;&#34;&#34;
+        assert np.shape(dcm) == (3, 3), &#34;Direction Cosine Matrix must be 3x3&#34;
+        assert np.isclose(
+            abs(np.linalg.det(dcm) - 1), 0
+        ), &#34;Direction Cosine Matrix must be right-handed and orthonormal&#34;
+
+    def rotate(self, vector: np.array) -&gt; np.array:
+        &#34;&#34;&#34;Rotate a vector by this rotaion.
+
+        .. note:: Vector Objects
+            gps_frames.vectors includes an object called Vector. This method
+            takes a numpy array that represents a vector. This is deliberate
+            because rotations are dependant on a frame and the Vector object
+            requires a frame
+
+        Parameters
+        ----------
+        vector : np.array
+            The 3-element 1D numpy array representing a vector
+
+        Returns
+        -------
+        np.array
+            The vector rotated into the new frame
+
+        &#34;&#34;&#34;
+        return self._rotator.rotate(np.array(vector, dtype=float))</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="gps_frames.rotations.Rotation.rotate"><code class="name flex">
+<span>def <span class="ident">rotate</span></span>(<span>self, vector: np.array) ‑> <built-in function array></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Rotate a vector by this rotaion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note:&ensp;Vector Objects</p>
+<p>gps_frames.vectors includes an object called Vector. This method
+takes a numpy array that represents a vector. This is deliberate
+because rotations are dependant on a frame and the Vector object
+requires a frame</p>
+</div>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>vector</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>The 3-element 1D numpy array representing a vector</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.array</code></dt>
+<dd>The vector rotated into the new frame</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rotate(self, vector: np.array) -&gt; np.array:
+    &#34;&#34;&#34;Rotate a vector by this rotaion.
+
+    .. note:: Vector Objects
+        gps_frames.vectors includes an object called Vector. This method
+        takes a numpy array that represents a vector. This is deliberate
+        because rotations are dependant on a frame and the Vector object
+        requires a frame
+
+    Parameters
+    ----------
+    vector : np.array
+        The 3-element 1D numpy array representing a vector
+
+    Returns
+    -------
+    np.array
+        The vector rotated into the new frame
+
+    &#34;&#34;&#34;
+    return self._rotator.rotate(np.array(vector, dtype=float))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="gps_frames" href="index.html">gps_frames</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gps_frames.rotations.direction_cosine_matrix2euler_axis_angle" href="#gps_frames.rotations.direction_cosine_matrix2euler_axis_angle">direction_cosine_matrix2euler_axis_angle</a></code></li>
+<li><code><a title="gps_frames.rotations.direction_cosine_matrix2quaternion" href="#gps_frames.rotations.direction_cosine_matrix2quaternion">direction_cosine_matrix2quaternion</a></code></li>
+<li><code><a title="gps_frames.rotations.euler_axis_angle2direction_cosine_matrix" href="#gps_frames.rotations.euler_axis_angle2direction_cosine_matrix">euler_axis_angle2direction_cosine_matrix</a></code></li>
+<li><code><a title="gps_frames.rotations.euler_axis_angle2quaternion" href="#gps_frames.rotations.euler_axis_angle2quaternion">euler_axis_angle2quaternion</a></code></li>
+<li><code><a title="gps_frames.rotations.quaternion2direction_cosine_matrix" href="#gps_frames.rotations.quaternion2direction_cosine_matrix">quaternion2direction_cosine_matrix</a></code></li>
+<li><code><a title="gps_frames.rotations.quaternion2euler_axis_angle" href="#gps_frames.rotations.quaternion2euler_axis_angle">quaternion2euler_axis_angle</a></code></li>
+<li><code><a title="gps_frames.rotations.roll_pitch_yaw" href="#gps_frames.rotations.roll_pitch_yaw">roll_pitch_yaw</a></code></li>
+<li><code><a title="gps_frames.rotations.roll_pitch_yaw_matrix" href="#gps_frames.rotations.roll_pitch_yaw_matrix">roll_pitch_yaw_matrix</a></code></li>
+<li><code><a title="gps_frames.rotations.standard_rotation" href="#gps_frames.rotations.standard_rotation">standard_rotation</a></code></li>
+<li><code><a title="gps_frames.rotations.standard_rotation_matrix" href="#gps_frames.rotations.standard_rotation_matrix">standard_rotation_matrix</a></code></li>
+<li><code><a title="gps_frames.rotations.standard_rotation_matrix_rates" href="#gps_frames.rotations.standard_rotation_matrix_rates">standard_rotation_matrix_rates</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gps_frames.rotations.Rotation" href="#gps_frames.rotations.Rotation">Rotation</a></code></h4>
+<ul class="">
+<li><code><a title="gps_frames.rotations.Rotation.rotate" href="#gps_frames.rotations.Rotation.rotate">rotate</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
