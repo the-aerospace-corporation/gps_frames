@@ -1,12 +1,12 @@
 # Copyright (c) 2022 The Aerospace Corporation
 from setuptools import setup
 
-with open("requirements.txt") as f:
-    required = f.read().splitlines()
+# with open("requirements.txt") as f:
+#     required = f.read().splitlines()
 
 setup(
     name="gps_frames",
-    version="2.8.0",
+    version="2.8.1",
     description="Reference frames representations and transformations",
     url="https://github.com/the-aerospace-corporation/gps_frames",  # noqa: E501
     author="David William Allen",
@@ -22,7 +22,7 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     python_requires=">=3.7, <3.10",
-    install_requires=required,
+    install_requires=["gps-time", "numpy", "numba", "scipy"],
     include_package_data=True,
     zip_safe=False,
 )
