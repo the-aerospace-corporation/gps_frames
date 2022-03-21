@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name="gps_frames",
-    version="2.8.1",
+    version="2.8.2",
     description="Reference frames representations and transformations",
     url="https://github.com/the-aerospace-corporation/gps_frames",  # noqa: E501
     author="David William Allen",
@@ -24,5 +24,10 @@ setup(
     python_requires=">=3.7, <3.10",
     install_requires=["gps-time", "numpy", "numba", "scipy"],
     include_package_data=True,
+    package_data={
+        "": [
+            "data/*.npz",
+        ]
+    },
     zip_safe=False,
 )

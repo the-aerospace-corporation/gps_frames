@@ -3,7 +3,7 @@ Reference frame representation, transformations, and operations for GPS.
 
 [![Test Python package](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-package.yml/badge.svg)](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-package.yml)
 [![CodeQL](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/codeql-analysis.yml)
-
+[![Upload Python Package](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-publish.yml/badge.svg)](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-publish.yml)
 ## Installation
 This module can be installed using PyPI:
 ```

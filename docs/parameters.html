@@ -54,6 +54,7 @@ References
 
 import os
 import numpy as np
+import pkg_resources
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -258,9 +259,9 @@ class GeoidData:
 
     &#34;&#34;&#34;
 
-    _this_dir, _ = os.path.split(__file__)
-    _data_path = os.path.join(_this_dir, &#34;geoid_data_1deg.npz&#34;)
-
+    # _this_dir, _ = os.path.split(__file__)
+    # _data_path = os.path.join(_this_dir, &#34;geoid_data_1deg.npz&#34;)
+    _data_path = pkg_resources.resource_filename(__name__, &#34;data/geoid_data_1deg.npz&#34;)
     _geoid_data_npz = np.load(_data_path)
 
     latitudes: np.ndarray = _geoid_data_npz[&#34;latitudes&#34;]
@@ -669,9 +670,9 @@ DEALINGS IN THE SOFTWARE.</p></div>
 
     &#34;&#34;&#34;
 
-    _this_dir, _ = os.path.split(__file__)
-    _data_path = os.path.join(_this_dir, &#34;geoid_data_1deg.npz&#34;)
-
+    # _this_dir, _ = os.path.split(__file__)
+    # _data_path = os.path.join(_this_dir, &#34;geoid_data_1deg.npz&#34;)
+    _data_path = pkg_resources.resource_filename(__name__, &#34;data/geoid_data_1deg.npz&#34;)
     _geoid_data_npz = np.load(_data_path)
 
     latitudes: np.ndarray = _geoid_data_npz[&#34;latitudes&#34;]
