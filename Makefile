@@ -7,7 +7,7 @@ clean:
 	black gps_frames/
 
 build:
-	python setup.py sdist
+	python -m build
 
 docs:
 	mkdocs build
