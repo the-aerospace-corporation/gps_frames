@@ -226,7 +226,7 @@ def check_earth_obscuration(
     position2: Position,
     convert_hae_altitude: bool = False,
     earth_adjustment_m: float = 30e3,
-    transition_altitude_m: float = -np.infty,
+    transition_altitude_m: float = -np.inf,
     elevation_mask_angle_rad: float = -0.1,
 ) -> bool:
     r"""Determine if position2 is visiable from position1.
