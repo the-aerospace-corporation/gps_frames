@@ -143,7 +143,7 @@ class SerializeableVector:
             True if the two are equal
         """
         return (
-            self.coordinates == other.coordinates
+            np.array_equal(self.coordinates, other.coordinates)
             and self.frame_time == other.frame_time
             and self.frame == other.frame
         )
