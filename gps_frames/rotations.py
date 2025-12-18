@@ -50,7 +50,7 @@ class Rotation:
     def __init__(self, *args, **kwargs) -> None:
         r"""Construct a Rotation Object
 
-        .. note:: Types
+        !!! note "Types"
             Because this acts as an interface to a numba object (which is
             strictly typed), it is recommended that all inputs contain only
             floats. This should be corrected automatically, but success cannot
@@ -61,7 +61,7 @@ class Rotation:
         arguments. It is recommended to use the keyword arguments to avoid
         ambiguity.
 
-        .. warning:: Duplicate Definitions
+        !!! warning "Duplicate Definitions"
             There can only be one definition of the rotation. If multiple
             definitions are given, it will raise an error. This includes
             having both positional and keyword arguments.
@@ -70,7 +70,7 @@ class Rotation:
         converting the rotation representation to a direction cosine matrix,
         which is then used to instantiate a _Rotator object.
 
-        .. tip:: Quaternion Ordering
+        !!! tip "Quaternion Ordering"
             The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),
             \(q_{j}\), \(q_{k}\)) where
             \(\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
@@ -186,7 +186,7 @@ class Rotation:
     def rotate(self, vector: np.array) -> np.array:
         """Rotate a vector by this rotaion.
 
-        .. note:: Vector Objects
+        !!! note "Vector Objects"
             gps_frames.vectors includes an object called Vector. This method
             takes a numpy array that represents a vector. This is deliberate
             because rotations are dependant on a frame and the Vector object
@@ -220,7 +220,7 @@ class _Rotator:
     a direction cosine matrix that can be used to rotate a vector to a new
     frame.
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This class is compiled using Numba. Use care when providing inputs as
         Numba is strictly typed. Unless otherwise stated, all inputs should be
         float arrays.
@@ -293,7 +293,7 @@ def euler_axis_angle2quaternion(
             \end{array}\right]
     $$
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -360,7 +360,7 @@ def direction_cosine_matrix2quaternion(dcm: np.ndarray) -> np.array:
     eigenvalue with a value of 1. This is done by calling
     euler_axis_angle2quaternion().
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -427,7 +427,7 @@ def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -> np.ndarray:
     $$
 
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -479,7 +479,7 @@ def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -> np.ndarray:
 def quaternion2euler_axis_angle(quaternion: np.ndarray) -> Tuple[np.ndarray, float]:
     r"""Convert a quaternion to an euler axis and angle.
 
-    .. warning:: Directional Ambiguity
+    !!! warning "Directional Ambiguity"
         There is directional ambitguity when using this function. This occurs
         because rotating by an angle about a given axis is equivalent to
         rotating by the same angle in the opposite direction about the
@@ -511,7 +511,7 @@ def quaternion2euler_axis_angle(quaternion: np.ndarray) -> Tuple[np.ndarray, flo
             }
     $$
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -549,7 +549,7 @@ def direction_cosine_matrix2euler_axis_angle(
     quaternion is converted to the corresponding Euler axis and angle using
     quaternion2euler_axis_angle().
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -583,7 +583,7 @@ def euler_axis_angle2direction_cosine_matrix(
     quaternion2direction_cosine_matrix().
 
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. Unless otherwise stated, all inputs should
         be float arrays.
@@ -619,7 +619,7 @@ def standard_rotation(
     as it is signficantly simpler to instantiate. However, if a rotation needs
     to be performed repeatedly, the Rotation class may be faster.
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are an int, a
         float, and a float array.
@@ -690,7 +690,7 @@ def standard_rotation_matrix(rotation_axis: int, angle: float) -> np.ndarray:
     rotation as a rotation about an Euler axis and simply converting to a
     direction cosine matrix using euler_axis_angle2direction_cosion_matrix().
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are an int and
         a float.
@@ -769,7 +769,7 @@ def standard_rotation_matrix_rates(
     $$
     respectively for rotations about the 1, 2, or 3 axis.
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are an int and
         two floats.

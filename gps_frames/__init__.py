@@ -1,7 +1,5 @@
 # Copyright (c) 2022 The Aerospace Corporation
 """
-.. include::../README.md
-
 gps_frames
 ----------
 Define the reference frames for use throughout the model.
@@ -357,11 +355,13 @@ def check_earth_obscuration(
 def _get_spherical_radius(position: Position, correct_lla: bool) -> float:
     """Get the spherical radius.
 
-    .. deprectated:: Functionality moved to Position object
+    !!! failure "Deprecated"
+        Functionality moved to Position object
+
         This method will be deprecated in favor of the
-        gps_frames.position.Position.get_altitude_spherical() and
-        gps_frames.position.Position.get_radius() methods. This function is
-        just an alias for the Position.get_radius() method.
+        `gps_frames.position.Position.get_altitude_spherical` and
+        `gps_frames.position.Position.get_radius` methods. This function is
+        just an alias for the `Position.get_radius` method.
 
     Get the spherical radius of the object. If the position is expressed
     in LLA, then the radius will either be the HAE plus the radius of the
@@ -381,7 +381,8 @@ def _get_spherical_radius(position: Position, correct_lla: bool) -> float:
     float
         The spherical radius of the position
 
-    .. todo:: Move into position object
+    !!! quote "Todo"
+        Move into position object
 
     """
     logger.error("DEPRECATION: This function is superseded by methods in Position")

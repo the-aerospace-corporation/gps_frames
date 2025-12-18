@@ -411,7 +411,7 @@ def ecef2lla(ecef_coordinates: np.ndarray) -> np.ndarray:
 
     This function is based on the development provided by [1]_
 
-    .. todo:: 
+    !!! quote "Todo"
         If the latitude does not converge, this function prints a warning 
         instead of using the logger. This is necessary because of use of
         Numba. In the future, this should be changed to logging a warning

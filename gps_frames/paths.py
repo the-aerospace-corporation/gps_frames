@@ -21,7 +21,7 @@ logger = getLogger(__name__)
 def get_distance_between_points(positions: List[Position]) -> List[float]:
     """Compute the distance between Positions in a list.
 
-    .. note:: Length of Return Object
+    !!! note "Length of Return Object"
         Because it requires two points to compute a distance, the length of
         the returned list is one element shorter than the input list.
 
@@ -53,7 +53,7 @@ def get_altitude_intersection_point(
     The purpose of this function is to calculate the point at which a vector,
     starting at the origin, will cross a specific altitude.
 
-    .. note:: Spherical Earth
+    !!! note "Spherical Earth"
         The function assumes a spherical Earth, not WGS84 ellipsoid
 
     Parameters
