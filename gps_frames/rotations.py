@@ -74,7 +74,7 @@ class Rotation:
             The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),
             \(q_{j}\), \(q_{k}\)) where
 
-            \(\bm{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
+            \(\mathbf{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
 
         Parameters
         ----------
@@ -277,11 +277,11 @@ def euler_axis_angle2quaternion(
 ) -> np.ndarray:
     r"""Convert an Euler axis and angle to a quaternion.
 
-    Let the Euler axis and angle be \(\hat{\bm{e}}\) and
+    Let the Euler axis and angle be \(\hat{\mathbf{e}}\) and
     \(\Phi\), respectively. The equivalent quaternion is
 
     $$
-    \bar{\bm{q}} =
+    \bar{\mathbf{q}} =
         \left[\begin{array}{c}
             q_{w} \\
             q_{i} \\
@@ -291,7 +291,7 @@ def euler_axis_angle2quaternion(
         =
         \left[\begin{array}{c}
             \cos\frac{\Phi}{2} \\
-            \hat{\bm{e}}\sin\frac{\Phi}{2}
+            \hat{\mathbf{e}}\sin\frac{\Phi}{2}
         \end{array}\right]
     $$
 
@@ -351,7 +351,7 @@ def direction_cosine_matrix2quaternion(dcm: np.ndarray) -> np.array:
     The quaternion is represented as
 
     $$
-    \bar{\bm{q}} = \left[
+    \bar{\mathbf{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
     $$
@@ -414,7 +414,7 @@ def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -> np.ndarray:
     A quaternions can be represented as
 
     $$
-    \bar{\bm{q}} = \left[
+    \bar{\mathbf{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
     $$
@@ -499,18 +499,18 @@ def quaternion2euler_axis_angle(quaternion: np.ndarray) -> Tuple[np.ndarray, flo
     A quaternions can be represented as
 
     $$
-    \bar{\bm{q}} = \left[
+    \bar{\mathbf{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
     $$
 
-    with \(\bm{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
+    with \(\mathbf{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
     rotation that this represents can be computed (using a 4-quadrant
     arctangent function) as
 
     $$
     \Phi = 2 \tan^{-1}\frac{
-        ||\bm{q}||
+        ||\mathbf{q}||
     }{
         q_{w}
     }
@@ -519,10 +519,10 @@ def quaternion2euler_axis_angle(quaternion: np.ndarray) -> Tuple[np.ndarray, flo
     The axis of the rotation is then computed as
 
     $$
-    \hat{\bm{e}} = \frac{
-            \bm{q}
+    \hat{\mathbf{e}} = \frac{
+            \mathbf{q}
         }{
-            ||\bm{q}||
+            ||\mathbf{q}||
         }
     $$
 
@@ -846,7 +846,7 @@ def roll_pitch_yaw_matrix(
     The corresponding direction cosine matrix is
 
     $$
-        \bm{R}(\theta,\phi,\psi) =
+        \mathbf{R}(\theta,\phi,\psi) =
             \left[\begin{array}{ccc}
                 \cos\psi \cos\phi &
                 \cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &

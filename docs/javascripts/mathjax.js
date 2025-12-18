@@ -3,10 +3,7 @@ window.MathJax = {
         inlineMath: [["\\(", "\\)"]],
         displayMath: [["\\[", "\\]"], ["$$", "$$"]],
         processEscapes: true,
-        processEnvironments: true,
-        macros: {
-            bm: ["\\boldsymbol{#1}", 1]
-        }
+        processEnvironments: true
     },
     options: {
         ignoreHtmlClass: ".*|",

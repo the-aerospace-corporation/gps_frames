@@ -264,25 +264,25 @@ def ecef2eci(ecef_coordinates: np.ndarray, time_of_week: float) -> np.ndarray:
     This function rotates the ECEF coordinates into the ECI frame. Note that
     the ECI and ECEF frames are aligned at the start of the week.
 
-    Let \(\bm{r}^{\mathcal{F}}\) be the position in the ECEF frame
+    Let \(\mathbf{r}^{\mathcal{F}}\) be the position in the ECEF frame
     and \(t\) be the time of week. The angle of rotation between the ECI and
     ECEF frames is \(\Theta = \omega_{\oplus}t\), with \(\omega_{\oplus}\)
     being the angular velocity of the Earth. Thus, the position in the ECI
     coordinates is
 
     $$
-        \bm{r}^{\mathcal{N}} =
+        \mathbf{r}^{\mathcal{N}} =
             \left[\begin{array}{ccc}
                 \cos -\Theta & \sin -\Theta & 0 \\
                 -\sin -\Theta & \cos -\Theta & 0 \\
                 0 & 0 & 1
-            \end{array}\right]\bm{r}^{\mathcal{F}}
+            \end{array}\right]\mathbf{r}^{\mathcal{F}}
         =
             \left[\begin{array}{ccc}
                 \cos \Theta & -\sin \Theta & 0 \\
                 \sin \Theta & \cos \Theta & 0 \\
                 0 & 0 & 1
-            \end{array}\right]\bm{r}^{\mathcal{F}}
+            \end{array}\right]\mathbf{r}^{\mathcal{F}}
     $$
 
     Parameters
@@ -366,7 +366,7 @@ def ecef2lla(ecef_coordinates: np.ndarray) -> np.ndarray:
     The purpose of this function is to convert a position in the ECEF frame to
     the LLA frame relative to the WGS84 ellipsoid. Let the coordinates in the
     ECEF frame be
-    \(\bm{r}^{\mathcal{F}} = [r_{x}, r_{y}, r_{z}]^{T}\). The
+    \(\mathbf{r}^{\mathcal{F}} = [r_{x}, r_{y}, r_{z}]^{T}\). The
     longitude is calculated as
 
     $$
@@ -495,19 +495,19 @@ def eci2ecef(eci_coordinates: np.ndarray, time_of_week: float) -> np.ndarray:
     This function rotates the ECI coordinates into the ECEF frame. Note that
     the ECI and ECEF frames are aligned at the start of the week.
 
-    Let \(\bm{r}^{\mathcal{N}}\) be the position in the ECI frame
+    Let \(\mathbf{r}^{\mathcal{N}}\) be the position in the ECI frame
     and \(t\) be the time of week. The angle of rotation between the ECI and
     ECEF frames is \(\Theta = \omega_{\oplus}t\), with \(\omega_{\oplus}\)
     being the angular velocity of the Earth. Thus, the position in the ECEF
     coordinates is
 
     $$
-        \bm{r}^{\mathcal{F}} =
+        \mathbf{r}^{\mathcal{F}} =
             \left[\begin{array}{ccc}
                 \cos \Theta & \sin \Theta & 0 \\
                 -\sin \Theta & \cos \Theta & 0 \\
                 0 & 0 & 1
-            \end{array}\right]\bm{r}^{\mathcal{N}}
+            \end{array}\right]\mathbf{r}^{\mathcal{N}}
     $$
 
     Parameters
