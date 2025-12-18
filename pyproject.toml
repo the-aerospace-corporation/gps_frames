@@ -39,7 +39,7 @@ docs = [
 ]
 
 [tool.setuptools]
-packages = ["gps_frames"]
+packages = ["gps_frames", "gps_frames.data"]
 zip-safe = false
 
 [tool.setuptools.package-data]
