@@ -844,8 +844,9 @@ def roll_pitch_yaw_matrix(
 
     Let \(\theta,\phi,\psi\) be the roll, pitch, and yaw angles, respectively.
     The corresponding direction cosine matrix is
+
     $$
-        \boldsymbol{R}(\theta,\phi,\psi) =
+        \bm{R}(\theta,\phi,\psi) =
             \left[\begin{array}{ccc}
                 \cos\psi \cos\phi &
                 \cos\psi \sin\phi \sin\theta - \sin\psi \cos\theta &
