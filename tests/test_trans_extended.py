@@ -4,6 +4,7 @@ import numpy as np
 from gps_frames import transforms as trans
 from gps_frames.parameters import EarthParam
 from gps_time import GPSTime
+from unittest.mock import patch
 
 # Extended tests for position_transform to cover all branches
 
@@ -74,6 +75,25 @@ def test_position_transform_invalid():
     # All covered. So the logger.critical line is effectively dead code unless VALID_FRAMES grows but the if/elif chain doesn't update.
     # However, for coverage purposes, we can't easily trigger it without mocking or modifying VALID_FRAMES dynamically.
     pass
+
+def test_transform_fallback_with_patched_frames():
+    """Test the fallback path (lines 200-201) by introducing a valid-but-unhandled frame."""
+    coords = np.array([1.0, 2.0, 3.0])
+    time = GPSTime(0, 0)
+    
+    # We patch VALID_FRAMES to include "TEST_FRAME".
+    # This allows it to pass the initial validation check.
+    # But since there is no logic for "TEST_FRAME", it falls through to the warning/return.
+    with patch("gps_frames.transforms.VALID_FRAMES", ["ECI", "ECEF", "LLA", "TEST_FRAME"]):
+        # Try transforming FROM a known frame TO the new unhandled frame
+        res = trans.position_transform("ECI", "TEST_FRAME", coords, time)
+        
+        # Should return input coordinates (fallback behavior)
+        assert np.allclose(res, coords)
+        
+        # Test transforming FROM the new unhandled frame
+        res2 = trans.position_transform("TEST_FRAME", "ECI", coords, time)
+        assert np.allclose(res2, coords)
 
 def test_add_weeks_eci_zero_weeks():
     # Test explicit 0 weeks branch

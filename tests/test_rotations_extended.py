@@ -167,6 +167,35 @@ def test_roll_pitch_yaw_vector_rotation():
     res = rotations.roll_pitch_yaw(0, 0, np.pi/2, np.array([1.0, 0.0, 0.0]))
     assert np.allclose(res, [0, 1, 0])
 
+def test_standard_rotation_function_coverage():
+    """Test standard_rotation function specifically for all axes to ensure branch coverage."""
+    # This targets the `standard_rotation` function (vector rotation), distinct from `standard_rotation_matrix`.
+    vec = np.array([1.0, 0.0, 0.0])
+    angle = np.pi/2
+    
+    # Axis 1
+    res1 = rotations.standard_rotation(1, angle, vec)
+    # Standard rotation (passive): X rotation leaves X unchanged [1, 0, 0]
+    # Wait, rotation about X: Y->-Z, Z->Y. Vector [1,0,0] is on X axis, so should be constant?
+    # R_x = [[1,0,0],...]
+    assert np.allclose(res1, vec)
+    
+    # Axis 2 (Target line 664)
+    res2 = rotations.standard_rotation(2, angle, vec)
+    # Rotation about Y: Z->-X, X->Z.
+    # Vector [1,0,0] (X) becomes [0,0,1] (Z) ?
+    # R_y = [[0,0,-1],[0,1,0],[1,0,0]]. R @ [1,0,0] = [0,0,1]
+    expected2 = np.array([0.0, 0.0, 1.0])
+    assert np.allclose(res2, expected2)
+    
+    # Axis 3
+    res3 = rotations.standard_rotation(3, angle, vec)
+    # Rotation about Z: X->-Y, Y->X.
+    # Vector [1,0,0] becomes [0,-1,0] (-Y)
+    # R_z = [[0,1,0],[-1,0,0],[0,0,1]]. R @ [1,0,0] = [0,-1,0]
+    expected3 = np.array([0.0, -1.0, 0.0])
+    assert np.allclose(res3, expected3)
+
 def test_standard_rotation_detailed():
     """Detailed tests for standard_rotation and rates."""
     # Test all 3 principal axes
