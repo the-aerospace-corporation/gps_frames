@@ -2,6 +2,7 @@
 import pytest
 import numpy as np
 from gps_frames import rotations
+import logging
 
 def test_rotation_init_standard_axis():
     """Test Rotation initialization with standard_axis."""
@@ -195,6 +196,15 @@ def test_standard_rotation_function_coverage():
     # R_z = [[0,1,0],[-1,0,0],[0,0,1]]. R @ [1,0,0] = [0,-1,0]
     expected3 = np.array([0.0, -1.0, 0.0])
     assert np.allclose(res3, expected3)
+
+def test_roll_pitch_yaw_singularity_warning(caplog):
+    """Test that a warning is logged when pitch is 90 degrees (gimbal lock)."""
+    phi = np.pi/2 # 90 deg pitch
+    
+    with caplog.at_level(logging.WARNING):
+        rotations.roll_pitch_yaw_matrix(0, phi, 0)
+        
+    assert "Singular rotation (gimbal lock) detected" in caplog.text
 
 def test_standard_rotation_detailed():
     """Detailed tests for standard_rotation and rates."""

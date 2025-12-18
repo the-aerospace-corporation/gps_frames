@@ -15,7 +15,7 @@ provides a means for rotating a vector around a principal axis.
 
 from __future__ import annotations
 
-from numba import jit, float64
+from numba import jit, float64, objmode
 from numba.experimental import jitclass
 import numpy as np
 
@@ -880,6 +880,10 @@ def roll_pitch_yaw_matrix(
         The direction cosine matrix representing the rotation.
 
     """
+    if np.abs(pitch_angle - np.pi / 2) < 1.0e-8 or np.abs(pitch_angle + np.pi / 2) < 1.0e-8:
+        with objmode:
+            logger.warning("Singular rotation (gimbal lock) detected in roll_pitch_yaw_matrix")
+
     _c_roll = np.cos(roll_angle)
     _s_roll = np.sin(roll_angle)
 
