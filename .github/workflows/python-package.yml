@@ -84,7 +84,7 @@ jobs:
         python -m pytest --cov=gps_frames --cov-report term-missing tests | tee pytest-coverage.txt
 
     - name: Pytest coverage comment
-      uses: MishaKav/pytest-coverage-commenter@v1.1.52
+      uses: MishaKav/pytest-coverage-comment@main
       with:
         pytest-coverage-common-output: pytest-coverage.txt
         badge-title: Coverage
