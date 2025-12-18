@@ -112,6 +112,9 @@ jobs:
   coverage:
     # Run absolute coverage every time, independent of build matrix to save time/dependencies
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
@@ -129,12 +132,12 @@ jobs:
         NUMBA_DISABLE_JIT: 1
       run: |
         # Run tests with JIT disabled for accurate coverage
-        python -m pytest --cov=gps_frames --cov-report term-missing tests | tee pytest-coverage.txt
+        python -m pytest --junitxml=pytest.xml --cov=gps_frames --cov-report term-missing tests | tee pytest-coverage.txt
 
     - name: Pytest coverage comment
       uses: MishaKav/pytest-coverage-comment@main
       with:
-        pytest-coverage-common-output: pytest-coverage.txt
+        pytest-coverage-path: pytest-coverage.txt
+        junitxml-path: pytest.xml
         badge-title: Coverage
-        create-badge: true
         github-token: ${{ secrets.GITHUB_TOKEN }}
