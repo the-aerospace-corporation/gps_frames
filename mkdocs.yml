@@ -47,3 +47,5 @@ nav:
       - Transforms: reference/gps_frames/transforms.md
       - Vectors: reference/gps_frames/vectors.md
       - Velocity: reference/gps_frames/velocity.md
+  - Examples:
+    - Ranging Walkthrough: example_walkthrough.md
