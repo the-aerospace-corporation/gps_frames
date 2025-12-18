@@ -57,5 +57,7 @@ jobs:
       run: |
         python -m pytest --cov=gps_frames --cov-report term-missing tests
     - name: Test with pytest (no jit)
+      env:
+        NUMBA_DISABLE_JIT: 1
       run: |
-        NUMBA_DISABLE_JIT=1 python -m pytest --cov=gps_frames --cov-report term-missing tests
+        python -m pytest --cov=gps_frames --cov-report term-missing tests
