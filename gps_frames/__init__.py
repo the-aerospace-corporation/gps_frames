@@ -15,7 +15,7 @@ Like all internal modules, distances are stored here as meters and angles are
 stored as radians.
 
 """
-__version__ = "2.8.0"
+__version__ = "3.0.0"
 __copyright__ = "Copyright (C) 2022 The Aerospace Corporation"
 __license__ = "GNU AGPL v3"
 __distribution_statement__ = (
