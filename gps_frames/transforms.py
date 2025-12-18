@@ -285,8 +285,8 @@ def ecef2eci(ecef_coordinates: np.ndarray, time_of_week: float) -> np.ndarray:
     ----------
     ecef_coordinates : np.ndarray
         The coordinates in the ECEF frame
-    time : GPSTime
-        The time associated with the ECEF frame
+    time_of_week : float
+        The time of week in seconds associated with the ECEF frame
 
     Returns
     -------
@@ -498,10 +498,10 @@ def eci2ecef(eci_coordinates: np.ndarray, time_of_week: float) -> np.ndarray:
 
     Parameters
     ----------
-    ecef_coordinates : np.ndarray
-        The coordinates in the ECEF frame
-    time : GPSTime
-        The time associated with the ECEF frame
+    eci_coordinates : np.ndarray
+        The coordinates in the ECI frame
+    time_of_week : float
+        The time of week in seconds associated with the ECEF frame
 
     Returns
     -------
