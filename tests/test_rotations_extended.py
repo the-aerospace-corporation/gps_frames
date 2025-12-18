@@ -105,3 +105,102 @@ def test_standard_rotation_matrix_and_rates():
     rotations.standard_rotation_matrix_rates(2, angle, rate)
     rotations.standard_rotation_matrix_rates(3, angle, rate)
 
+def test_rotation_init_axis_angle_positional():
+    """Test Rotation initialization with positional axis and angle."""
+    # Rotate 90 deg (pi/2) around Z axis [0,0,1]
+    axis = np.array([0, 0, 1])
+    angle = np.pi/2
+    
+    # Init with 2 positional args
+    rot = rotations.Rotation(axis, angle)
+    
+    # This should correspond to standard axis 3 rotation
+    vec = np.array([1.0, 0.0, 0.0])
+    res = rot.rotate(vec)
+    
+    # Expect [0, -1, 0] (Passive Rotation)
+    expected = np.array([0.0, -1.0, 0.0])
+    assert np.allclose(res, expected, atol=1e-15)
+
+def test_dcm_singularity_error():
+    """Test ValueError for Singular DCM (trace=-1 but no eigenvalue=1)."""
+    # Trace = -1 (qw = 0). Eigenvalues = -1, 0, 0.
+    bad_dcm = np.diag([-1.0, 0.0, 0.0])
+    
+    with pytest.raises(ValueError, match="Encountered singular DCM"):
+        rotations.direction_cosine_matrix2quaternion(bad_dcm)
+
+def test_roll_pitch_yaw_matrix():
+    """Test roll_pitch_yaw_matrix (Euler sequence 3-2-1)."""
+    angle = np.pi/2
+    
+    # Test Roll only (X-axis, axis 1)
+    # roll=90, pitch=0, yaw=0
+    R_roll = rotations.roll_pitch_yaw_matrix(angle, 0, 0)
+    R_std_1 = rotations.standard_rotation_matrix(1, angle)
+    # roll_pitch_yaw_matrix appears to be Active rotation (transpose of Passive)
+    assert np.allclose(R_roll, R_std_1.T), "Roll only should match transpose of standard axis 1 rotation (Active vs Passive)"
+    
+    # Test Pitch only (Y-axis, axis 2)
+    # roll=0, pitch=90, yaw=0
+    R_pitch = rotations.roll_pitch_yaw_matrix(0, angle, 0)
+    R_std_2 = rotations.standard_rotation_matrix(2, angle)
+    assert np.allclose(R_pitch, R_std_2.T), "Pitch only should match transpose of standard axis 2 rotation"
+    
+    # Test Yaw only (Z-axis, axis 3)
+    # roll=0, pitch=0, yaw=90
+    R_yaw = rotations.roll_pitch_yaw_matrix(0, 0, angle)
+    R_std_3 = rotations.standard_rotation_matrix(3, angle)
+    assert np.allclose(R_yaw, R_std_3.T), "Yaw only should match transpose of standard axis 3 rotation"
+    
+    # Test Mixed Composition (Yaw -> Pitch -> Roll)
+    R_composite = rotations.roll_pitch_yaw_matrix(angle, angle, angle)
+    
+    # Just verify valid rotation properties
+    assert np.isclose(np.linalg.det(R_composite), 1.0)
+    assert np.allclose(R_composite @ R_composite.T, np.eye(3))
+
+def test_roll_pitch_yaw_vector_rotation():
+    """Test roll_pitch_yaw convenience function."""
+    # Rotate vector [1,0,0] by 90 deg Yaw (about Z)
+    # Active rotation: X axis vector rotates to Y axis vector [0, 1, 0]
+    res = rotations.roll_pitch_yaw(0, 0, np.pi/2, np.array([1.0, 0.0, 0.0]))
+    assert np.allclose(res, [0, 1, 0])
+
+def test_standard_rotation_detailed():
+    """Detailed tests for standard_rotation and rates."""
+    # Test all 3 principal axes
+    for axis in [1, 2, 3]:
+        # 90 degrees
+        R = rotations.standard_rotation_matrix(axis, np.pi/2)
+        
+        # Verify determinant is 1 (proper rotation)
+        det = np.linalg.det(R)
+        assert np.isclose(det, 1.0)
+        
+        # Verify orthogonality (R * R.T = I)
+        orth = R @ R.T
+        assert np.allclose(orth, np.eye(3))
+        
+        # Verify passive rotation logic specifically for each axis
+        if axis == 1:
+            # X-axis rotation of 90 deg. Y -> -Z, Z -> Y
+            expected = np.array([[1, 0, 0], [0, 0, 1], [0, -1, 0]])
+            assert np.allclose(R, expected), f"Axis {axis} rotation mismatch"
+        elif axis == 2:
+            # Y-axis rotation of 90 deg. Z -> -X, X -> Z
+            expected = np.array([[0, 0, -1], [0, 1, 0], [1, 0, 0]])
+            assert np.allclose(R, expected), f"Axis {axis} rotation mismatch"
+        elif axis == 3:
+            # Z-axis rotation of 90 deg. X -> -Y, Y -> X
+            expected = np.array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])
+            assert np.allclose(R, expected), f"Axis {axis} rotation mismatch"
+
+    # Test rates (derivative logic check)
+    # Rate matrix R_dot should be skew_symmetric(omega) @ R for body rates, or similar.
+    # Here we just ensure it runs and returns correct shape
+    R_dot = rotations.standard_rotation_matrix_rates(1, np.pi/2, 1.0)
+    assert R_dot.shape == (3, 3)
+
+
+
