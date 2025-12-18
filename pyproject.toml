@@ -44,3 +44,7 @@ zip-safe = false
 
 [tool.setuptools.package-data]
 "*" = ["data/*.npz"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=gps_frames --cov-report=term-missing"
+

@@ -442,7 +442,7 @@ def test_correct_week(weeks):
 @pytest.mark.parametrize("weeks, tow", [(52, 0), (243, 209312), (2182, 9982)])
 def test_tow2datetime(weeks, tow):
 
-    dt = datetime.datetime(1980, 1, 6, 0, 0, 0, 0)
+    dt = datetime.datetime(1980, 1, 6, 0, 0, 0, 0, tzinfo=datetime.timezone.utc)
 
     dt += datetime.timedelta(days=weeks * 7)
     dt += datetime.timedelta(seconds=tow)
@@ -459,7 +459,7 @@ def test_tow2datetime(weeks, tow):
         assert "foo" == "datetime"
     except TypeError:
         pass
-    dt = datetime.datetime(1980, 1, 6, 0, 0, 0, 0)
+    dt = datetime.datetime(1980, 1, 6, 0, 0, 0, 0, tzinfo=datetime.timezone.utc)
     assert tow2datetime(52, 0, 1981) == dt + datetime.timedelta(days=7 * 52)
 
 
@@ -598,10 +598,10 @@ def test_tow2zcount(weeks):
 @pytest.mark.parametrize(
     "dt",
     [
-        datetime.datetime(2003, 10, 7, 16, 37, 59, 123),
-        datetime.datetime(1987, 3, 22, 23, 13, 46, 11),
-        datetime.datetime(2014, 6, 1, 19, 53, 26, 98),
-        datetime.datetime(2020, 1, 1, 0, 0, 0, 0),
+        datetime.datetime(2003, 10, 7, 16, 37, 59, 123, tzinfo=datetime.timezone.utc),
+        datetime.datetime(1987, 3, 22, 23, 13, 46, 11, tzinfo=datetime.timezone.utc),
+        datetime.datetime(2014, 6, 1, 19, 53, 26, 98, tzinfo=datetime.timezone.utc),
+        datetime.datetime(2020, 1, 1, 0, 0, 0, 0, tzinfo=datetime.timezone.utc),
     ],
 )
 def test_datetime_tozcount(dt):
