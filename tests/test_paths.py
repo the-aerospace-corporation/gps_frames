@@ -10,14 +10,15 @@ from gps_frames.paths import (
 from gps_frames.position import Position
 from gps_frames.parameters import EarthParam
 from gps_frames.vectors import Vector
+from gps_time import GPSTime
 
 
 def test_get_distance_between_points():
     """Test calculation of distances between a list of positions."""
     # Create a list of 3 positions along the X axis
-    pos1 = Position(1000, 0, 0, system="ecef")
-    pos2 = Position(2000, 0, 0, system="ecef")
-    pos3 = Position(4000, 0, 0, system="ecef")
+    pos1 = Position(np.array([1000, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    pos2 = Position(np.array([2000, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    pos3 = Position(np.array([4000, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     positions = [pos1, pos2, pos3]
     
@@ -33,10 +34,10 @@ def test_get_altitude_intersection_point():
     """Test finding the intersection point at a specific altitude."""
     # Define an origin on the surface (approximately)
     origin_radius = EarthParam.r_e
-    origin = Position(origin_radius, 0, 0, system="ecef")
+    origin = Position(np.array([origin_radius, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     # Define a target directly above at 2 * radius
-    target = Position(2 * origin_radius, 0, 0, system="ecef")
+    target = Position(np.array([2 * origin_radius, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     # We want to find the intersection at altitude slightly above surface
     target_altitude = 1000.0 # meters
@@ -50,16 +51,17 @@ def test_get_altitude_intersection_point():
     assert np.isclose(intersection.get_radius(), expected_radius)
     
     # Since it's a straight line up, x component should match expected radius
-    assert np.isclose(intersection.x, expected_radius)
-    assert np.isclose(intersection.y, 0)
-    assert np.isclose(intersection.z, 0)
+    # intersection coordinates are [x, y, z]
+    assert np.isclose(intersection.coordinates[0], expected_radius)
+    assert np.isclose(intersection.coordinates[1], 0)
+    assert np.isclose(intersection.coordinates[2], 0)
     
     # Test with a non-radial path
     # Origin on X axis, Target on Y axis (90 deg apart)
     # This is a longer path through the earth? No, straight line.
     
-    origin = Position(EarthParam.r_e, 0, 0, system="ecef")
-    target = Position(0, EarthParam.r_e, 0, system="ecef") # 90 degrees away
+    origin = Position(np.array([EarthParam.r_e, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    target = Position(np.array([0, EarthParam.r_e, 0], dtype=float), GPSTime(0, 0), "ECEF") # 90 degrees away
     
     # This function assumes a straight line path? 
     # The docstrings say "path from the origin to the target".
@@ -69,8 +71,8 @@ def test_get_altitude_intersection_point():
     # Actually the function might be for satellite to ground paths or similar.
     
     # Let's test a case where we go from high altitude to ground
-    high_pos = Position(EarthParam.r_e + 20000e3, 0, 0, system="ecef") # GPS orbit approx
-    ground_pos = Position(EarthParam.r_e, 0, 0, system="ecef")
+    high_pos = Position(np.array([EarthParam.r_e + 20000e3, 0, 0], dtype=float), GPSTime(0, 0), "ECEF") # GPS orbit approx
+    ground_pos = Position(np.array([EarthParam.r_e, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     # Find intersection at 1000m altitude
     intersection_low = get_altitude_intersection_point(1000.0, high_pos, ground_pos)
@@ -79,16 +81,16 @@ def test_get_altitude_intersection_point():
 
 def test_get_points_along_path():
     """Test generating evenly spaced points along a path."""
-    start = Position(0, 0, 0, system="ecef")
-    end = Position(100, 0, 0, system="ecef")
+    start = Position(np.array([0, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    end = Position(np.array([100, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     num_points = 5 # 0, 25, 50, 75, 100
     points = get_points_along_path(start, end, num_points)
     
     assert len(points) == num_points
-    assert np.isclose(points[0].x, 0)
-    assert np.isclose(points[-1].x, 100)
-    assert np.isclose(points[2].x, 50) # Middle point
+    assert np.isclose(points[0].coordinates[0], 0)
+    assert np.isclose(points[-1].coordinates[0], 100)
+    assert np.isclose(points[2].coordinates[0], 50) # Middle point
     
     # Test error handling
     with pytest.raises(ValueError):
@@ -99,8 +101,8 @@ def test_get_point_closest_approach():
     """Test finding the point of closest approach to Earth."""
     # Case 1: Path is going away from Earth (Elevation >= 0)
     # Start at surface, go up
-    start = Position(EarthParam.r_e, 0, 0, system="ecef")
-    end = Position(EarthParam.r_e + 1000, 0, 0, system="ecef")
+    start = Position(np.array([EarthParam.r_e, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    end = Position(np.array([EarthParam.r_e + 1000, 0, 0], dtype=float), GPSTime(0, 0), "ECEF")
     path_vec = end.to_vector() - start.to_vector()
     
     # Elevation is 90 degrees (pi/2)
@@ -116,8 +118,8 @@ def test_get_point_closest_approach():
     # Closest point should be at X=0
     
     y_dist = EarthParam.r_e + 100000.0 # 100km altitude
-    start_t = Position(-1000000.0, y_dist, 0, system="ecef")
-    end_t = Position(1000000.0, y_dist, 0, system="ecef")
+    start_t = Position(np.array([-1000000.0, y_dist, 0], dtype=float), GPSTime(0, 0), "ECEF")
+    end_t = Position(np.array([1000000.0, y_dist, 0], dtype=float), GPSTime(0, 0), "ECEF")
     
     path_vec_t = end_t.to_vector() - start_t.to_vector() # Vector is (2000000, 0, 0)
     
@@ -160,3 +162,4 @@ def test_get_point_closest_approach():
     # Should be very close to start
     dist_moved = (closest_constrained.to_vector() - start_t.to_vector()).magnitude
     assert np.isclose(dist_moved, 1.0)
+

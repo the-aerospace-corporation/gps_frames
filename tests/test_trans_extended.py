@@ -77,7 +77,7 @@ def test_position_transform_invalid():
 
 def test_add_weeks_eci_zero_weeks():
     # Test explicit 0 weeks branch
-    coords = np.array([1, 2, 3])
+    coords = np.array([1, 2, 3], dtype=float)
     res = trans.add_weeks_eci(0, coords)
     assert np.allclose(res, coords)
 
