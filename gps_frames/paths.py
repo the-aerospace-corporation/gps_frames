@@ -140,7 +140,7 @@ def get_point_closest_approach(
     start_point: Position,
     path_vector: Vector,
     elevation: float,
-    max_length: float = np.infty,
+    max_length: float = np.inf,
 ) -> Position:
     """Get the point along the path that is is closest to Earth.
 
@@ -158,7 +158,7 @@ def get_point_closest_approach(
         The elevation of the end point of the path relative to the start point
     max_length : float, optional
         The maximum distance from the start point to the point of closest
-        approach, by default infinity (np.infty). It is generally useful to
+        approach, by default infinity (np.inf). It is generally useful to
         specify that the length of the path is the maximum distance, otherwise
         this algorithm will find a point of closest approach beyond the end point.
 
