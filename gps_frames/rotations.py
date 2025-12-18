@@ -73,7 +73,8 @@ class Rotation:
         !!! tip "Quaternion Ordering"
             The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),
             \(q_{j}\), \(q_{k}\)) where
-            \(\boldsymbol{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
+
+            \(\bm{q} = q_{w} + q_{i}i + q_{j}j + q_{k}k\).
 
         Parameters
         ----------
@@ -276,10 +277,11 @@ def euler_axis_angle2quaternion(
 ) -> np.ndarray:
     r"""Convert an Euler axis and angle to a quaternion.
 
-    Let the Euler axis and angle be \(\hat{\boldsymbol{e}}\) and
+    Let the Euler axis and angle be \(\hat{\bm{e}}\) and
     \(\Phi\), respectively. The equivalent quaternion is
-    \[
-    \bar{\boldsymbol{q}} =
+
+    $$
+    \bar{\bm{q}} =
         \left[\begin{array}{c}
             q_{w} \\
             q_{i} \\
@@ -289,9 +291,9 @@ def euler_axis_angle2quaternion(
         =
         \left[\begin{array}{c}
             \cos\frac{\Phi}{2} \\
-            \hat{\boldsymbol{e}}\sin\frac{\Phi}{2}
+            \hat{\bm{e}}\sin\frac{\Phi}{2}
         \end{array}\right]
-    \]
+    $$
 
     !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
@@ -324,15 +326,18 @@ def direction_cosine_matrix2quaternion(dcm: np.ndarray) -> np.array:
 
     Let the direction cosine matrix be \(\mathbf{R}\). The \(q_{w}\)
     element of the quaternion can be computed as
-    \[
+
+    $$
     q_{w} = \frac{
             \sqrt{1 + \text{trace}\mathbf{R}}
         }{
             2
         }
-    \]
+    $$
+
     The remaining elements of the quaternion are then computed as
-    \[
+
+    $$
     \begin{split}
         q_{i} = & \frac{
             \mathbf{R}_{23} - \mathbf{R}_{32}}{4q_{w}} \\
@@ -341,13 +346,15 @@ def direction_cosine_matrix2quaternion(dcm: np.ndarray) -> np.array:
         q_{k} = & \frac{
             \mathbf{R}_{12} - \mathbf{R}_{21}}{4q_{w}} \\
     \end{split}
-    \]
+    $$
+
     The quaternion is represented as
-    \[
-    \bar{\boldsymbol{q}} = \left[
+
+    $$
+    \bar{\bm{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
-    \]
+    $$
 
     There a singulariy when the rotation is by an angle of \(\pi\).
     This occurs because \(q_{w} = \cos\left(\theta / 2\right)\), so
@@ -405,13 +412,16 @@ def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -> np.ndarray:
     r"""Convert quaternions to a direction cosine matrix.
 
     A quaternions can be represented as
-    \[
-    \bar{\boldsymbol{q}} = \left[
+
+    $$
+    \bar{\bm{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
-    \]
+    $$
+
     The equivalent direction cosine matrix can then be computed as
-    \[
+
+    $$
     \mathbf{R} =
         \left[\begin{array}{ccc}
             q_{w}^{2} + q_{i}^{2} - q_{j}^{2} - q_{k}^{2} &
@@ -424,7 +434,7 @@ def quaternion2direction_cosine_matrix(quaternion: np.ndarray) -> np.ndarray:
             2 \left( q_{j}q_{k} + q_{i}q_{w} \right) &
             q_{w}^{2} - q_{i}^{2} - q_{j}^{2} + q_{k}^{2}
         \end{array}\right]
-    \]
+    $$
 
 
     !!! note "Numba JIT Compiled"
@@ -487,29 +497,34 @@ def quaternion2euler_axis_angle(quaternion: np.ndarray) -> Tuple[np.ndarray, flo
         should not effect anything in the simulation.
 
     A quaternions can be represented as
-    \[
-    \bar{\boldsymbol{q}} = \left[
+
+    $$
+    \bar{\bm{q}} = \left[
         q_{w} \quad q_{i} \quad q_{j} \quad q_{k}
     \right]
-    \]
-    with \(\boldsymbol{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
+    $$
+
+    with \(\bm{q}=[q_{i}, q_{j}, q_{k}]^{T}\). The angle of
     rotation that this represents can be computed (using a 4-quadrant
     arctangent function) as
-    \[
+
+    $$
     \Phi = 2 \tan^{-1}\frac{
-        ||\boldsymbol{q}||
+        ||\bm{q}||
     }{
         q_{w}
     }
-    \]
+    $$
+
     The axis of the rotation is then computed as
-    \[
-    \hat{\boldsymbol{e}} = \frac{
-            \boldsymbol{q}
+
+    $$
+    \hat{\bm{e}} = \frac{
+            \bm{q}
         }{
-            ||\boldsymbol{q}||
+            ||\bm{q}||
         }
-    \]
+    $$
 
     !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
@@ -662,7 +677,8 @@ def standard_rotation_matrix(rotation_axis: int, angle: float) -> np.ndarray:
 
     That is, if the angle of rotation is \(\theta\), the returned rotation
     matrix is
-    \[
+
+    $$
     \begin{split}
         R_{1}(\theta) = &
             \left[\begin{array}{ccc}
@@ -683,7 +699,8 @@ def standard_rotation_matrix(rotation_axis: int, angle: float) -> np.ndarray:
                 0 & 0 & 1
             \end{array}\right]
     \end{split}
-    \]
+    $$
+
     respectively for rotations about the 1, 2, or 3 axis.
 
     To simply the actual code, this is actually accomplished by expressing the

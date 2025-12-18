@@ -20,7 +20,7 @@ Note: When first run, gps-frames has significant overhead due to JIT compliation
 
 ## AI Disclosure
 
-Generative AI was used to assist in the development of this module. All logic and techniques were developed without the use of AI. The AI model used was Gemini 3 Pro (High). The first version containing any AI generated information is version 3.0.0. The final version without any AI generated information is version [2.8.2](https://github.com/the-aerospace-corporation/gps_frames/releases/tag/2.8.2).
+Generative AI was used to assist in the development of this module. All logic and techniques were developed without the use of AI. Following AI models were used: Gemini 3 Pro (High), Gemini 3 Flash, Claude Opus 4.5. The first version containing any AI generated information is version 3.0.0. The final version without any AI generated information is version [2.8.2](https://github.com/the-aerospace-corporation/gps_frames/releases/tag/2.8.2).
 
 ## Licence
 The `gps_frames` module is released under the GNU AGPL v3 license.
