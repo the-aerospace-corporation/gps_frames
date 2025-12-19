@@ -1,7 +1,7 @@
 # Copyright (c) 2022 The Aerospace Corporation
 """Walkthrough test for the ranging example.
 
-This test file reproduces the calculations in example.py to ensure the library's
+This test file reproduces the calculations in examples/example.py to ensure the library's
 core functionality (transforms, distances, visibility, and ENU basis) remains
 correct and consistent.
 

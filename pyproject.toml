@@ -41,6 +41,9 @@ docs = [
     "mkdocs-material",
     "mkdocstrings[python]",
 ]
+examples = [
+    "matplotlib",
+]
 
 [tool.setuptools]
 packages = ["gps_frames", "gps_frames.data"]

@@ -7,5 +7,5 @@ The example code below is fully commented to explain each step of the process us
 ## Complete Example Code
 
 ```python
---8<-- "example.py"
+--8<-- "examples/example.py"
 ```

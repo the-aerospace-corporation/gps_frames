@@ -19,4 +19,4 @@ test-nojit:
 	NUMBA_DISABLE_JIT=1 python -m pytest --cov=gps_frames --cov-report term-missing tests
 
 example:
-	python example.py
+	python examples/example.py
