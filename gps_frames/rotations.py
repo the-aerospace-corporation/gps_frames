@@ -748,7 +748,8 @@ def standard_rotation_matrix_rates(
     (direction cosine matrix) for a rotation about one of the principle axes.
 
     That is, if the angle of rotation is \(\theta\), the returned matrix is
-    \[
+    
+    $$
     \begin{split}
         R_{1}(\theta) = &
             \left[\begin{array}{ccc}
@@ -783,7 +784,8 @@ def standard_rotation_matrix_rates(
                 0 & 0 & 0
             \end{array}\right]
     \end{split}
-    \]
+    $$
+
     respectively for rotations about the 1, 2, or 3 axis.
 
     !!! note "Numba JIT Compiled"
