@@ -20,12 +20,14 @@ Library Features Demonstrated:
 - Rotation for composing orbital orientation from standard axes.
 - Basis for defining a local topocentric (ENU) frame and projecting vectors.
 
-Author: Gemini 2.0 (and gps_frames contributors)
+Author: Gemini 3.0 Pro (and gps_frames contributors)
 """
 
-from typing import Tuple, List
+from typing import Tuple, List, Optional, Dict, Any
 import numpy as np
-import matplotlib.pyplot as plt
+
+# DEFER matplotlib import to main/plotting function to allow testing without it
+# import matplotlib.pyplot as plt 
 
 from gps_time import GPSTime
 from gps_frames.position import Position
@@ -163,11 +165,12 @@ def get_look_angles(rho_enu: np.ndarray) -> Tuple[float, float]:
     return az_rad * RAD2DEG, el_rad * RAD2DEG
 
 
-def main() -> None:
-    print("================================================================")
-    print("            SATELLITE TRACKING CASE STUDY (OBJECT-ORIENTED)     ")
-    print("================================================================")
+def run_simulation(duration_hours: int = 72, dt_sec: float = 60.0) -> Dict[str, Any]:
+    """
+    Run the satellite tracking simulation.
 
+    Returns dictionary with simulation results.
+    """
     # 1. Setup Parameters
     a = 26559700.0  # m (GPS Semi-major axis)
     e = 0.0  # Circular
@@ -178,9 +181,7 @@ def main() -> None:
 
     start_week = 2294
     start_sec = 0.0
-    duration_hours = 72
-    dt_sec = 60.0  # 1 minute steps
-
+    
     # Ground Station: The Aerospace Corporation, El Segundo
     sta_lat = 33.9167 * DEG2RAD
     sta_lon = -118.4167 * DEG2RAD
@@ -202,9 +203,7 @@ def main() -> None:
 
     max_el_val = -np.inf
     max_el_time_hr = 0.0
-    max_el_sat_pos: Position = None
-
-    print(f"Simulating {duration_hours} hours...")
+    max_el_sat_pos: Optional[Position] = None
 
     n_steps = int(duration_hours * 3600 / dt_sec)
     for step in range(n_steps):
@@ -212,9 +211,9 @@ def main() -> None:
         # Use direct GPSTime arithmetic
         current_time = base_time + t_sec
 
-        # A. Propagate (returns Position in ECI)
-        n = np.sqrt(MU_EARTH / a**3)
-        M_curr = M0 + n * t_sec
+        # A. Propagate
+        n_mean_motion = np.sqrt(MU_EARTH / a**3)
+        M_curr = M0 + n_mean_motion * t_sec
         sat_pos_eci = kepler_to_eci(a, e, i_inc, raan, w, M_curr, current_time)
 
         # B. ECI -> ECEF (Native Position method)
@@ -246,22 +245,52 @@ def main() -> None:
             if in_contact:
                 in_contact = False
                 contacts.append((contact_start_hr, t_hr))
+    
+    # Check if still in contact at end
+    if in_contact:
+        contacts.append((contact_start_hr, duration_hours))
 
-    # 3. Boresight Analysis at Peak
-    # Nadir vector is opposite to satellite position in ECEF (points to Earth center)
-    sat_ecef_coords = max_el_sat_pos.coordinates
-    station_ecef_coords = station_pos.get_position("ECEF").coordinates
+    # 3. Boresight Analysis
+    off_boresight_deg = 0.0
+    if max_el_sat_pos is not None:
+        sat_ecef_coords = max_el_sat_pos.coordinates
+        station_ecef_coords = station_pos.get_position("ECEF").coordinates
 
-    vec_nadir = -sat_ecef_coords
-    vec_to_station = station_ecef_coords - sat_ecef_coords
+        vec_nadir = -sat_ecef_coords
+        vec_to_station = station_ecef_coords - sat_ecef_coords
 
-    # Calculate angle using dot product
-    cos_theta = np.dot(vec_nadir, vec_to_station) / (
-        np.linalg.norm(vec_nadir) * np.linalg.norm(vec_to_station)
-    )
-    off_boresight_deg = np.arccos(np.clip(cos_theta, -1.0, 1.0)) * RAD2DEG
+        cos_theta = np.dot(vec_nadir, vec_to_station) / (
+            np.linalg.norm(vec_nadir) * np.linalg.norm(vec_to_station)
+        )
+        off_boresight_deg = np.arccos(np.clip(cos_theta, -1.0, 1.0)) * RAD2DEG
 
-    # 4. Results Output
+    return {
+        "max_el_val": max_el_val,
+        "max_el_time_hr": max_el_time_hr,
+        "off_boresight_deg": off_boresight_deg,
+        "contacts": contacts,
+        "times_hr": times_hr,
+        "elevations": elevations,
+        "azimuths": azimuths,
+        "duration_hours": duration_hours
+    }
+
+
+def main() -> None:
+    print("================================================================")
+    print("            SATELLITE TRACKING CASE STUDY (OBJECT-ORIENTED)     ")
+    print("================================================================")
+
+    results = run_simulation()
+    
+    contacts = results["contacts"]
+    max_el_val = results["max_el_val"]
+    max_el_time_hr = results["max_el_time_hr"]
+    off_boresight_deg = results["off_boresight_deg"]
+    duration_hours = results["duration_hours"]
+
+    # Results Output
+    print(f"Simulating {duration_hours} hours...")
     print(f"\nSimulation Results:")
     print(f"Total passes observed: {len(contacts)}")
     print(f"Max Elevation: {max_el_val:.2f} deg at T+{max_el_time_hr:.2f}h")
@@ -273,38 +302,38 @@ def main() -> None:
             f"  Pass {_ii+1:02}: {start:5.2f}h to {end:5.2f}h (Duration: {(end-start)*60:.1f} min)"
         )
 
-    # 5. Plotting
-    print("\nLaunching Plot...")
-    vis_mask = np.array(elevations) > 0
-    plt.figure(figsize=(10, 6))
-    plt.subplot(2, 1, 1)
-    plt.plot(
-        np.array(times_hr)[vis_mask],
-        np.array(elevations)[vis_mask],
-        "b.",
-        markersize=2,
-    )
-    plt.axhline(5, color="r", linestyle="--", alpha=0.5, label="5° Mask")
-    plt.ylabel("Elevation [deg]")
-    plt.title("Satellite Visibility - Topocentric Angles")
-    plt.grid(True)
-    plt.xticks(np.arange(0, duration_hours + 1, 12))
-    plt.legend()
+    # Plotting
+    try:
+        import matplotlib.pyplot as plt
+        print("\nLaunching Plot...")
+        
+        times_hr = np.array(results["times_hr"])
+        elevations = np.array(results["elevations"])
+        azimuths = np.array(results["azimuths"])
+        vis_mask = elevations > 0
 
-    plt.subplot(2, 1, 2)
-    plt.plot(
-        np.array(times_hr)[vis_mask],
-        np.array(azimuths)[vis_mask],
-        "g.",
-        markersize=2,
-    )
-    plt.ylabel("Azimuth [deg]")
-    plt.xlabel("Time since Epoch [hours]")
-    plt.grid(True)
-    plt.xticks(np.arange(0, duration_hours + 1, 12))
+        plt.figure(figsize=(10, 6))
+        
+        plt.subplot(2, 1, 1)
+        plt.plot(times_hr[vis_mask], elevations[vis_mask], "b.", markersize=2)
+        plt.axhline(5, color="r", linestyle="--", alpha=0.5, label="5° Mask")
+        plt.ylabel("Elevation [deg]")
+        plt.title("Satellite Visibility - Topocentric Angles")
+        plt.grid(True)
+        plt.xticks(np.arange(0, duration_hours + 1, 12))
+        plt.legend()
 
-    plt.tight_layout()
-    plt.show()
+        plt.subplot(2, 1, 2)
+        plt.plot(times_hr[vis_mask], azimuths[vis_mask], "g.", markersize=2)
+        plt.ylabel("Azimuth [deg]")
+        plt.xlabel("Time since Epoch [hours]")
+        plt.grid(True)
+        plt.xticks(np.arange(0, duration_hours + 1, 12))
+
+        plt.tight_layout()
+        plt.show()
+    except ImportError:
+        print("\nMatplotlib not installed. Skipping plot generation.")
 
 
 if __name__ == "__main__":
