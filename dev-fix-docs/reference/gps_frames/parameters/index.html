@@ -1,0 +1,3166 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reference frames representations and transformations">
+      
+      
+        <meta name="author" content="David William Allen">
+      
+      
+      
+        <link rel="prev" href="../basis/">
+      
+      
+        <link rel="next" href="../paths/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Parameters - GPS Frames</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#parameters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="GPS Frames" class="md-header__button md-logo" aria-label="GPS Frames" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GPS Frames
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Parameters
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-aerospace-corporation/gps_frames" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gps_frames
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="GPS Frames" class="md-nav__button md-logo" aria-label="GPS Frames" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GPS Frames
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-aerospace-corporation/gps_frames" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gps_frames
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gps_frames
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    gps_frames
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameters
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gps_frames.parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EarthParam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EarthParam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.F" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.mu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.r_e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        r_e
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.w_e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        w_e
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84a
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84b
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84ecc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84ecc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84ecc_squared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84ecc_squared
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84f
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPSparam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPSparam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L1_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L1_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L2_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L2_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L5_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L5_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.epoch_datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        epoch_datetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.gamma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gamma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oa_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oa_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oc_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oc_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oe_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oe_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GeoidData
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GeoidData">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.geoid_heights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geoid_heights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.latitudes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        latitudes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.longitudes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        longitudes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.get_geoid_height" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_geoid_height
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PhysicsParam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PhysicsParam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam.c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam.k_b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        k_b
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../position/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rotations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ranging Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gps_frames.parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EarthParam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EarthParam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.F" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.mu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.r_e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        r_e
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.w_e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        w_e
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84a
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84b
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84ecc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84ecc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84ecc_squared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84ecc_squared
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.EarthParam.wgs84f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wgs84f
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPSparam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPSparam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L1_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L1_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L2_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L2_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.L5_CENTER_FREQ_Hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L5_CENTER_FREQ_Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.epoch_datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        epoch_datetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.gamma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gamma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oa_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oa_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oc_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oc_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.lnav_t_oe_epoch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lnav_t_oe_epoch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GPSparam.pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GeoidData
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GeoidData">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.geoid_heights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geoid_heights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.latitudes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        latitudes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.longitudes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        longitudes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.GeoidData.get_geoid_height" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_geoid_height
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PhysicsParam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PhysicsParam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam.c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps_frames.parameters.PhysicsParam.k_b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        k_b
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="parameters">Parameters</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="gps_frames.parameters" class="doc doc-heading">
+            <code>gps_frames.parameters</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Standard parameters used throughout the simulator.</p>
+<p>This package contains physical parameters that are divided into several
+classes. PhysicsParam contains standard physical parameters. EarthParam
+contains parameters specific to the Earth. GPSparam includes parameters
+specific to the GPS system.</p>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] IS-GPS-200 https://www.gps.gov/technical/icwg/</p>
+</details>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="gps_frames.parameters.EarthParam" class="doc doc-heading">
+            <code>EarthParam</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Earth Parameters.</p>
+<p>This class contains parameters specific to the Earth. The values are
+specified by IS-GPS-200H or WGS-84</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>gps_frames/parameters.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EarthParam</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Earth Parameters.</span>
+
+<span class="sd">    This class contains parameters specific to the Earth. The values are</span>
+<span class="sd">    specified by IS-GPS-200H or WGS-84</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.986005e14</span>  <span class="c1"># m^3/s^2, gravitational parameter</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Standard Gravitational Parameter for the Earth. Units are</span>
+<span class="sd">    \(\text{m}^{3}/\text{s}^{2}\). This value is specified by</span>
+<span class="sd">    IS-GPS-200H.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">w_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">7.2921151467e-5</span>  <span class="c1"># rad/s, angular velocity of Earth</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Angular velocity of the Earth. Units are \(\text{rad}/\text{s}\). This</span>
+<span class="sd">    value is specified by IS-GPS-200H.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">r_e</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">6378137.0</span>  <span class="c1"># m, radius of Earth</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Mean radius of the Earth. Units are \(\text{m}\). This value is</span>
+<span class="sd">    specified by IS-GPS-200H.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wgs84a</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">6378137.0</span>  <span class="c1"># m, semimajor axis of Earth from WGS 84</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The semimajor axis of the ellipsoidal Earth. Units are \(\text{m}\).</span>
+<span class="sd">    This value is specified by WGS-84.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wgs84f</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">298.257223563</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The WGS84 ellipsoid flattening value, specified by WGS-84</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># m, semiminor axis of Earth from WGS 84</span>
+    <span class="n">wgs84b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">wgs84a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">wgs84f</span><span class="p">)</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The semiminor axis of the ellipsoidal Earth. Units are \(\text{m}\).</span>
+<span class="sd">    This value is derived from values specified by WGS-84.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wgs84ecc_squared</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">wgs84f</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The square of the eccentricity of the WGS-84 ellipsoid.</span>
+<span class="sd">    This valuse is derived from values specified by WGS-84</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wgs84ecc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">wgs84ecc_squared</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The eccentricity of the ellipsoidal Earth. Dimensionless.</span>
+<span class="sd">    This value is derived from values specified by WGS-84.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">F</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.442807633e-10</span>  <span class="c1"># -2sqrt(mu)/c^2, relativity parameter</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Parameter used to determine the relativistic clock bias of each</span>
+<span class="sd">    satellite. This values is specified by IS-GPS-200.</span>
+
+<span class="sd">    Equal to \(\frac{-2\sqrt{\mu}}{c^{2}}\), but the value here is the one</span>
+<span class="sd">    specified by IS-GPS-200, not calculated from standard values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.F" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.442807633e-10</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parameter used to determine the relativistic clock bias of each
+satellite. This values is specified by IS-GPS-200.</p>
+<p>Equal to <span class="arithmatex">\(\frac{-2\sqrt{\mu}}{c^{2}}\)</span>, but the value here is the one
+specified by IS-GPS-200, not calculated from standard values.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.mu" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mu</span> <span class="o">=</span> <span class="mf">398600500000000.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Standard Gravitational Parameter for the Earth. Units are
+<span class="arithmatex">\(\text{m}^{3}/\text{s}^{2}\)</span>. This value is specified by
+IS-GPS-200H.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.r_e" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">r_e</span> <span class="o">=</span> <span class="mf">6378137.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Mean radius of the Earth. Units are <span class="arithmatex">\(\text{m}\)</span>. This value is
+specified by IS-GPS-200H.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.w_e" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">w_e</span> <span class="o">=</span> <span class="mf">7.2921151467e-05</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Angular velocity of the Earth. Units are <span class="arithmatex">\(\text{rad}/\text{s}\)</span>. This
+value is specified by IS-GPS-200H.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.wgs84a" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wgs84a</span> <span class="o">=</span> <span class="mf">6378137.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The semimajor axis of the ellipsoidal Earth. Units are <span class="arithmatex">\(\text{m}\)</span>.
+This value is specified by WGS-84.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.wgs84b" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wgs84b</span> <span class="o">=</span> <span class="n">wgs84a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">wgs84f</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The semiminor axis of the ellipsoidal Earth. Units are <span class="arithmatex">\(\text{m}\)</span>.
+This value is derived from values specified by WGS-84.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.wgs84ecc" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wgs84ecc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">wgs84ecc_squared</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The eccentricity of the ellipsoidal Earth. Dimensionless.
+This value is derived from values specified by WGS-84.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.wgs84ecc_squared" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wgs84ecc_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">wgs84f</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The square of the eccentricity of the WGS-84 ellipsoid.
+This valuse is derived from values specified by WGS-84</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.EarthParam.wgs84f" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">wgs84f</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">298.257223563</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The WGS84 ellipsoid flattening value, specified by WGS-84</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="gps_frames.parameters.GPSparam" class="doc doc-heading">
+            <code>GPSparam</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>GPS Parameters.</p>
+<p>This class contains parameters specific to the GPS system. These
+parameters are specified by IS-GPS-200H.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>gps_frames/parameters.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GPSparam</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GPS Parameters.</span>
+
+<span class="sd">    This class contains parameters specific to the GPS system. These</span>
+<span class="sd">    parameters are specified by IS-GPS-200H.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">epoch_datetime</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The start time of the GPS Epoch, which is defined to be 00:00:00</span>
+<span class="sd">    on 6 January 1980.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">pi</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.1415926535898</span>  <span class="c1"># Mathematical constant pi (IS-GPS-200H)</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The mathematical constant \(\pi\). As many of the parameters in the</span>
+<span class="sd">    broadcast ephemeris are transmitted in units of semicircles, it is</span>
+<span class="sd">    important that the value of \(\pi\) used by the simulator is exactly</span>
+<span class="sd">    the value used by receivers and the GPS constellation. As such this</span>
+<span class="sd">    value is specified in IS-GPS-200H.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1575.42</span> <span class="o">/</span> <span class="mf">1227.6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Square of L1-L2 center frequency ratio \(\gamma\)</span>
+
+<span class="sd">    This parameter is used in determining the difference in the pseudorange</span>
+<span class="sd">    between L1 and L2. Specifically,</span>
+<span class="sd">    $$</span>
+<span class="sd">        \gamma</span>
+<span class="sd">            = \left(\frac{f_{\mathrm{L1}}}{f_{\mathrm{L2}}}\right)^{2}</span>
+<span class="sd">            = \left(\frac{1575.42}{1227.6}\right)^{2}</span>
+<span class="sd">    $$</span>
+<span class="sd">    where \(f_{\mathrm{L1}} = 1575.42 \text{MHz}\) is the L1 center</span>
+<span class="sd">    frequency and \(f_{\mathrm{L2}} = 1227.6 \text{MHz}\) is the L2</span>
+<span class="sd">    center frequency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">lnav_t_oc_epoch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The LNAV Time of Clock Epoch</span>
+
+<span class="sd">    This is the resolution of the time of clock,</span>
+<span class="sd">    \(t_{\mathrm{OC}}\), as reported in the ephemeris of the LNAV</span>
+<span class="sd">    messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">lnav_t_oe_epoch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The LNAV Time of Ephemeris Epoch</span>
+
+<span class="sd">    This is the resolution of the time of ephemeris,</span>
+<span class="sd">    \(t_{\mathrm{OE}}\), as reported in the ephemeris of the LNAV</span>
+<span class="sd">    messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">lnav_t_oa_epoch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">12</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The LNAV Time of Applicability Epoch</span>
+
+<span class="sd">    This is the resolution of the time of applicability,</span>
+<span class="sd">    \(t_{\mathrm{OA}}\), as reported in the almanac of the LNAV</span>
+<span class="sd">    messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">L1_CENTER_FREQ_Hz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1575.42e6</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The center frequency of the GPS L1 signal in Hz</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">L2_CENTER_FREQ_Hz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1227.6e6</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The center frequency of the GPS L2 signal in Hz</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">L5_CENTER_FREQ_Hz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1176.45e6</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The center frequency of the GPS L5 signal in Hz</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.L1_CENTER_FREQ_Hz" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">L1_CENTER_FREQ_Hz</span> <span class="o">=</span> <span class="mf">1575420000.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The center frequency of the GPS L1 signal in Hz</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.L2_CENTER_FREQ_Hz" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">L2_CENTER_FREQ_Hz</span> <span class="o">=</span> <span class="mf">1227600000.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The center frequency of the GPS L2 signal in Hz</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.L5_CENTER_FREQ_Hz" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">L5_CENTER_FREQ_Hz</span> <span class="o">=</span> <span class="mf">1176450000.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The center frequency of the GPS L5 signal in Hz</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.epoch_datetime" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">epoch_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The start time of the GPS Epoch, which is defined to be 00:00:00
+on 6 January 1980.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.gamma" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1575.42</span> <span class="o">/</span> <span class="mf">1227.6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Square of L1-L2 center frequency ratio <span class="arithmatex">\(\gamma\)</span></p>
+<p>This parameter is used in determining the difference in the pseudorange
+between L1 and L2. Specifically,
+$$
+    \gamma
+        = \left(\frac{f_{\mathrm{L1}}}{f_{\mathrm{L2}}}\right)^{2}
+        = \left(\frac{1575.42}{1227.6}\right)^{2}
+$$
+where <span class="arithmatex">\(f_{\mathrm{L1}} = 1575.42 \text{MHz}\)</span> is the L1 center
+frequency and <span class="arithmatex">\(f_{\mathrm{L2}} = 1227.6 \text{MHz}\)</span> is the L2
+center frequency.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.lnav_t_oa_epoch" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">lnav_t_oa_epoch</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">12</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The LNAV Time of Applicability Epoch</p>
+<p>This is the resolution of the time of applicability,
+<span class="arithmatex">\(t_{\mathrm{OA}}\)</span>, as reported in the almanac of the LNAV
+messages.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.lnav_t_oc_epoch" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">lnav_t_oc_epoch</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The LNAV Time of Clock Epoch</p>
+<p>This is the resolution of the time of clock,
+<span class="arithmatex">\(t_{\mathrm{OC}}\)</span>, as reported in the ephemeris of the LNAV
+messages.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.lnav_t_oe_epoch" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">lnav_t_oe_epoch</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The LNAV Time of Ephemeris Epoch</p>
+<p>This is the resolution of the time of ephemeris,
+<span class="arithmatex">\(t_{\mathrm{OE}}\)</span>, as reported in the ephemeris of the LNAV
+messages.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GPSparam.pi" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415926535898</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The mathematical constant <span class="arithmatex">\(\pi\)</span>. As many of the parameters in the
+broadcast ephemeris are transmitted in units of semicircles, it is
+important that the value of <span class="arithmatex">\(\pi\)</span> used by the simulator is exactly
+the value used by receivers and the GPS constellation. As such this
+value is specified in IS-GPS-200H.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="gps_frames.parameters.GeoidData" class="doc doc-heading">
+            <code>GeoidData</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>EGM-96 Geoid Model.</p>
+<p>This class is used to store the information related to the shape of the
+Earth, relative to the WGS-84 ellipsoid.</p>
+<p>This class is based on the data from [1]_ under the MIT License</p>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] https://github.com/vectorstofinal/geoid_heights</p>
+</details>
+
+<details class="license" open>
+  <summary>License</summary>
+  <p>The MIT License (MIT)</p>
+<p>Copyright (c) 2015 vectorstofinal</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.</p>
+</details>
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>gps_frames/parameters.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GeoidData</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;EGM-96 Geoid Model.</span>
+
+<span class="sd">    This class is used to store the information related to the shape of the</span>
+<span class="sd">    Earth, relative to the WGS-84 ellipsoid.</span>
+
+<span class="sd">    This class is based on the data from [1]_ under the MIT License</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] https://github.com/vectorstofinal/geoid_heights</span>
+
+<span class="sd">    License</span>
+<span class="sd">    -------</span>
+<span class="sd">    The MIT License (MIT)</span>
+
+<span class="sd">    Copyright (c) 2015 vectorstofinal</span>
+
+<span class="sd">    Permission is hereby granted, free of charge, to any person obtaining a</span>
+<span class="sd">    copy of this software and associated documentation files (the &quot;Software&quot;),</span>
+<span class="sd">    to deal in the Software without restriction, including without limitation</span>
+<span class="sd">    the rights to use, copy, modify, merge, publish, distribute, sublicense,</span>
+<span class="sd">    and/or sell copies of the Software, and to permit persons to whom the</span>
+<span class="sd">    Software is furnished to do so, subject to the following conditions:</span>
+
+<span class="sd">    The above copyright notice and this permission notice shall be included in</span>
+<span class="sd">    all copies or substantial portions of the Software.</span>
+
+<span class="sd">    THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</span>
+<span class="sd">    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="sd">    DEALINGS IN THE SOFTWARE.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">with</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;gps_frames.data&quot;</span><span class="p">,</span> <span class="s2">&quot;geoid_data_1deg.npz&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">_data_path</span><span class="p">:</span>
+        <span class="n">_geoid_data_npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">_data_path</span><span class="p">)</span>
+
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s2">&quot;latitudes&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geoid Grid latitudes (deg)&quot;&quot;&quot;</span>
+
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s2">&quot;longitudes&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geoid Grid longitudes (deg)&quot;&quot;&quot;</span>
+
+    <span class="n">geoid_heights</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s2">&quot;geoid_heights&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geoid Heights in a grid (m)&quot;&quot;&quot;</span>
+
+    <span class="n">_geoid_height_interpolator</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">RectBivariateSpline</span><span class="p">(</span>
+        <span class="n">latitudes</span><span class="p">,</span> <span class="n">longitudes</span><span class="p">,</span> <span class="n">geoid_heights</span>
+    <span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interpolant for geoid height, arguments are (Lat,Long) in degrees&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_geoid_height</span><span class="p">(</span>
+        <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rad&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the geoid height.</span>
+
+<span class="sd">        This function is used to return the geoid height at the provided</span>
+<span class="sd">        location. This is done using the data stored in the geoiddata folder.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        latitude : float</span>
+<span class="sd">            The latitude of interest</span>
+<span class="sd">        longitude : float</span>
+<span class="sd">            The longitude of interest</span>
+<span class="sd">        units : str, optional</span>
+<span class="sd">            The units for latitude and longitude. Choices are either</span>
+<span class="sd">            &#39;rad&#39; or &#39;deg&#39; for radians or degrees, by default &#39;rad&#39;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The geoid height in meters for the given latitude and longitude</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        NotImplementedError</span>
+<span class="sd">            If units other than &#39;rad&#39; or &#39;deg&#39; is requested</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;rad&quot;</span><span class="p">:</span>
+            <span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+        <span class="k">elif</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;deg&quot;</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Only rad and deg are available units&quot;</span><span class="p">)</span>
+
+        <span class="n">geoid_height</span> <span class="o">=</span> <span class="n">GeoidData</span><span class="o">.</span><span class="n">_geoid_height_interpolator</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">geoid_height</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GeoidData.geoid_heights" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">geoid_heights</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s1">&#39;geoid_heights&#39;</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Geoid Heights in a grid (m)</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GeoidData.latitudes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">latitudes</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s1">&#39;latitudes&#39;</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Geoid Grid latitudes (deg)</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.GeoidData.longitudes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">longitudes</span> <span class="o">=</span> <span class="n">_geoid_data_npz</span><span class="p">[</span><span class="s1">&#39;longitudes&#39;</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Geoid Grid longitudes (deg)</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="gps_frames.parameters.GeoidData.get_geoid_height" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_geoid_height</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;rad&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the geoid height.</p>
+<p>This function is used to return the geoid height at the provided
+location. This is done using the data stored in the geoiddata folder.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>latitude</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The latitude of interest</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>longitude</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The longitude of interest</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>units</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The units for latitude and longitude. Choices are either
+'rad' or 'deg' for radians or degrees, by default 'rad'</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;rad&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The geoid height in meters for the given latitude and longitude</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="NotImplementedError">NotImplementedError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If units other than 'rad' or 'deg' is requested</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>gps_frames/parameters.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_geoid_height</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rad&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the geoid height.</span>
+
+<span class="sd">    This function is used to return the geoid height at the provided</span>
+<span class="sd">    location. This is done using the data stored in the geoiddata folder.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    latitude : float</span>
+<span class="sd">        The latitude of interest</span>
+<span class="sd">    longitude : float</span>
+<span class="sd">        The longitude of interest</span>
+<span class="sd">    units : str, optional</span>
+<span class="sd">        The units for latitude and longitude. Choices are either</span>
+<span class="sd">        &#39;rad&#39; or &#39;deg&#39; for radians or degrees, by default &#39;rad&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        The geoid height in meters for the given latitude and longitude</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NotImplementedError</span>
+<span class="sd">        If units other than &#39;rad&#39; or &#39;deg&#39; is requested</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;rad&quot;</span><span class="p">:</span>
+        <span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+        <span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="k">elif</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;deg&quot;</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Only rad and deg are available units&quot;</span><span class="p">)</span>
+
+    <span class="n">geoid_height</span> <span class="o">=</span> <span class="n">GeoidData</span><span class="o">.</span><span class="n">_geoid_height_interpolator</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">geoid_height</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="gps_frames.parameters.PhysicsParam" class="doc doc-heading">
+            <code>PhysicsParam</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Physical Constants.</p>
+<p>This class contains standard physical constants</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>gps_frames/parameters.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysicsParam</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Physical Constants.</span>
+
+<span class="sd">    This class contains standard physical constants</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">c</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.99792458e8</span>  <span class="c1"># m/s, speed of light (IS-GPS-200H)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The speed of light in meters per second</span>
+
+<span class="sd">    The speed of light in meters per second as specified by IS-GPS-200H.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">k_b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.38064852e-23</span>  <span class="c1"># m^2 kg / s^2 K</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Boltzmann Constant in m^2 kg / s^2 K</span>
+
+<span class="sd">    The Boltzmann constant, \(k_{B}\) or \(k\), is a physical</span>
+<span class="sd">    constant relating the average kinetic energy of particles in a gas with</span>
+<span class="sd">    the temperature of the gas and occurs in Planck&#39;s law of black-body</span>
+<span class="sd">    radiation and in Boltzmann&#39;s entropy formula.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.PhysicsParam.c" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">c</span> <span class="o">=</span> <span class="mf">299792458.0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The speed of light in meters per second</p>
+<p>The speed of light in meters per second as specified by IS-GPS-200H.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="gps_frames.parameters.PhysicsParam.k_b" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">k_b</span> <span class="o">=</span> <span class="mf">1.38064852e-23</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Boltzmann Constant in m^2 kg / s^2 K</p>
+<p>The Boltzmann constant, <span class="arithmatex">\(k_{B}\)</span> or <span class="arithmatex">\(k\)</span>, is a physical
+constant relating the average kinetic energy of particles in a gas with
+the temperature of the gas and occurs in Planck's law of black-body
+radiation and in Boltzmann's entropy formula.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
