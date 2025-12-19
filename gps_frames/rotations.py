@@ -862,7 +862,7 @@ def roll_pitch_yaw_matrix(
             \end{array}\right]
     $$
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are three
         floats and a float array.
@@ -928,7 +928,7 @@ def roll_pitch_yaw(
     as it is signficantly simpler to instantiate. However, if a rotation needs
     to be performed repeatedly, the Rotation class may be faster.
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are three
         floats and a float array.
