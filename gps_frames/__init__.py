@@ -238,7 +238,7 @@ def check_earth_obscuration(
 ) -> bool:
     r"""Determine if position2 is visiable from position1.
 
-    .. note:: Assumptions
+    !!! note "Assumptions"
         This function is meant to be a quick check of Earth obscuration. As
         such, it does not account for things like time delays, signal
         refraction, or a non-spherical Earth. All calculations are done under

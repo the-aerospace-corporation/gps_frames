@@ -748,7 +748,8 @@ def standard_rotation_matrix_rates(
     (direction cosine matrix) for a rotation about one of the principle axes.
 
     That is, if the angle of rotation is \(\theta\), the returned matrix is
-    \[
+    
+    $$
     \begin{split}
         R_{1}(\theta) = &
             \left[\begin{array}{ccc}
@@ -783,7 +784,8 @@ def standard_rotation_matrix_rates(
                 0 & 0 & 0
             \end{array}\right]
     \end{split}
-    \]
+    $$
+
     respectively for rotations about the 1, 2, or 3 axis.
 
     !!! note "Numba JIT Compiled"
@@ -860,7 +862,7 @@ def roll_pitch_yaw_matrix(
             \end{array}\right]
     $$
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are three
         floats and a float array.
@@ -926,7 +928,7 @@ def roll_pitch_yaw(
     as it is signficantly simpler to instantiate. However, if a rotation needs
     to be performed repeatedly, the Rotation class may be faster.
 
-    .. note:: Numba JIT Compiled
+    !!! note "Numba JIT Compiled"
         This function is compiled using Numba. Use care when providing inputs
         as Numba is strictly typed. The inputs to this function are three
         floats and a float array.
