@@ -16,6 +16,42 @@ This module can be installed using PyPI:
 pip install gps-frames
 ```
 
+## Quick Start
+Here is a simple example of how to calculate the distance between a ground station and a satellite.
+
+```python
+import numpy as np
+from datetime import datetime
+from gps_time import GPSTime
+from gps_frames import Position, distance
+
+# 1. Define the time of interest
+time = GPSTime.from_datetime(datetime(2023, 1, 1, 12, 0, 0))
+
+# 2. Define a Ground Station (Los Angeles) in Geodetic coordinates (LLA)
+ground_station = Position(
+    np.array([34.05 * np.pi / 180, -118.25 * np.pi / 180, 100.0]), # Lat (rad), Lon (rad), Alt (m)
+    time,
+    "LLA"
+)
+
+# 3. Define a Satellite (GPS) in ECEF coordinates
+# (Simplified position for demonstration)
+satellite = Position(
+    np.array([15000e3, 15000e3, 15000e3]), # x, y, z in meters
+    time,
+    "ECEF"
+)
+
+# 4. Calculate distance
+dist = distance(ground_station, satellite)
+print(f"Distance: {dist/1000:.2f} km")
+
+# 5. Convert frames easily
+ground_station_ecef = ground_station.get_position("ECEF")
+print(f"Ground Station ECEF: {ground_station_ecef.coordinates}")
+```
+
 ## Running Tests
 This module includes tests for all of the major functionality. To run the tests, you can use the commands in the makefile `make test`. Because some of the functions use JIT compilation via Numba, `make test-nojit` runs all of the tests without JIT compilation to enable better code coverage analysis.
 

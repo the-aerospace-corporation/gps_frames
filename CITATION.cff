@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Allen"
+  given-names: "David William"
+  email: "david.w.allen@aero.org"
+title: "gps_frames"
+version: 3.0.0
+url: "https://github.com/the-aerospace-corporation/gps_frames"
+license: "AGPL-3.0"
+abstract: "Reference frame representation, transformations, and operations for GPS."
+keywords:
+  - gps
+  - gnss
+  - reference-frames
+  - coordinates
+  - astrodynamics
+  - satellite
