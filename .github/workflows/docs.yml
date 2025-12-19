@@ -32,12 +32,17 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install ".[docs]"
+      - name: Prepare documentation
+        run: |
+          if [ -f "coverage-badge.svg" ]; then
+            cp coverage-badge.svg docs/
+          fi
       - name: Deploy with mike
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" || "${{ github.ref }}" == "refs/heads/master" ]]; then
-            mike --debug deploy --push --update-aliases latest
-            mike --debug set-default --push latest
+            mike deploy --push --update-aliases latest
+            mike set-default --push latest
           else
             BRANCH_URL=$(echo ${{ github.ref_name }} | sed 's/\//-/g')
-            mike --debug deploy --push $BRANCH_URL
+            mike deploy --push $BRANCH_URL
           fi

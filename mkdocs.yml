@@ -51,3 +51,4 @@ nav:
       - Velocity: reference/gps_frames/velocity.md
   - Examples:
     - Ranging Walkthrough: example_walkthrough.md
+    - Satellite Tracking Case Study: case_study.md

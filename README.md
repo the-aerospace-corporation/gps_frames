@@ -8,6 +8,8 @@ Reference frame representation, transformations, and operations for GPS.
 [![License](https://img.shields.io/pypi/l/gps-frames.svg)](https://github.com/the-aerospace-corporation/gps_frames/blob/main/LICENSE)
 [![CodeQL](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/codeql-analysis.yml)
 [![Upload Python Package](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-publish.yml/badge.svg)](https://github.com/the-aerospace-corporation/gps_frames/actions/workflows/python-publish.yml)
+
+[**Documentation**](https://the-aerospace-corporation.github.io/gps_frames/) | [**GitHub**](https://github.com/the-aerospace-corporation/gps_frames) | [**PyPI**](https://pypi.org/project/gps-frames/)
 ## Installation
 This module can be installed using PyPI:
 ```
