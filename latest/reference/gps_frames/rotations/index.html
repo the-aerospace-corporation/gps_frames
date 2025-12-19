@@ -3490,10 +3490,12 @@ axes in that order, that is first it it rolled, then pitched, then yawed.</p>
 <p>For a single rotation, this class is faster to use than the Rotation class
 as it is signficantly simpler to instantiate. However, if a rotation needs
 to be performed repeatedly, the Rotation class may be faster.</p>
-<p>.. note:: Numba JIT Compiled
-    This function is compiled using Numba. Use care when providing inputs
-    as Numba is strictly typed. The inputs to this function are three
-    floats and a float array.</p>
+<div class="admonition note">
+<p class="admonition-title">Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are three
+floats and a float array.</p>
+</div>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3600,9 +3602,7 @@ to be performed repeatedly, the Rotation class may be faster.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">915</span>
-<span class="normal">916</span>
-<span class="normal">917</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">917</span>
 <span class="normal">918</span>
 <span class="normal">919</span>
 <span class="normal">920</span>
@@ -3637,7 +3637,9 @@ to be performed repeatedly, the Rotation class may be faster.</p>
 <span class="normal">949</span>
 <span class="normal">950</span>
 <span class="normal">951</span>
-<span class="normal">952</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64, float64, float64, float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">952</span>
+<span class="normal">953</span>
+<span class="normal">954</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64, float64, float64, float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">roll_pitch_yaw</span><span class="p">(</span>
     <span class="n">roll_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pitch_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -3651,7 +3653,7 @@ to be performed repeatedly, the Rotation class may be faster.</p>
 <span class="sd">    as it is signficantly simpler to instantiate. However, if a rotation needs</span>
 <span class="sd">    to be performed repeatedly, the Rotation class may be faster.</span>
 
-<span class="sd">    .. note:: Numba JIT Compiled</span>
+<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are three</span>
 <span class="sd">        floats and a float array.</span>
@@ -3713,10 +3715,12 @@ The corresponding direction cosine matrix is</p>
             \cos\phi \cos\theta
         \end{array}\right]
 \]</div>
-<p>.. note:: Numba JIT Compiled
-    This function is compiled using Numba. Use care when providing inputs
-    as Numba is strictly typed. The inputs to this function are three
-    floats and a float array.</p>
+<div class="admonition note">
+<p class="admonition-title">Numba JIT Compiled</p>
+<p>This function is compiled using Numba. Use care when providing inputs
+as Numba is strictly typed. The inputs to this function are three
+floats and a float array.</p>
+</div>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3807,9 +3811,7 @@ The corresponding direction cosine matrix is</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">834</span>
-<span class="normal">835</span>
-<span class="normal">836</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">836</span>
 <span class="normal">837</span>
 <span class="normal">838</span>
 <span class="normal">839</span>
@@ -3885,7 +3887,9 @@ The corresponding direction cosine matrix is</p>
 <span class="normal">909</span>
 <span class="normal">910</span>
 <span class="normal">911</span>
-<span class="normal">912</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:, :](float64, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">912</span>
+<span class="normal">913</span>
+<span class="normal">914</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:, :](float64, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">roll_pitch_yaw_matrix</span><span class="p">(</span>
     <span class="n">roll_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pitch_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -3914,7 +3918,7 @@ The corresponding direction cosine matrix is</p>
 <span class="sd">            \end{array}\right]</span>
 <span class="sd">    $$</span>
 
-<span class="sd">    .. note:: Numba JIT Compiled</span>
+<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are three</span>
 <span class="sd">        floats and a float array.</span>
@@ -4481,44 +4485,44 @@ a float.</p>
         <p>Get the derivated of a standard rotation matrix.</p>
 <p>This function is used to compute the derivative of a rotation matrix
 (direction cosine matrix) for a rotation about one of the principle axes.</p>
-<p>That is, if the angle of rotation is <span class="arithmatex">\(\theta\)</span>, the returned matrix is
-[
+<p>That is, if the angle of rotation is <span class="arithmatex">\(\theta\)</span>, the returned matrix is</p>
+<div class="arithmatex">\[
 \begin{split}
     R_{1}(\theta) = &amp;
         \left[\begin{array}{ccc}
-            0 &amp; 0 &amp; 0 \
+            0 &amp; 0 &amp; 0 \\
             0 &amp;
             -\dot{\theta}\sin\theta &amp;
-            \dot{\theta}\cos\theta \
+            \dot{\theta}\cos\theta \\
             0 &amp;
             -\dot{\theta}\cos\theta &amp;
             -\dot{\theta}\sin\theta
-        \end{array}\right] \
+        \end{array}\right] \\
     R_{2}(\theta) = &amp;
         \left[\begin{array}{ccc}
             -\dot{\theta}\sin\theta &amp;
             0 &amp;
-            -\dot{\theta}\cos\theta\
+            -\dot{\theta}\cos\theta\\
             0 &amp;
             0 &amp;
-            0 \
+            0 \\
             \dot{\theta}\cos\theta &amp;
             0 &amp;
             -\dot{\theta}\sin\theta
-        \end{array}\right] \
+        \end{array}\right] \\
     R_{3}(\theta) = &amp;
         \left[\begin{array}{ccc}
             -\dot{\theta}\sin\theta
             &amp; \dot{\theta}\cos\theta &amp;
-            0 \
+            0 \\
             -\dot{\theta}\cos\theta &amp;
             -\dot{\theta}\sin\theta &amp;
-            0 \
+            0 \\
             0 &amp; 0 &amp; 0
         \end{array}\right]
 \end{split}
-]
-respectively for rotations about the 1, 2, or 3 axis.</p>
+\]</div>
+<p>respectively for rotations about the 1, 2, or 3 axis.</p>
 <div class="admonition note">
 <p class="admonition-title">Numba JIT Compiled</p>
 <p>This function is compiled using Numba. Use care when providing inputs
@@ -4729,7 +4733,9 @@ and rate of rotation</p>
 <span class="normal">828</span>
 <span class="normal">829</span>
 <span class="normal">830</span>
-<span class="normal">831</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](int8, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">831</span>
+<span class="normal">832</span>
+<span class="normal">833</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](int8, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">standard_rotation_matrix_rates</span><span class="p">(</span>
     <span class="n">rotation_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -4739,7 +4745,8 @@ and rate of rotation</p>
 <span class="sd">    (direction cosine matrix) for a rotation about one of the principle axes.</span>
 
 <span class="sd">    That is, if the angle of rotation is \(\theta\), the returned matrix is</span>
-<span class="sd">    \[</span>
+
+<span class="sd">    $$</span>
 <span class="sd">    \begin{split}</span>
 <span class="sd">        R_{1}(\theta) = &amp;</span>
 <span class="sd">            \left[\begin{array}{ccc}</span>
@@ -4774,7 +4781,8 @@ and rate of rotation</p>
 <span class="sd">                0 &amp; 0 &amp; 0</span>
 <span class="sd">            \end{array}\right]</span>
 <span class="sd">    \end{split}</span>
-<span class="sd">    \]</span>
+<span class="sd">    $$</span>
+
 <span class="sd">    respectively for rotations about the 1, 2, or 3 axis.</span>
 
 <span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>

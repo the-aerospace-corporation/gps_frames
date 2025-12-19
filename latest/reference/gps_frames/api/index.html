@@ -1070,13 +1070,15 @@ stored as radians.</p>
     <div class="doc doc-contents ">
 
         <p>Determine if position2 is visiable from position1.</p>
-<p>.. note:: Assumptions
-    This function is meant to be a quick check of Earth obscuration. As
-    such, it does not account for things like time delays, signal
-    refraction, or a non-spherical Earth. All calculations are done under
-    the assumptions of simultanity, geometric line-of-sight, and a
-    spherical Earth. In fact, this includes the option to naively use the
-    height above ellipsoid as the height above the spherical Earth.</p>
+<div class="admonition note">
+<p class="admonition-title">Assumptions</p>
+<p>This function is meant to be a quick check of Earth obscuration. As
+such, it does not account for things like time delays, signal
+refraction, or a non-spherical Earth. All calculations are done under
+the assumptions of simultanity, geometric line-of-sight, and a
+spherical Earth. In fact, this includes the option to naively use the
+height above ellipsoid as the height above the spherical Earth.</p>
+</div>
 <p>This function is meant to determine if an object at position 2 has a
 direct line of sight to the object at position 1. There are two ways that
 this function checks to see if an object is visible.</p>
@@ -1381,7 +1383,7 @@ by default 100e3</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if position2 is visiable from position1.</span>
 
-<span class="sd">    .. note:: Assumptions</span>
+<span class="sd">    !!! note &quot;Assumptions&quot;</span>
 <span class="sd">        This function is meant to be a quick check of Earth obscuration. As</span>
 <span class="sd">        such, it does not account for things like time delays, signal</span>
 <span class="sd">        refraction, or a non-spherical Earth. All calculations are done under</span>
