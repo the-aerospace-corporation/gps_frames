@@ -5,6 +5,11 @@
     "aliases": []
   },
   {
+    "version": "dev-fix-test-badge-and-docs",
+    "title": "dev-fix-test-badge-and-docs",
+    "aliases": []
+  },
+  {
     "version": "dev-fix-docs",
     "title": "dev-fix-docs",
     "aliases": []
