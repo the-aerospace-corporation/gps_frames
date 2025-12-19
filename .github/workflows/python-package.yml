@@ -136,7 +136,7 @@ jobs:
 
     - name: Generate Coverage Badge
       run: |
-        python -m genbadge coverage -i coverage.xml -o coverage-badge.svg
+        genbadge coverage -i coverage.xml -o coverage-badge.svg
 
     - name: Commit Badge
       uses: stefanzweifel/git-auto-commit-action@v5
