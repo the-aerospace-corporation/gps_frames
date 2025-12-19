@@ -132,12 +132,15 @@ jobs:
         NUMBA_DISABLE_JIT: 1
       run: |
         # Run tests with JIT disabled for accurate coverage
-        python -m pytest --junitxml=pytest.xml --cov=gps_frames --cov-report term-missing tests | tee pytest-coverage.txt
+        python -m pytest --junitxml=pytest.xml --cov=gps_frames --cov-report xml tests
 
-    - name: Pytest coverage comment
-      uses: MishaKav/pytest-coverage-comment@main
+    - name: Generate Coverage Badge
+      run: |
+        python -m genbadge coverage -i coverage.xml -o coverage-badge.svg
+
+    - name: Commit Badge
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        pytest-coverage-path: pytest-coverage.txt
-        junitxml-path: pytest.xml
-        badge-title: Coverage
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Update coverage badge
+        file_pattern: coverage-badge.svg
+
