@@ -144,3 +144,45 @@ jobs:
         commit_message: Update coverage badge
         file_pattern: coverage-badge.svg
 
+  deploy-docs:
+    needs: coverage
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git fetch origin gh-pages --force || true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "CACHE_ID=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.CACHE_ID }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install ".[docs]"
+      - name: Prepare documentation
+        run: |
+          # Pull latest changes to get the badge committed by the coverage job
+          git pull origin ${{ github.ref_name }}
+          if [ -f "coverage-badge.svg" ]; then
+            cp coverage-badge.svg docs/
+          fi
+      - name: Deploy with mike
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" || "${{ github.ref }}" == "refs/heads/master" ]]; then
+            mike deploy --push --update-aliases latest
+            mike set-default --push latest
+          else
+            BRANCH_URL=$(echo ${{ github.ref_name }} | sed 's/\//-/g')
+            mike deploy --push $BRANCH_URL
+          fi
+
