@@ -2,12 +2,18 @@
 """
 gps_frames
 ----------
-Define the reference frames for use throughout the model.
+Reference frame representation, transformations, and operations for GPS.
 
-The purpose of this module is to provide tools for translating between the
-different reference frames used for GPS. At first, only the WGS84 (LLA) frame,
-the ECEF frame, and the GPS ECI frame (relative to start of week) will be
-included.
+This module provides tools for translating between different reference frames
+used in GPS and astrodynamics, including WGS84 (LLA), ECEF, and ECI frames.
+It handles time-dependent transformations (precession, nutation, polar motion,
+Earth rotation) leveraging the `gps_time` library.
+
+Key Features:
+- Position objects aware of their frame and time.
+- Automatic frame conversion (LLA <-> ECEF <-> ECI).
+- Geometric calculations: Range, Azimuth, Elevation, Earth Obscuration.
+- High-performance implementation using Numba.
 
 Notes
 -----
@@ -15,6 +21,8 @@ Like all internal modules, distances are stored here as meters and angles are
 stored as radians.
 
 """
+
+
 __version__ = "3.0.0"
 __copyright__ = "Copyright (C) 2022 The Aerospace Corporation"
 __license__ = "GNU AGPL v3"

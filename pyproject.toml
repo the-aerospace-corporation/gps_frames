@@ -42,6 +42,7 @@ docs = [
     "mkdocs-material",
     "mkdocstrings[python]",
     "pymdown-extensions",
+    "mike",
 ]
 examples = [
     "matplotlib",
