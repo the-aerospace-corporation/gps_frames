@@ -1,7 +1,5 @@
 # Copyright (c) 2022 The Aerospace Corporation
 """
-.. include::../README.md
-
 gps_frames
 ----------
 Define the reference frames for use throughout the model.
@@ -17,7 +15,7 @@ Like all internal modules, distances are stored here as meters and angles are
 stored as radians.
 
 """
-__version__ = "2.8.0"
+__version__ = "3.0.0"
 __copyright__ = "Copyright (C) 2022 The Aerospace Corporation"
 __license__ = "GNU AGPL v3"
 __distribution_statement__ = (
@@ -183,6 +181,7 @@ def get_range_azimuth_elevation(
         The position of the target
 
     Returns
+    -------
     Tuple[float, float, float]
         The (1) range, (2) azimuth, and (3) elevation of the target relative
         to ENU basis provided.
@@ -226,7 +225,7 @@ def check_earth_obscuration(
     position2: Position,
     convert_hae_altitude: bool = False,
     earth_adjustment_m: float = 30e3,
-    transition_altitude_m: float = -np.infty,
+    transition_altitude_m: float = -np.inf,
     elevation_mask_angle_rad: float = -0.1,
 ) -> bool:
     r"""Determine if position2 is visiable from position1.
@@ -356,11 +355,13 @@ def check_earth_obscuration(
 def _get_spherical_radius(position: Position, correct_lla: bool) -> float:
     """Get the spherical radius.
 
-    .. deprectated:: Functionality moved to Position object
+    !!! failure "Deprecated"
+        Functionality moved to Position object
+
         This method will be deprecated in favor of the
-        gps_frames.position.Position.get_altitude_spherical() and
-        gps_frames.position.Position.get_radius() methods. This function is
-        just an alias for the Position.get_radius() method.
+        `gps_frames.position.Position.get_altitude_spherical` and
+        `gps_frames.position.Position.get_radius` methods. This function is
+        just an alias for the `Position.get_radius` method.
 
     Get the spherical radius of the object. If the position is expressed
     in LLA, then the radius will either be the HAE plus the radius of the
@@ -380,7 +381,8 @@ def _get_spherical_radius(position: Position, correct_lla: bool) -> float:
     float
         The spherical radius of the position
 
-    .. todo:: Move into position object
+    !!! quote "Todo"
+        Move into position object
 
     """
     logger.error("DEPRECATION: This function is superseded by methods in Position")

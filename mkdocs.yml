@@ -1,0 +1,51 @@
+site_name: GPS Frames
+site_description: Reference frames representations and transformations
+site_author: David William Allen
+repo_url: https://github.com/the-aerospace-corporation/gps_frames
+repo_name: gps_frames
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: ["."]
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Reference:
+    - gps_frames:
+      - API Overview: reference/gps_frames/api.md
+      - Basis: reference/gps_frames/basis.md
+      - Parameters: reference/gps_frames/parameters.md
+      - Paths: reference/gps_frames/paths.md
+      - Position: reference/gps_frames/position.md
+      - Rotations: reference/gps_frames/rotations.md
+      - Transforms: reference/gps_frames/transforms.md
+      - Vectors: reference/gps_frames/vectors.md
+      - Velocity: reference/gps_frames/velocity.md
+  - Examples:
+    - Ranging Walkthrough: example_walkthrough.md

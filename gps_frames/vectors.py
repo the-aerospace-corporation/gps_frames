@@ -143,7 +143,7 @@ class SerializeableVector:
             True if the two are equal
         """
         return (
-            self.coordinates == other.coordinates
+            np.array_equal(self.coordinates, other.coordinates)
             and self.frame_time == other.frame_time
             and self.frame == other.frame
         )
@@ -181,7 +181,7 @@ class Vector(SerializeableVector):
     def get_vector(self, out_frame: str) -> Vector:
         """Get a vector object in new frame.
 
-        .. note:: New Object Created on Output
+        !!! note "New Object Created on Output"
             This function returns a new `Vector` object. It does not change
             the reference frame used in this object. Use `switch_frame()` to
             change the frame of the object.
@@ -462,7 +462,7 @@ class UnitVector(Vector):
     def get_unit_vector(self, out_frame: str) -> UnitVector:
         """Get a unit vector object in new frame.
 
-        .. note:: New Object Created on Output
+        !!! note "New Object Created on Output"
             This function returns a new `UnitVector` object. It does not change
             the reference frame used in this object. Use `switch_frame()` to
             change the frame of the object.

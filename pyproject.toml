@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gps_frames"
+version = "3.0.0"
+description = "Reference frames representations and transformations"
+readme = "README.md"
+authors = [
+  { name = "David William Allen", email = "david.w.allen@aero.org" },
+]
+license = { text = "GNU AGPL v3" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "gps-time",
+    "numpy",
+    "numba",
+    "scipy",
+]
+urls = { Repository = "https://github.com/the-aerospace-corporation/gps_frames" }
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "setuptools",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+]
+examples = [
+    "matplotlib",
+]
+
+[tool.setuptools]
+packages = ["gps_frames", "gps_frames.data"]
+zip-safe = false
+
+[tool.setuptools.package-data]
+"*" = ["data/*.npz"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=gps_frames --cov-report=term-missing"
+

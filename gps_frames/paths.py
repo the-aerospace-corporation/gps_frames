@@ -21,7 +21,7 @@ logger = getLogger(__name__)
 def get_distance_between_points(positions: List[Position]) -> List[float]:
     """Compute the distance between Positions in a list.
 
-    .. note:: Length of Return Object
+    !!! note "Length of Return Object"
         Because it requires two points to compute a distance, the length of
         the returned list is one element shorter than the input list.
 
@@ -53,7 +53,7 @@ def get_altitude_intersection_point(
     The purpose of this function is to calculate the point at which a vector,
     starting at the origin, will cross a specific altitude.
 
-    .. note:: Spherical Earth
+    !!! note "Spherical Earth"
         The function assumes a spherical Earth, not WGS84 ellipsoid
 
     Parameters
@@ -140,7 +140,7 @@ def get_point_closest_approach(
     start_point: Position,
     path_vector: Vector,
     elevation: float,
-    max_length: float = np.infty,
+    max_length: float = np.inf,
 ) -> Position:
     """Get the point along the path that is is closest to Earth.
 
@@ -158,7 +158,7 @@ def get_point_closest_approach(
         The elevation of the end point of the path relative to the start point
     max_length : float, optional
         The maximum distance from the start point to the point of closest
-        approach, by default infinity (np.infty). It is generally useful to
+        approach, by default infinity (np.inf). It is generally useful to
         specify that the length of the path is the maximum distance, otherwise
         this algorithm will find a point of closest approach beyond the end point.
 

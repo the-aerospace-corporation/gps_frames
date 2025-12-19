@@ -246,7 +246,7 @@ class Basis:
     def check_frames(self) -> None:
         """Ensure that the frames are consistent.
 
-        .. note:: LLA Frame
+        !!! note "LLA Frame"
             If the LLA frame is provided for the origin, will attempt to
             convert to the ECEF frame. Will log an error
 

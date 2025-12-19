@@ -71,7 +71,7 @@ class Position(SerializeableVector):
     def get_position(self, out_frame: str) -> Position:
         """Get a position object in new frame.
 
-        .. note:: New Object Created on Output
+        !!! note "New Object Created on Output"
             This function returns a new position object. It does not change
             the reference frame used in this object. Use `switch_frame()` to
             change the frame of the object.

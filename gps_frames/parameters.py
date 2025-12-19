@@ -18,7 +18,7 @@ References
 
 import os
 import numpy as np
-import pkg_resources
+import importlib.resources
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -184,7 +184,6 @@ class GPSparam:
     """
 
 
-@dataclass(init=False, repr=True, frozen=True)
 class GeoidData:
     """EGM-96 Geoid Model.
 
@@ -223,21 +222,19 @@ class GeoidData:
 
     """
 
-    # _this_dir, _ = os.path.split(__file__)
-    # _data_path = os.path.join(_this_dir, "geoid_data_1deg.npz")
-    _data_path = pkg_resources.resource_filename(__name__, "data/geoid_data_1deg.npz")
-    _geoid_data_npz = np.load(_data_path)
+    with importlib.resources.path("gps_frames.data", "geoid_data_1deg.npz") as _data_path:
+        _geoid_data_npz = np.load(_data_path)
 
-    latitudes: np.ndarray = _geoid_data_npz["latitudes"]
+    latitudes = _geoid_data_npz["latitudes"]
     """Geoid Grid latitudes (deg)"""
 
-    longitudes: np.ndarray = _geoid_data_npz["longitudes"]
+    longitudes = _geoid_data_npz["longitudes"]
     """Geoid Grid longitudes (deg)"""
 
-    geoid_heights: np.ndarray = _geoid_data_npz["geoid_heights"]
+    geoid_heights = _geoid_data_npz["geoid_heights"]
     """Geoid Heights in a grid (m)"""
 
-    _geoid_height_interpolator: Callable = interpolate.RectBivariateSpline(
+    _geoid_height_interpolator = interpolate.RectBivariateSpline(
         latitudes, longitudes, geoid_heights
     )
     """Interpolant for geoid height, arguments are (Lat,Long) in degrees"""

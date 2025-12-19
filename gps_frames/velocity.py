@@ -82,7 +82,8 @@ class Velocity:
     def update_frame_time(self, new_frame_time: GPSTime) -> None:
         """Change the reference time for the frame.
 
-        .. todo:: Placeholder
+        !!! quote "Todo"
+            Placeholder
             This is a placeholder that raises an error. It is not clear if
             this is needed in the future.
 
