@@ -1176,12 +1176,24 @@ python<span class="w"> </span>examples/case_study_satellite_tracking.py
 </code></pre></div></p>
 <h3 id="expected-output">Expected Output</h3>
 <p>The script will output contact times and angles. Example snippet:
-<div class="highlight"><pre><span></span><code>Pass 1: T+2.35h to T+6.10h (Duration: 225.0 min)
-...
-Maximum Elevation:
-  Value: 82.45 deg
-Off-Boresight Angle at Max Elevation:
-  Angle: 0.9841 deg
+<div class="highlight"><pre><span></span><code>================================================================
+            SATELLITE TRACKING CASE STUDY (OBJECT-ORIENTED)     
+================================================================
+
+Simulating 72 hours...
+
+Simulation Results:
+Total passes observed: 6
+Max Elevation: 68.87 deg at T+8.17h
+Off-Boresight Angle at Peak: 13.6053 deg
+
+Contact Windows (&gt;5 deg):
+  Pass 01:  5.83h to 10.52h (Duration: 281.0 min)
+  Pass 02: 17.80h to 22.48h (Duration: 281.0 min)
+  Pass 03: 29.77h to 34.45h (Duration: 281.0 min)
+  Pass 04: 41.73h to 46.42h (Duration: 281.0 min)
+  Pass 05: 53.70h to 58.38h (Duration: 281.0 min)
+  Pass 06: 65.67h to 70.35h (Duration: 281.0 min)
 </code></pre></div></p>
 <p>visualization plots will also be generated showing the Azimuth and Elevation profiles for all visible passes.</p>
 

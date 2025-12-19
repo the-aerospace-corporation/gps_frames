@@ -297,6 +297,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -938,6 +949,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1054,6 +1076,39 @@
 <p>This module can be installed using PyPI:
 <div class="highlight"><pre><span></span><code>pip install gps-frames
 </code></pre></div></p>
+<h2 id="quick-start">Quick Start</h2>
+<p>Here is a simple example of how to calculate the distance between a ground station and a satellite.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gps_time</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPSTime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gps_frames</span><span class="w"> </span><span class="kn">import</span> <span class="n">Position</span><span class="p">,</span> <span class="n">distance</span>
+
+<span class="c1"># 1. Define the time of interest</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">GPSTime</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># 2. Define a Ground Station (Los Angeles) in Geodetic coordinates (LLA)</span>
+<span class="n">ground_station</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">34.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]),</span> <span class="c1"># Lat (rad), Lon (rad), Alt (m)</span>
+    <span class="n">time</span><span class="p">,</span>
+    <span class="s2">&quot;LLA&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Define a Satellite (GPS) in ECEF coordinates</span>
+<span class="c1"># (Simplified position for demonstration)</span>
+<span class="n">satellite</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">15000e3</span><span class="p">,</span> <span class="mf">15000e3</span><span class="p">,</span> <span class="mf">15000e3</span><span class="p">]),</span> <span class="c1"># x, y, z in meters</span>
+    <span class="n">time</span><span class="p">,</span>
+    <span class="s2">&quot;ECEF&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. Calculate distance</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">ground_station</span><span class="p">,</span> <span class="n">satellite</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">dist</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5. Convert frames easily</span>
+<span class="n">ground_station_ecef</span> <span class="o">=</span> <span class="n">ground_station</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ground Station ECEF: </span><span class="si">{</span><span class="n">ground_station_ecef</span><span class="o">.</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="running-tests">Running Tests</h2>
 <p>This module includes tests for all of the major functionality. To run the tests, you can use the commands in the makefile <code>make test</code>. Because some of the functions use JIT compilation via Numba, <code>make test-nojit</code> runs all of the tests without JIT compilation to enable better code coverage analysis.</p>
 <h2 id="using-gps_frames">Using gps_frames</h2>
