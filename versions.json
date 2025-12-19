@@ -15,6 +15,11 @@
     "aliases": []
   },
   {
+    "version": "dev-fix-badge-on-pypi",
+    "title": "dev-fix-badge-on-pypi",
+    "aliases": []
+  },
+  {
     "version": "v3.0.0",
     "title": "v3.0.0",
     "aliases": []
