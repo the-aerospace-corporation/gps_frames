@@ -35,9 +35,9 @@ jobs:
       - name: Deploy with mike
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" || "${{ github.ref }}" == "refs/heads/master" ]]; then
-            mike deploy --push --update-aliases --debug latest
-            mike set-default --push --debug latest
+            mike --debug deploy --push --update-aliases latest
+            mike --debug set-default --push latest
           else
             BRANCH_URL=$(echo ${{ github.ref_name }} | sed 's/\//-/g')
-            mike deploy --push --debug $BRANCH_URL
+            mike --debug deploy --push $BRANCH_URL
           fi
