@@ -288,6 +288,7 @@ def main() -> None:
     plt.ylabel("Elevation [deg]")
     plt.title("Satellite Visibility - Topocentric Angles")
     plt.grid(True)
+    plt.xticks(np.arange(0, duration_hours + 1, 12))
     plt.legend()
 
     plt.subplot(2, 1, 2)
@@ -300,6 +301,7 @@ def main() -> None:
     plt.ylabel("Azimuth [deg]")
     plt.xlabel("Time since Epoch [hours]")
     plt.grid(True)
+    plt.xticks(np.arange(0, duration_hours + 1, 12))
 
     plt.tight_layout()
     plt.show()

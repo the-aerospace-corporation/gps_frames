@@ -18,7 +18,21 @@ pip install gps-frames
 This module includes tests for all of the major functionality. To run the tests, you can use the commands in the makefile `make test`. Because some of the functions use JIT compilation via Numba, `make test-nojit` runs all of the tests without JIT compilation to enable better code coverage analysis.
 
 ## Using gps_frames
-To motivating use case of this module is it determine distances between two points in space while accounting for non-inertial reference frames and non-simultaneous position measures. The basic functionality is demonstrated in `examples/example.py`.ma
+The motivating use case of this module is to determine distances between two points in space while accounting for non-inertial reference frames and non-simultaneous position measures.
+The `examples/` directory contains scripts demonstrating the library's capabilities:
+
+*   **`examples/example.py`**: A basic walkthrough of creating Positions, checking visibility, and calculating ranges/azimuths.
+*   **`examples/case_study_satellite_tracking.py`**: An advanced case study simulating a 3-day satellite pass from a ground station, demonstrating orbit propagation, coordinate frame rotations, and custom basis projections.
+
+To run the examples:
+```bash
+# Basic example
+python examples/example.py
+
+# Advanced Case Study (requires matplotlib)
+pip install .[examples]
+python examples/case_study_satellite_tracking.py
+```
 
 Note: When first run, gps-frames has significant overhead due to JIT compliation. This should only occur on the first run. Additionally, you may see `NumbaPerformanceWarning` messages related to the `@` (matrix multiplication) operator. These can be disregarded and should only appear the first time gps-frames is run.
 
