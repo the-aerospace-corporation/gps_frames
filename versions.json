@@ -13,5 +13,10 @@
     "version": "dev-fix-docs",
     "title": "dev-fix-docs",
     "aliases": []
+  },
+  {
+    "version": "v3.0.0",
+    "title": "v3.0.0",
+    "aliases": []
   }
 ]
