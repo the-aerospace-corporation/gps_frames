@@ -109,7 +109,7 @@ def test_standard_rotation_matrix_and_rates():
 def test_rotation_init_axis_angle_positional():
     """Test Rotation initialization with positional axis and angle."""
     # Rotate 90 deg (pi/2) around Z axis [0,0,1]
-    axis = np.array([0, 0, 1])
+    axis = np.array([0.0, 0.0, 1.0])
     angle = np.pi/2
     
     # Init with 2 positional args
