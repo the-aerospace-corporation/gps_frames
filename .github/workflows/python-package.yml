@@ -54,9 +54,17 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test without numba JIT
+      env:
+        NUMBA_DISABLE_JIT: 1
       run: |
         python -m pytest --cov=gps_frames --cov-report term-missing tests
+
+    - name: Test with numba JIT
+      env:
+        NUMBA_DISABLE_JIT: 0
+      run: |
+        python -m pytest tests
 
   build-branch:
     name: Build Branch (Reduced)
@@ -105,9 +113,17 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Test without numba JIT
+      env:
+        NUMBA_DISABLE_JIT: 1
       run: |
         python -m pytest --cov=gps_frames --cov-report term-missing tests
+
+    - name: Test with numba JIT
+      env:
+        NUMBA_DISABLE_JIT: 0
+      run: |
+        python -m pytest tests
 
   coverage:
     # Run absolute coverage every time, independent of build matrix to save time/dependencies
@@ -127,7 +143,7 @@ jobs:
         python -m pip install pytest pytest-cov genbadge[coverage]
         python -m pip install .
         
-    - name: Build coverage report
+    - name: Build coverage report (without numba JIT)
       env:
         NUMBA_DISABLE_JIT: 1
       run: |
