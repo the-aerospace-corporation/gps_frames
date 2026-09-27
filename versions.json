@@ -10,6 +10,11 @@
     "aliases": []
   },
   {
+    "version": "dev-fix-numba-warnings",
+    "title": "dev-fix-numba-warnings",
+    "aliases": []
+  },
+  {
     "version": "dev-fix-docs",
     "title": "dev-fix-docs",
     "aliases": []
