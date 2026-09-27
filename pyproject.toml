@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gps_frames"
-version = "3.0.0"
+version = "3.0.1"
 description = "Reference frames representations and transformations"
 readme = "README.md"
 authors = [

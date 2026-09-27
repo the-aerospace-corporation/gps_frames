@@ -163,7 +163,7 @@ class Rotation:
                 _dcm = quaternion2direction_cosine_matrix(_quaternion)
 
         self._check_dcm(_dcm)
-        self._rotator = _Rotator(np.array(_dcm, dtype=float))
+        self._rotator = _Rotator(np.ascontiguousarray(_dcm, dtype=float))
 
     @staticmethod
     def _check_dcm(dcm: np.ndarray) -> None:
@@ -204,11 +204,11 @@ class Rotation:
             The vector rotated into the new frame
 
         """
-        return self._rotator.rotate(np.array(vector, dtype=float))
+        return self._rotator.rotate(np.ascontiguousarray(vector, dtype=float))
 
 
 _rotator_spec = [
-    ("dcm", float64[:, :]),
+    ("dcm", float64[:, ::1]),
 ]
 """The numba specification for the _Rotator jitclass."""
 
@@ -228,7 +228,7 @@ class _Rotator:
 
     Attributes
     ----------
-    dcm : np.ndarray (float64[:, :])
+    dcm : np.ndarray (float64[:, ::1])
         The direction cosine matrix
 
     """
@@ -241,7 +241,7 @@ class _Rotator:
         dcm : np.ndarray
             The direction cosine matrix.
         """
-        self.dcm = dcm
+        self.dcm = np.ascontiguousarray(dcm)
 
     def rotate(self, vector: np.ndarray) -> np.ndarray:
         """Rotate a vector by the direction cosine matrix.
@@ -257,6 +257,7 @@ class _Rotator:
             The vector in the new frame.
 
         """
+        vector = np.ascontiguousarray(vector)
         return self.dcm @ vector
         # # If issues occur, switch to this, which is the expansion of matrix
         # # multiplication.
@@ -654,6 +655,7 @@ def standard_rotation(
         The vector rotated to the new frame
 
     """
+    vector = np.ascontiguousarray(vector)
     _c = np.cos(angle)
     _s = np.sin(angle)
 
@@ -833,7 +835,7 @@ def standard_rotation_matrix_rates(
         raise ValueError("rotation_axis must be 1, 2, or 3")
 
 
-@jit("float64[:, :](float64, float64, float64)", nopython=True, cache=True)
+@jit("float64[:, ::1](float64, float64, float64)", nopython=True, cache=True)
 def roll_pitch_yaw_matrix(
     roll_angle: float, pitch_angle: float, yaw_angle: float
 ) -> np.ndarray:
@@ -950,5 +952,5 @@ def roll_pitch_yaw(
         The vector rotated to the new frame
 
     """
-
+    vector = np.ascontiguousarray(vector)
     return roll_pitch_yaw_matrix(roll_angle, pitch_angle, yaw_angle) @ vector

@@ -5,7 +5,7 @@ authors:
   given-names: "David William"
   email: "david.w.allen@aero.org"
 title: "gps_frames"
-version: 3.0.0
+version: 3.0.1
 url: "https://github.com/the-aerospace-corporation/gps_frames"
 license: "AGPL-3.0"
 abstract: "Reference frame representation, transformations, and operations for GPS."
