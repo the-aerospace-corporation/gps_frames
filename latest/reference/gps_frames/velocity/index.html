@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1221,7 +1221,7 @@ raises an error if called</p>
 <span class="normal">101</span>
 <span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Velocity</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dfines the velocity of an object.</span>
+<span class="w">    </span><span class="sd">"""Dfines the velocity of an object.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -1241,18 +1241,18 @@ raises an error if called</p>
 <span class="sd">        The `update_frame_time()` is currently only a placeholder, so it</span>
 <span class="sd">        raises an error if called</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">position</span><span class="p">:</span> <span class="n">Position</span>
     <span class="n">velocity</span><span class="p">:</span> <span class="n">Vector</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize positions.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Initialize positions."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Velocity</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the velocity in a specified frame.</span>
+<span class="w">        </span><span class="sd">"""Get the velocity in a specified frame.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1264,7 +1264,7 @@ raises an error if called</p>
 <span class="sd">        Velocity</span>
 <span class="sd">            Velocity in specified frame</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span>
         <span class="n">new_components</span> <span class="o">=</span> <span class="n">velocity_transform</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
@@ -1283,9 +1283,9 @@ raises an error if called</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">new_position</span><span class="p">,</span> <span class="n">velocity</span><span class="o">=</span><span class="n">new_velocity</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">        </span><span class="sd">"""Change the reference time for the frame.</span>
 
-<span class="sd">        !!! quote &quot;Todo&quot;</span>
+<span class="sd">        !!! quote "Todo"</span>
 <span class="sd">            Placeholder</span>
 <span class="sd">            This is a placeholder that raises an error. It is not clear if</span>
 <span class="sd">            this is needed in the future.</span>
@@ -1301,8 +1301,8 @@ raises an error if called</p>
 <span class="sd">        new_frame_time : GPSTime</span>
 <span class="sd">            The new frame reference time</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Placeholder for to mark future needs&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Placeholder for to mark future needs"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -1339,7 +1339,7 @@ raises an error if called</p>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize positions.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Initialize positions."""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1453,7 +1453,7 @@ raises an error if called</p>
 <span class="normal">78</span>
 <span class="normal">79</span>
 <span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Velocity</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the velocity in a specified frame.</span>
+<span class="w">    </span><span class="sd">"""Get the velocity in a specified frame.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1465,7 +1465,7 @@ raises an error if called</p>
 <span class="sd">    Velocity</span>
 <span class="sd">        Velocity in specified frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span>
     <span class="n">new_components</span> <span class="o">=</span> <span class="n">velocity_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
@@ -1566,9 +1566,9 @@ frame at the new reference time.</p>
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">    </span><span class="sd">"""Change the reference time for the frame.</span>
 
-<span class="sd">    !!! quote &quot;Todo&quot;</span>
+<span class="sd">    !!! quote "Todo"</span>
 <span class="sd">        Placeholder</span>
 <span class="sd">        This is a placeholder that raises an error. It is not clear if</span>
 <span class="sd">        this is needed in the future.</span>
@@ -1584,8 +1584,8 @@ frame at the new reference time.</p>
 <span class="sd">    new_frame_time : GPSTime</span>
 <span class="sd">        The new frame reference time</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Placeholder for to mark future needs&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Placeholder for to mark future needs"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1660,7 +1660,7 @@ frame at the new reference time.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

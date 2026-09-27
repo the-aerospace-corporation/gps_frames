@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1751,7 +1751,7 @@ in various reference frames.</p>
 <span class="normal">156</span>
 <span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">SerializeableVector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vector to serialize numpy arrays human readable.</span>
+<span class="w">    </span><span class="sd">"""Vector to serialize numpy arrays human readable.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -1762,16 +1762,16 @@ in various reference frames.</p>
 <span class="sd">    frame : str</span>
 <span class="sd">        The frame in which the vector is defined</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">frame_time</span><span class="p">:</span> <span class="n">GPSTime</span>
     <span class="n">frame</span><span class="p">:</span> <span class="nb">str</span>
 
-    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;!SerializeableVector&quot;</span>
+    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"!SerializeableVector"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Nothing.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Nothing."""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
 
@@ -1780,13 +1780,13 @@ in various reference frames.</p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many dimensions for coordinates&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Too many dimensions for coordinates"</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_yaml</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">representer</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Representer</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">SerializeableVector</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the class into a mapping node for serialzation.</span>
+<span class="w">        </span><span class="sd">"""Convert the class into a mapping node for serialzation.</span>
 
 <span class="sd">        Takes the attributes of the class and converts them to ScalarNode</span>
 <span class="sd">        used in a ruamel.yaml MappingNode to dump the object in a specific</span>
@@ -1806,14 +1806,14 @@ in various reference frames.</p>
 <span class="sd">            A mapping node which describes to the yaml dumper how to serialize</span>
 <span class="sd">            the object</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">coordinates</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">representer</span><span class="o">.</span><span class="n">represent_mapping</span><span class="p">(</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_tag</span><span class="p">,</span>
             <span class="p">{</span>
-                <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
-                <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(),</span>
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">,</span>
+                <span class="s2">"frame"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
+                <span class="s2">"frame_time"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(),</span>
+                <span class="s2">"coordinates"</span><span class="p">:</span> <span class="n">coords</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">)</span>
 
@@ -1821,7 +1821,7 @@ in various reference frames.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_yaml</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">constructor</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Constructor</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SerializeableVector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a class from a MappingNode.</span>
+<span class="w">        </span><span class="sd">"""Construct a class from a MappingNode.</span>
 
 <span class="sd">        This method is called when using yaml.load if the</span>
 <span class="sd">        SerializeableVector class has been registered to the</span>
@@ -1841,25 +1841,25 @@ in various reference frames.</p>
 <span class="sd">        SerializeableVector</span>
 <span class="sd">            Instance of serialized class</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
         <span class="n">coordinates</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">frame_time</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">frame</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)):</span>
             <span class="n">node_name</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-            <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"coordinates"</span><span class="p">:</span>
                 <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">constructor</span><span class="o">.</span><span class="n">construct_sequence</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
-            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;frame&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"frame"</span><span class="p">:</span>
                 <span class="n">frame</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_scalar</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"frame_time"</span><span class="p">:</span>
                 <span class="n">frame_time</span> <span class="o">=</span> <span class="n">GPSTime</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span>
                     <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">frame_time</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">SerializeableVector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check equality.</span>
+<span class="w">        </span><span class="sd">"""Check equality.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1870,7 +1870,7 @@ in various reference frames.</p>
 <span class="sd">        -------</span>
 <span class="sd">        bool</span>
 <span class="sd">            True if the two are equal</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">frame_time</span>
@@ -1878,11 +1878,11 @@ in various reference frames.</p>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create hash.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Create hash."""</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">))</span>
-            <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -1993,7 +1993,7 @@ in various reference frames.</p>
 <span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">SerializeableVector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check equality.</span>
+<span class="w">    </span><span class="sd">"""Check equality.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2004,7 +2004,7 @@ in various reference frames.</p>
 <span class="sd">    -------</span>
 <span class="sd">    bool</span>
 <span class="sd">        True if the two are equal</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">frame_time</span>
@@ -2039,11 +2039,11 @@ in various reference frames.</p>
 <span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create hash.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create hash."""</span>
     <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">))</span>
-        <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
+        <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2078,7 +2078,7 @@ in various reference frames.</p>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nothing.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Nothing."""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
 
@@ -2087,7 +2087,7 @@ in various reference frames.</p>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many dimensions for coordinates&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Too many dimensions for coordinates"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2251,7 +2251,7 @@ ruamel.yaml.YAML object</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_yaml</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">constructor</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Constructor</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SerializeableVector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct a class from a MappingNode.</span>
+<span class="w">    </span><span class="sd">"""Construct a class from a MappingNode.</span>
 
 <span class="sd">    This method is called when using yaml.load if the</span>
 <span class="sd">    SerializeableVector class has been registered to the</span>
@@ -2271,18 +2271,18 @@ ruamel.yaml.YAML object</p>
 <span class="sd">    SerializeableVector</span>
 <span class="sd">        Instance of serialized class</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
     <span class="n">coordinates</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">frame_time</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)):</span>
         <span class="n">node_name</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-        <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"coordinates"</span><span class="p">:</span>
             <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">constructor</span><span class="o">.</span><span class="n">construct_sequence</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;frame&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"frame"</span><span class="p">:</span>
             <span class="n">frame</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_scalar</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"frame_time"</span><span class="p">:</span>
             <span class="n">frame_time</span> <span class="o">=</span> <span class="n">GPSTime</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span>
                 <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
             <span class="p">)</span>
@@ -2430,7 +2430,7 @@ the object</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_yaml</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span> <span class="n">representer</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Representer</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">SerializeableVector</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert the class into a mapping node for serialzation.</span>
+<span class="w">    </span><span class="sd">"""Convert the class into a mapping node for serialzation.</span>
 
 <span class="sd">    Takes the attributes of the class and converts them to ScalarNode</span>
 <span class="sd">    used in a ruamel.yaml MappingNode to dump the object in a specific</span>
@@ -2450,14 +2450,14 @@ the object</p>
 <span class="sd">        A mapping node which describes to the yaml dumper how to serialize</span>
 <span class="sd">        the object</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">coordinates</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">representer</span><span class="o">.</span><span class="n">represent_mapping</span><span class="p">(</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_tag</span><span class="p">,</span>
         <span class="p">{</span>
-            <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
-            <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(),</span>
-            <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">,</span>
+            <span class="s2">"frame"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
+            <span class="s2">"frame_time"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(),</span>
+            <span class="s2">"coordinates"</span><span class="p">:</span> <span class="n">coords</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2677,7 +2677,7 @@ the object</p>
 <span class="normal">532</span>
 <span class="normal">533</span>
 <span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnitVector</span><span class="p">(</span><span class="n">Vector</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represention of a unit vector.</span>
+<span class="w">    </span><span class="sd">"""Represention of a unit vector.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -2688,22 +2688,22 @@ the object</p>
 <span class="sd">    frame : str</span>
 <span class="sd">        The name of the frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;!SerializeableVector.Vector.UnitVector&quot;</span>
+    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"!SerializeableVector.Vector.UnitVector"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run post-init checks.</span>
+<span class="w">        </span><span class="sd">"""Run post-init checks.</span>
 
 <span class="sd">        Ensure vector is normalized</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_vector</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitVector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recast a vector as a unit vector.</span>
+<span class="w">        </span><span class="sd">"""Recast a vector as a unit vector.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2715,17 +2715,17 @@ the object</p>
 <span class="sd">        UnitVector</span>
 <span class="sd">            The vector normalized to a unit vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">vector</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">vector</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize the Unit Vector to a magnitude of 1.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Normalize the Unit Vector to a magnitude of 1."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">_norm_numba</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_unit_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitVector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a unit vector object in new frame.</span>
+<span class="w">        </span><span class="sd">"""Get a unit vector object in new frame.</span>
 
-<span class="sd">        !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">        !!! note "New Object Created on Output"</span>
 <span class="sd">            This function returns a new `UnitVector` object. It does not change</span>
 <span class="sd">            the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">            change the frame of the object.</span>
@@ -2745,23 +2745,23 @@ the object</p>
 <span class="sd">        switch_frame: Change the frame that the unit vector is interally</span>
 <span class="sd">            expressed in</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_vector</span><span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">out_frame</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this unit vector internally.</span>
+<span class="w">        </span><span class="sd">"""Change the frame used to store this unit vector internally.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        to_frame : str</span>
 <span class="sd">            The desired new frame</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply UnitVector by a float (scale it to a Vector).</span>
+<span class="w">        </span><span class="sd">"""Multiply UnitVector by a float (scale it to a Vector).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2778,22 +2778,22 @@ the object</p>
 <span class="sd">        TypeError</span>
 <span class="sd">            If other is not a float</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">*</span> <span class="n">other</span>
         <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create hash.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Create hash."""</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">))</span>
-            <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -2834,11 +2834,11 @@ the object</p>
 <span class="normal">532</span>
 <span class="normal">533</span>
 <span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create hash.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create hash."""</span>
     <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">))</span>
-        <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
+        <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">_coord</span><span class="p">)</span> <span class="k">for</span> <span class="n">_coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">])</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2971,7 +2971,7 @@ the object</p>
 <span class="normal">524</span>
 <span class="normal">525</span>
 <span class="normal">526</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply UnitVector by a float (scale it to a Vector).</span>
+<span class="w">    </span><span class="sd">"""Multiply UnitVector by a float (scale it to a Vector).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2988,12 +2988,12 @@ the object</p>
 <span class="sd">    TypeError</span>
 <span class="sd">        If other is not a float</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">other</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">*</span> <span class="n">other</span>
     <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
@@ -3028,11 +3028,11 @@ the object</p>
 <span class="normal">437</span>
 <span class="normal">438</span>
 <span class="normal">439</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run post-init checks.</span>
+<span class="w">    </span><span class="sd">"""Run post-init checks.</span>
 
 <span class="sd">    Ensure vector is normalized</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -3142,7 +3142,7 @@ the object</p>
 <span class="normal">455</span>
 <span class="normal">456</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_vector</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitVector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recast a vector as a unit vector.</span>
+<span class="w">    </span><span class="sd">"""Recast a vector as a unit vector.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3154,7 +3154,7 @@ the object</p>
 <span class="sd">    UnitVector</span>
 <span class="sd">        The vector normalized to a unit vector</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">vector</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">vector</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3274,9 +3274,9 @@ change the frame of the object.</p>
 <span class="normal">484</span>
 <span class="normal">485</span>
 <span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_unit_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitVector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a unit vector object in new frame.</span>
+<span class="w">    </span><span class="sd">"""Get a unit vector object in new frame.</span>
 
-<span class="sd">    !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">    !!! note "New Object Created on Output"</span>
 <span class="sd">        This function returns a new `UnitVector` object. It does not change</span>
 <span class="sd">        the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">        change the frame of the object.</span>
@@ -3296,7 +3296,7 @@ change the frame of the object.</p>
 <span class="sd">    switch_frame: Change the frame that the unit vector is interally</span>
 <span class="sd">        expressed in</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_vector</span><span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="n">out_frame</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3323,7 +3323,7 @@ change the frame of the object.</p>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">458</span>
 <span class="normal">459</span>
 <span class="normal">460</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize the Unit Vector to a magnitude of 1.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Normalize the Unit Vector to a magnitude of 1."""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">_norm_numba</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3389,14 +3389,14 @@ change the frame of the object.</p>
 <span class="normal">496</span>
 <span class="normal">497</span>
 <span class="normal">498</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this unit vector internally.</span>
+<span class="w">    </span><span class="sd">"""Change the frame used to store this unit vector internally.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    to_frame : str</span>
 <span class="sd">        The desired new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -3705,29 +3705,29 @@ change the frame of the object.</p>
 <span class="normal">412</span>
 <span class="normal">413</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Vector</span><span class="p">(</span><span class="n">SerializeableVector</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Representation of a vector.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Representation of a vector."""</span>
 
-    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;!SerializeableVector.Vector&quot;</span>
+    <span class="n">yaml_tag</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"!SerializeableVector.Vector"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run post-init checks.</span>
+<span class="w">        </span><span class="sd">"""Run post-init checks.</span>
 
 <span class="sd">        Ensure that the coordinates are a numpy array and is not in the LLA</span>
 <span class="sd">        frame to avoid numerical issues</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ECEF&quot;</span><span class="p">,</span> <span class="s2">&quot;ECI&quot;</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors must be defined in either the ECI or ECEF frame&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"ECEF"</span><span class="p">,</span> <span class="s2">"ECI"</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors must be defined in either the ECI or ECEF frame"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a vector object in new frame.</span>
+<span class="w">        </span><span class="sd">"""Get a vector object in new frame.</span>
 
-<span class="sd">        !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">        !!! note "New Object Created on Output"</span>
 <span class="sd">            This function returns a new `Vector` object. It does not change</span>
 <span class="sd">            the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">            change the frame of the object.</span>
@@ -3747,9 +3747,9 @@ change the frame of the object.</p>
 <span class="sd">        switch_frame: Change the frame that the vector is interally</span>
 <span class="sd">            expressed in</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">out_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">out_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
@@ -3760,16 +3760,16 @@ change the frame of the object.</p>
         <span class="k">return</span> <span class="n">new_vector</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this vector internally.</span>
+<span class="w">        </span><span class="sd">"""Change the frame used to store this vector internally.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        to_frame : str</span>
 <span class="sd">            The desired new frame</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
@@ -3779,7 +3779,7 @@ change the frame of the object.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">to_frame</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">        </span><span class="sd">"""Change the reference time for the frame.</span>
 
 <span class="sd">        Reference frames can be time dependant. This method is used to change</span>
 <span class="sd">        the time reference for a reference frame.</span>
@@ -3792,21 +3792,21 @@ change the frame of the object.</p>
 <span class="sd">        new_frame_time : GPSTime</span>
 <span class="sd">            The new frame reference time</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="n">delta_weeks</span> <span class="o">=</span> <span class="n">new_frame_time</span><span class="o">.</span><span class="n">week_number</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">week_number</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">add_weeks_eci</span><span class="p">(</span><span class="n">delta_weeks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">cross_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cross Product.</span>
+<span class="w">        </span><span class="sd">"""Cross Product.</span>
 
 <span class="sd">        Take the cross product of one vector with respect to annother</span>
 
@@ -3820,7 +3820,7 @@ change the frame of the object.</p>
 <span class="sd">        Vector</span>
 <span class="sd">            self cross other</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
         <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -3829,7 +3829,7 @@ change the frame of the object.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dot Product.</span>
+<span class="w">        </span><span class="sd">"""Dot Product.</span>
 
 <span class="sd">        Take the dot product of one vector with repsect to another</span>
 
@@ -3850,7 +3850,7 @@ change the frame of the object.</p>
 <span class="sd">        TypeError</span>
 <span class="sd">            If the other is not a `Vector` or `np.ndarray`</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
             <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
             <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
@@ -3859,24 +3859,24 @@ change the frame of the object.</p>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="n">_coordinates</span> <span class="o">=</span> <span class="n">other</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a Vector of Numpy array&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a Vector of Numpy array"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">_coordinates</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the magnitude of the vector.</span>
+<span class="w">        </span><span class="sd">"""Get the magnitude of the vector.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
 <span class="sd">            The magnitude of the vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Negation Operator.</span>
+<span class="w">        </span><span class="sd">"""Negation Operator.</span>
 
 <span class="sd">        This flips the direction of the vector</span>
 
@@ -3885,11 +3885,11 @@ change the frame of the object.</p>
 <span class="sd">        Vector</span>
 <span class="sd">            A new vector with the coordinates flipped</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add two vectors.</span>
+<span class="w">        </span><span class="sd">"""Add two vectors.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3901,7 +3901,7 @@ change the frame of the object.</p>
 <span class="sd">        Vector</span>
 <span class="sd">            New vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
         <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -3910,7 +3910,7 @@ change the frame of the object.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract two vectors.</span>
+<span class="w">        </span><span class="sd">"""Subtract two vectors.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3922,7 +3922,7 @@ change the frame of the object.</p>
 <span class="sd">        Vector</span>
 <span class="sd">            New vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
         <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -3931,7 +3931,7 @@ change the frame of the object.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply vector by an integer (scale it).</span>
+<span class="w">        </span><span class="sd">"""Multiply vector by an integer (scale it).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -3948,12 +3948,12 @@ change the frame of the object.</p>
 <span class="sd">        TypeError</span>
 <span class="sd">            If other is not a float</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">*</span> <span class="n">other</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
@@ -4118,7 +4118,7 @@ change the frame of the object.</p>
 <span class="normal">362</span>
 <span class="normal">363</span>
 <span class="normal">364</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add two vectors.</span>
+<span class="w">    </span><span class="sd">"""Add two vectors.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -4130,7 +4130,7 @@ change the frame of the object.</p>
 <span class="sd">    Vector</span>
 <span class="sd">        New vector</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
     <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -4268,7 +4268,7 @@ change the frame of the object.</p>
 <span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply vector by an integer (scale it).</span>
+<span class="w">    </span><span class="sd">"""Multiply vector by an integer (scale it).</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -4285,12 +4285,12 @@ change the frame of the object.</p>
 <span class="sd">    TypeError</span>
 <span class="sd">        If other is not a float</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">other</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"other value must be a float. IS: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">*</span> <span class="n">other</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
@@ -4357,7 +4357,7 @@ change the frame of the object.</p>
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Negation Operator.</span>
+<span class="w">    </span><span class="sd">"""Negation Operator.</span>
 
 <span class="sd">    This flips the direction of the vector</span>
 
@@ -4366,7 +4366,7 @@ change the frame of the object.</p>
 <span class="sd">    Vector</span>
 <span class="sd">        A new vector with the coordinates flipped</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -4406,19 +4406,19 @@ frame to avoid numerical issues</p>
 <span class="normal">177</span>
 <span class="normal">178</span>
 <span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run post-init checks.</span>
+<span class="w">    </span><span class="sd">"""Run post-init checks.</span>
 
 <span class="sd">    Ensure that the coordinates are a numpy array and is not in the LLA</span>
 <span class="sd">    frame to avoid numerical issues</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ECEF&quot;</span><span class="p">,</span> <span class="s2">&quot;ECI&quot;</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors must be defined in either the ECI or ECEF frame&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"ECEF"</span><span class="p">,</span> <span class="s2">"ECI"</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors must be defined in either the ECI or ECEF frame"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4525,7 +4525,7 @@ frame to avoid numerical issues</p>
 <span class="normal">383</span>
 <span class="normal">384</span>
 <span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subtract two vectors.</span>
+<span class="w">    </span><span class="sd">"""Subtract two vectors.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -4537,7 +4537,7 @@ frame to avoid numerical issues</p>
 <span class="sd">    Vector</span>
 <span class="sd">        New vector</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
     <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -4653,7 +4653,7 @@ frame to avoid numerical issues</p>
 <span class="normal">281</span>
 <span class="normal">282</span>
 <span class="normal">283</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">cross_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cross Product.</span>
+<span class="w">    </span><span class="sd">"""Cross Product.</span>
 
 <span class="sd">    Take the cross product of one vector with respect to annother</span>
 
@@ -4667,7 +4667,7 @@ frame to avoid numerical issues</p>
 <span class="sd">    Vector</span>
 <span class="sd">        self cross other</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
     <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
 
@@ -4815,7 +4815,7 @@ assumed to already be in the correct frame.</p>
 <span class="normal">316</span>
 <span class="normal">317</span>
 <span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dot Product.</span>
+<span class="w">    </span><span class="sd">"""Dot Product.</span>
 
 <span class="sd">    Take the dot product of one vector with repsect to another</span>
 
@@ -4836,7 +4836,7 @@ assumed to already be in the correct frame.</p>
 <span class="sd">    TypeError</span>
 <span class="sd">        If the other is not a `Vector` or `np.ndarray`</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
         <span class="n">other_vector</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
         <span class="n">other_vector</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
@@ -4845,7 +4845,7 @@ assumed to already be in the correct frame.</p>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="n">_coordinates</span> <span class="o">=</span> <span class="n">other</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a Vector of Numpy array&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a Vector of Numpy array"</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">_coordinates</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -4975,9 +4975,9 @@ change the frame of the object.</p>
 <span class="normal">212</span>
 <span class="normal">213</span>
 <span class="normal">214</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a vector object in new frame.</span>
+<span class="w">    </span><span class="sd">"""Get a vector object in new frame.</span>
 
-<span class="sd">    !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">    !!! note "New Object Created on Output"</span>
 <span class="sd">        This function returns a new `Vector` object. It does not change</span>
 <span class="sd">        the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">        change the frame of the object.</span>
@@ -4997,9 +4997,9 @@ change the frame of the object.</p>
 <span class="sd">    switch_frame: Change the frame that the vector is interally</span>
 <span class="sd">        expressed in</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">out_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">out_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
@@ -5079,16 +5079,16 @@ change the frame of the object.</p>
 <span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this vector internally.</span>
+<span class="w">    </span><span class="sd">"""Change the frame used to store this vector internally.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    to_frame : str</span>
 <span class="sd">        The desired new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vectors cannot be defined in the LLA frame&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Vectors cannot be defined in the LLA frame"</span><span class="p">)</span>
 
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
@@ -5179,7 +5179,7 @@ the frame at the new reference time.</p>
 <span class="normal">258</span>
 <span class="normal">259</span>
 <span class="normal">260</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">    </span><span class="sd">"""Change the reference time for the frame.</span>
 
 <span class="sd">    Reference frames can be time dependant. This method is used to change</span>
 <span class="sd">    the time reference for a reference frame.</span>
@@ -5192,14 +5192,14 @@ the frame at the new reference time.</p>
 <span class="sd">    new_frame_time : GPSTime</span>
 <span class="sd">        The new frame reference time</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
         <span class="n">delta_weeks</span> <span class="o">=</span> <span class="n">new_frame_time</span><span class="o">.</span><span class="n">week_number</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">week_number</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">add_weeks_eci</span><span class="p">(</span><span class="n">delta_weeks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
         <span class="p">)</span>
@@ -5278,7 +5278,7 @@ the frame at the new reference time.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

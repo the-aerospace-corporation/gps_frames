@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1381,9 +1381,9 @@ by default 100e3</p>
     <span class="n">transition_altitude_m</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
     <span class="n">elevation_mask_angle_rad</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Determine if position2 is visiable from position1.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Determine if position2 is visiable from position1.</span>
 
-<span class="sd">    !!! note &quot;Assumptions&quot;</span>
+<span class="sd">    !!! note "Assumptions"</span>
 <span class="sd">        This function is meant to be a quick check of Earth obscuration. As</span>
 <span class="sd">        such, it does not account for things like time delays, signal</span>
 <span class="sd">        refraction, or a non-spherical Earth. All calculations are done under</span>
@@ -1401,13 +1401,13 @@ by default 100e3</p>
 <span class="sd">    the center of the Earth. For the purposes of determining the angle to the</span>
 <span class="sd">    horizon, let the adjusted radius of the Earth be</span>
 <span class="sd">    $$</span>
-<span class="sd">        R_{\oplus}&#39; = R_{\oplus} - \delta R</span>
+<span class="sd">        R_{\oplus}' = R_{\oplus} - \delta R</span>
 <span class="sd">    $$</span>
 <span class="sd">    where \(R_{\oplus}\) is the actual radius of the Earth and \(\delta R\)</span>
 <span class="sd">    is a correction factor for the radius. Thus the angle between the nadir</span>
 <span class="sd">    vector from position 1 to the limb is</span>
 <span class="sd">    $$</span>
-<span class="sd">        \lambda = \sin^{-1} \left(\frac{R_{\oplus}&#39;}{r}\right)</span>
+<span class="sd">        \lambda = \sin^{-1} \left(\frac{R_{\oplus}'}{r}\right)</span>
 <span class="sd">    $$</span>
 <span class="sd">    Let the angle from the anti-nadir vector of position 1 to position 2 be</span>
 <span class="sd">    \(\psi\). Position 2 will be above the horizon if</span>
@@ -1460,11 +1460,11 @@ by default 100e3</p>
 <span class="sd">    bool</span>
 <span class="sd">        True if the position2 is visible from position1</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">earth_adjustment_m</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
-            <span class="s2">&quot;Earth Obscuration: Earth Radius Adjustment is negative, which &quot;</span>
-            <span class="s2">&quot;makes Earth larger.&quot;</span>
+            <span class="s2">"Earth Obscuration: Earth Radius Adjustment is negative, which "</span>
+            <span class="s2">"makes Earth larger."</span>
         <span class="p">)</span>
 
     <span class="n">elevation_mask_angle_rad</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
@@ -1625,7 +1625,7 @@ basis provided.</p>
 <span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_azimuth_elevation</span><span class="p">(</span>
     <span class="n">enu_basis</span><span class="p">:</span> <span class="n">Basis</span><span class="p">,</span> <span class="n">target_position</span><span class="p">:</span> <span class="n">Position</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the azimuth and elevation of a target relative to a basis.</span>
+<span class="w">    </span><span class="sd">"""Get the azimuth and elevation of a target relative to a basis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1640,7 +1640,7 @@ basis provided.</p>
 <span class="sd">        The (1) azimuth and (2) elevation of the target relative to ENU</span>
 <span class="sd">        basis provided.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">azimuth</span><span class="p">,</span> <span class="n">elevation</span> <span class="o">=</span> <span class="n">get_range_azimuth_elevation</span><span class="p">(</span><span class="n">enu_basis</span><span class="p">,</span> <span class="n">target_position</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">azimuth</span><span class="p">,</span> <span class="n">elevation</span>
@@ -1759,7 +1759,7 @@ basis provided.</p>
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_east_north_up_basis</span><span class="p">(</span><span class="n">position</span><span class="p">:</span> <span class="n">Position</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Basis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the East-North-Up Basis for the input position.</span>
+<span class="w">    </span><span class="sd">"""Get the East-North-Up Basis for the input position.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1771,27 +1771,27 @@ basis provided.</p>
 <span class="sd">    Basis</span>
 <span class="sd">        The basis representing the East-North-Up frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lla_pos</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;LLA&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">lla_pos</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"LLA"</span><span class="p">)</span>
     <span class="n">lla</span> <span class="o">=</span> <span class="n">lla_pos</span><span class="o">.</span><span class="n">coordinates</span>
     <span class="n">upx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">upy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">upz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="n">updirection</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">upx</span><span class="p">,</span> <span class="n">upy</span><span class="p">,</span> <span class="n">upz</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">position</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="s2">&quot;ECEF&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">upx</span><span class="p">,</span> <span class="n">upy</span><span class="p">,</span> <span class="n">upz</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">position</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="s2">"ECEF"</span>
     <span class="p">)</span>
 
     <span class="n">localeast_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span><span class="o">-</span><span class="n">updirection</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">updirection</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
     <span class="p">)</span>
-    <span class="n">localeast</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span><span class="n">localeast_coords</span><span class="p">,</span> <span class="n">lla_pos</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+    <span class="n">localeast</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span><span class="n">localeast_coords</span><span class="p">,</span> <span class="n">lla_pos</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="s2">"ECEF"</span><span class="p">)</span>
 
     <span class="c1"># Local North is the cross between the up and east directions, i.e.</span>
     <span class="c1"># north = up cross east</span>
     <span class="n">localnorth</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="o">.</span><span class="n">from_vector</span><span class="p">(</span><span class="n">updirection</span><span class="o">.</span><span class="n">cross_product</span><span class="p">(</span><span class="n">localeast</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">Basis</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">),</span> <span class="n">localeast</span><span class="p">,</span> <span class="n">localnorth</span><span class="p">,</span> <span class="n">updirection</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Basis</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECEF"</span><span class="p">),</span> <span class="n">localeast</span><span class="p">,</span> <span class="n">localnorth</span><span class="p">,</span> <span class="n">updirection</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1918,7 +1918,7 @@ to ENU basis provided.</p>
 <span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_range_azimuth_elevation</span><span class="p">(</span>
     <span class="n">enu_basis</span><span class="p">:</span> <span class="n">Basis</span><span class="p">,</span> <span class="n">target_position</span><span class="p">:</span> <span class="n">Position</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the azimuth and elevation of a target relative to a basis.</span>
+<span class="w">    </span><span class="sd">"""Get the azimuth and elevation of a target relative to a basis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1933,7 +1933,7 @@ to ENU basis provided.</p>
 <span class="sd">        The (1) range, (2) azimuth, and (3) elevation of the target relative</span>
 <span class="sd">        to ENU basis provided.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">rp</span> <span class="o">=</span> <span class="n">coordinates_in_basis</span><span class="p">(</span><span class="n">target_position</span><span class="p">,</span> <span class="n">enu_basis</span><span class="p">)</span>
     <span class="n">range_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">rp</span><span class="p">)</span>
 
@@ -2166,7 +2166,7 @@ not 1, 2, or 3</p>
 <span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_relative_angles</span><span class="p">(</span>
     <span class="n">basis</span><span class="p">:</span> <span class="n">Basis</span><span class="p">,</span> <span class="n">target_position</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">look_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">reference_axis</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the angles from a basis to an object.</span>
+<span class="w">    </span><span class="sd">"""Get the angles from a basis to an object.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2192,15 +2192,15 @@ not 1, 2, or 3</p>
 <span class="sd">        If the look_axis and reference_axis have the same value or if they are</span>
 <span class="sd">        not 1, 2, or 3</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">look_axis</span> <span class="o">==</span> <span class="n">reference_axis</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;look_axis and reference_axis must be different&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"look_axis and reference_axis must be different"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">look_axis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;look_axis must be 1, 2, or 3&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"look_axis must be 1, 2, or 3"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">reference_axis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;reference_axis must be 1, 2, or 3&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"reference_axis must be 1, 2, or 3"</span><span class="p">)</span>
 
     <span class="c1"># Get the position relative to the basis</span>
     <span class="n">rp</span> <span class="o">=</span> <span class="n">coordinates_in_basis</span><span class="p">(</span><span class="n">target_position</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
@@ -2296,7 +2296,7 @@ not 1, 2, or 3</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

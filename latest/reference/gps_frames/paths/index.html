@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1190,12 +1190,12 @@ through the specified altitude.</p>
 <span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_intersection_point</span><span class="p">(</span>
     <span class="n">altitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">origin_position</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">target_position</span><span class="p">:</span> <span class="n">Position</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the point where a unit vector crosses an altitude</span>
+<span class="w">    </span><span class="sd">"""Get the point where a unit vector crosses an altitude</span>
 
 <span class="sd">    The purpose of this function is to calculate the point at which a vector,</span>
 <span class="sd">    starting at the origin, will cross a specific altitude.</span>
 
-<span class="sd">    !!! note &quot;Spherical Earth&quot;</span>
+<span class="sd">    !!! note "Spherical Earth"</span>
 <span class="sd">        The function assumes a spherical Earth, not WGS84 ellipsoid</span>
 
 <span class="sd">    Parameters</span>
@@ -1213,7 +1213,7 @@ through the specified altitude.</p>
 <span class="sd">        The position where the path from the origin to the target passes</span>
 <span class="sd">        through the specified altitude.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">path_vector</span> <span class="o">=</span> <span class="n">target_position</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span> <span class="o">-</span> <span class="n">origin_position</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
     <span class="n">path_length</span> <span class="o">=</span> <span class="n">path_vector</span><span class="o">.</span><span class="n">magnitude</span>
@@ -1346,9 +1346,9 @@ so on.</p>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_distance_between_points</span><span class="p">(</span><span class="n">positions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Position</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the distance between Positions in a list.</span>
+<span class="w">    </span><span class="sd">"""Compute the distance between Positions in a list.</span>
 
-<span class="sd">    !!! note &quot;Length of Return Object&quot;</span>
+<span class="sd">    !!! note "Length of Return Object"</span>
 <span class="sd">        Because it requires two points to compute a distance, the length of</span>
 <span class="sd">        the returned list is one element shorter than the input list.</span>
 
@@ -1365,8 +1365,8 @@ so on.</p>
 <span class="sd">        returned element is the distance between the second and third, and</span>
 <span class="sd">        so on.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculating Distance between </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="si">}</span><span class="s2"> points&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Calculating Distance between </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="n">distance</span><span class="p">(</span><span class="n">_pos1</span><span class="p">,</span> <span class="n">_pos2</span><span class="p">)</span> <span class="k">for</span> <span class="n">_pos1</span><span class="p">,</span> <span class="n">_pos2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">positions</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">positions</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
     <span class="p">]</span>
@@ -1567,7 +1567,7 @@ this algorithm will find a point of closest approach beyond the end point.</p>
     <span class="n">elevation</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">max_length</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the point along the path that is is closest to Earth.</span>
+<span class="w">    </span><span class="sd">"""Get the point along the path that is is closest to Earth.</span>
 
 <span class="sd">    Compute the point along the path that it is closest to the spherical Earth</span>
 
@@ -1592,13 +1592,13 @@ this algorithm will find a point of closest approach beyond the end point.</p>
 <span class="sd">    Position</span>
 <span class="sd">        The point of closest approach along the path.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">elevation</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-            <span class="s2">&quot;Attempted to find closest approach when the end point was above &quot;</span>
-            <span class="s2">&quot;the start point&#39;s horizon. Because the path starts at the start &quot;</span>
-            <span class="s2">&quot;point and the path moves away from the Earth, the start point &quot;</span>
-            <span class="s2">&quot;is by definition the point of closest approach.&quot;</span>
+            <span class="s2">"Attempted to find closest approach when the end point was above "</span>
+            <span class="s2">"the start point's horizon. Because the path starts at the start "</span>
+            <span class="s2">"point and the path moves away from the Earth, the start point "</span>
+            <span class="s2">"is by definition the point of closest approach."</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">start_point</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1802,7 +1802,7 @@ The length of the returned list is num_points.</p>
 <span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_points_along_path</span><span class="p">(</span>
     <span class="n">start_point</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">end_point</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Position</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get evenly space points along the path.</span>
+<span class="w">    </span><span class="sd">"""Get evenly space points along the path.</span>
 
 <span class="sd">    Get a list of evenly spaced points along a path. This list includes the</span>
 <span class="sd">    start and end points, so the number of points along the path must be at</span>
@@ -1827,9 +1827,9 @@ The length of the returned list is num_points.</p>
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
 <span class="sd">        If num_points &lt; 2</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">num_points</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;num_points must be &gt;= 2&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"num_points must be &gt;= 2"</span><span class="p">)</span>
 
     <span class="n">start_vector</span> <span class="o">=</span> <span class="n">start_point</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
     <span class="n">end_vector</span> <span class="o">=</span> <span class="n">end_point</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
@@ -1906,7 +1906,7 @@ The length of the returned list is num_points.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

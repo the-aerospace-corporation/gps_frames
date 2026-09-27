@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1495,7 +1495,7 @@ YAML object.</p>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Rotation</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represention of rotations.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Represention of rotations.</span>
 
 <span class="sd">    This class is used to represent a rotation. The rotation is internally</span>
 <span class="sd">    represented by a _Rotator object, which is a Numba optimized class that is</span>
@@ -1511,14 +1511,14 @@ YAML object.</p>
 <span class="sd">    Consider adding to_yaml() and from_yaml() methods to enable storing as a</span>
 <span class="sd">    YAML object.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">_rotator</span><span class="p">:</span> <span class="n">_Rotator</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct a Rotation Object</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Construct a Rotation Object</span>
 
-<span class="sd">        !!! note &quot;Types&quot;</span>
+<span class="sd">        !!! note "Types"</span>
 <span class="sd">            Because this acts as an interface to a numba object (which is</span>
 <span class="sd">            strictly typed), it is recommended that all inputs contain only</span>
 <span class="sd">            floats. This should be corrected automatically, but success cannot</span>
@@ -1529,7 +1529,7 @@ YAML object.</p>
 <span class="sd">        arguments. It is recommended to use the keyword arguments to avoid</span>
 <span class="sd">        ambiguity.</span>
 
-<span class="sd">        !!! warning &quot;Duplicate Definitions&quot;</span>
+<span class="sd">        !!! warning "Duplicate Definitions"</span>
 <span class="sd">            There can only be one definition of the rotation. If multiple</span>
 <span class="sd">            definitions are given, it will raise an error. This includes</span>
 <span class="sd">            having both positional and keyword arguments.</span>
@@ -1538,7 +1538,7 @@ YAML object.</p>
 <span class="sd">        converting the rotation representation to a direction cosine matrix,</span>
 <span class="sd">        which is then used to instantiate a _Rotator object.</span>
 
-<span class="sd">        !!! tip &quot;Quaternion Ordering&quot;</span>
+<span class="sd">        !!! tip "Quaternion Ordering"</span>
 <span class="sd">            The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),</span>
 <span class="sd">            \(q_{j}\), \(q_{k}\)) where</span>
 
@@ -1558,19 +1558,19 @@ YAML object.</p>
 <span class="sd">            The rotation can be defined using keyword arguments. The valid</span>
 <span class="sd">            keyword arguments are:</span>
 
-<span class="sd">            - &#39;dcm&#39;: A direction cosine matrix (3x3 array)</span>
-<span class="sd">            - &#39;axis&#39;, &#39;angle&#39;: The euler axis (3 element vector) and angle of</span>
+<span class="sd">            - 'dcm': A direction cosine matrix (3x3 array)</span>
+<span class="sd">            - 'axis', 'angle': The euler axis (3 element vector) and angle of</span>
 <span class="sd">              rotation (float)</span>
-<span class="sd">            - &#39;standard_axis&#39;, &#39;angle&#39;: The principal axis of rotation</span>
+<span class="sd">            - 'standard_axis', 'angle': The principal axis of rotation</span>
 <span class="sd">              (int, 1,2,3) and angle of rotation (float)</span>
-<span class="sd">            - &#39;quaternion&#39;: A unit quaternion (4 element vector)</span>
+<span class="sd">            - 'quaternion': A unit quaternion (4 element vector)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-            <span class="p">),</span> <span class="s2">&quot;Only positional or keyword arguments accepted, not both&quot;</span>
+            <span class="p">),</span> <span class="s2">"Only positional or keyword arguments accepted, not both"</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1583,30 +1583,30 @@ YAML object.</p>
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># Quaternions</span>
                 <span class="n">_dcm</span> <span class="o">=</span> <span class="n">quaternion2direction_cosine_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot handle </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> positional arguments&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot handle </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> positional arguments"</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+            <span class="k">if</span> <span class="s2">"dcm"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
-                <span class="n">_dcm</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;dcm&quot;</span><span class="p">]</span>
+                <span class="n">_dcm</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"dcm"</span><span class="p">]</span>
 
-            <span class="k">elif</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;No angle provided&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;standard_axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+            <span class="k">elif</span> <span class="s2">"axis"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"No angle provided"</span>
+                <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"standard_axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
                 <span class="n">_dcm</span> <span class="o">=</span> <span class="n">euler_axis_angle2direction_cosine_matrix</span><span class="p">(</span>
-                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;axis&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">"axis"</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"angle"</span><span class="p">]</span>
                 <span class="p">)</span>
 
-            <span class="k">elif</span> <span class="s2">&quot;standard_axis&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;No angle provided&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+            <span class="k">elif</span> <span class="s2">"standard_axis"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"No angle provided"</span>
+                <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
                 <span class="n">_standard_axis</span> <span class="o">=</span> <span class="p">{</span>
                     <span class="mi">1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
@@ -1615,27 +1615,27 @@ YAML object.</p>
                 <span class="p">}</span>
 
                 <span class="k">assert</span> <span class="p">(</span>
-                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">_standard_axis</span>
-                <span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;Invalid standard axis </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">_standard_axis</span>
+                <span class="p">),</span> <span class="sa">f</span><span class="s1">'Invalid standard axis </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
 
                 <span class="n">_dcm</span> <span class="o">=</span> <span class="n">euler_axis_angle2direction_cosine_matrix</span><span class="p">(</span>
-                    <span class="n">_standard_axis</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+                    <span class="n">_standard_axis</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"angle"</span><span class="p">]</span>
                 <span class="p">)</span>
 
-            <span class="k">elif</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-                <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+            <span class="k">elif</span> <span class="s2">"quaternion"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+                <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
-                <span class="n">_quaternion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;quaternion&quot;</span><span class="p">])</span>
+                <span class="n">_quaternion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"quaternion"</span><span class="p">])</span>
                 <span class="n">_dcm</span> <span class="o">=</span> <span class="n">quaternion2direction_cosine_matrix</span><span class="p">(</span><span class="n">_quaternion</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_dcm</span><span class="p">(</span><span class="n">_dcm</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span> <span class="o">=</span> <span class="n">_Rotator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_dcm</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span> <span class="o">=</span> <span class="n">_Rotator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">_dcm</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_dcm</span><span class="p">(</span><span class="n">dcm</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check to see if a Direction Cosine Matrix is valid.</span>
+<span class="w">        </span><span class="sd">"""Check to see if a Direction Cosine Matrix is valid.</span>
 
 <span class="sd">        Specifically, this static method checks to ensure that the input</span>
 <span class="sd">        direction cosine matrix is a 3x3 matrix that is both right-handed and</span>
@@ -1646,16 +1646,16 @@ YAML object.</p>
 <span class="sd">        dcm : np.ndarray</span>
 <span class="sd">            The Direction Cosine Matrix of interest.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dcm</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;Direction Cosine Matrix must be 3x3&quot;</span>
+<span class="sd">        """</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dcm</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">"Direction Cosine Matrix must be 3x3"</span>
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span>
             <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">dcm</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span>
-        <span class="p">),</span> <span class="s2">&quot;Direction Cosine Matrix must be right-handed and orthonormal&quot;</span>
+        <span class="p">),</span> <span class="s2">"Direction Cosine Matrix must be right-handed and orthonormal"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rotate a vector by this rotaion.</span>
+<span class="w">        </span><span class="sd">"""Rotate a vector by this rotaion.</span>
 
-<span class="sd">        !!! note &quot;Vector Objects&quot;</span>
+<span class="sd">        !!! note "Vector Objects"</span>
 <span class="sd">            gps_frames.vectors includes an object called Vector. This method</span>
 <span class="sd">            takes a numpy array that represents a vector. This is deliberate</span>
 <span class="sd">            because rotations are dependant on a frame and the Vector object</span>
@@ -1671,8 +1671,8 @@ YAML object.</p>
 <span class="sd">        np.array</span>
 <span class="sd">            The vector rotated into the new frame</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -1908,9 +1908,9 @@ keyword arguments are:</p>
 <span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct a Rotation Object</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Construct a Rotation Object</span>
 
-<span class="sd">    !!! note &quot;Types&quot;</span>
+<span class="sd">    !!! note "Types"</span>
 <span class="sd">        Because this acts as an interface to a numba object (which is</span>
 <span class="sd">        strictly typed), it is recommended that all inputs contain only</span>
 <span class="sd">        floats. This should be corrected automatically, but success cannot</span>
@@ -1921,7 +1921,7 @@ keyword arguments are:</p>
 <span class="sd">    arguments. It is recommended to use the keyword arguments to avoid</span>
 <span class="sd">    ambiguity.</span>
 
-<span class="sd">    !!! warning &quot;Duplicate Definitions&quot;</span>
+<span class="sd">    !!! warning "Duplicate Definitions"</span>
 <span class="sd">        There can only be one definition of the rotation. If multiple</span>
 <span class="sd">        definitions are given, it will raise an error. This includes</span>
 <span class="sd">        having both positional and keyword arguments.</span>
@@ -1930,7 +1930,7 @@ keyword arguments are:</p>
 <span class="sd">    converting the rotation representation to a direction cosine matrix,</span>
 <span class="sd">    which is then used to instantiate a _Rotator object.</span>
 
-<span class="sd">    !!! tip &quot;Quaternion Ordering&quot;</span>
+<span class="sd">    !!! tip "Quaternion Ordering"</span>
 <span class="sd">        The order of the unit quaternion inputs are (\(q_{w}\), \(q_{i}\),</span>
 <span class="sd">        \(q_{j}\), \(q_{k}\)) where</span>
 
@@ -1950,19 +1950,19 @@ keyword arguments are:</p>
 <span class="sd">        The rotation can be defined using keyword arguments. The valid</span>
 <span class="sd">        keyword arguments are:</span>
 
-<span class="sd">        - &#39;dcm&#39;: A direction cosine matrix (3x3 array)</span>
-<span class="sd">        - &#39;axis&#39;, &#39;angle&#39;: The euler axis (3 element vector) and angle of</span>
+<span class="sd">        - 'dcm': A direction cosine matrix (3x3 array)</span>
+<span class="sd">        - 'axis', 'angle': The euler axis (3 element vector) and angle of</span>
 <span class="sd">          rotation (float)</span>
-<span class="sd">        - &#39;standard_axis&#39;, &#39;angle&#39;: The principal axis of rotation</span>
+<span class="sd">        - 'standard_axis', 'angle': The principal axis of rotation</span>
 <span class="sd">          (int, 1,2,3) and angle of rotation (float)</span>
-<span class="sd">        - &#39;quaternion&#39;: A unit quaternion (4 element vector)</span>
+<span class="sd">        - 'quaternion': A unit quaternion (4 element vector)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">assert</span> <span class="p">(</span>
             <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="p">),</span> <span class="s2">&quot;Only positional or keyword arguments accepted, not both&quot;</span>
+        <span class="p">),</span> <span class="s2">"Only positional or keyword arguments accepted, not both"</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1975,30 +1975,30 @@ keyword arguments are:</p>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># Quaternions</span>
             <span class="n">_dcm</span> <span class="o">=</span> <span class="n">quaternion2direction_cosine_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot handle </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> positional arguments&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot handle </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> positional arguments"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+        <span class="k">if</span> <span class="s2">"dcm"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
-            <span class="n">_dcm</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;dcm&quot;</span><span class="p">]</span>
+            <span class="n">_dcm</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"dcm"</span><span class="p">]</span>
 
-        <span class="k">elif</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;No angle provided&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;standard_axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+        <span class="k">elif</span> <span class="s2">"axis"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"No angle provided"</span>
+            <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"standard_axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
             <span class="n">_dcm</span> <span class="o">=</span> <span class="n">euler_axis_angle2direction_cosine_matrix</span><span class="p">(</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;axis&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s2">"axis"</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"angle"</span><span class="p">]</span>
             <span class="p">)</span>
 
-        <span class="k">elif</span> <span class="s2">&quot;standard_axis&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;No angle provided&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+        <span class="k">elif</span> <span class="s2">"standard_axis"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"No angle provided"</span>
+            <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"quaternion"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
             <span class="n">_standard_axis</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="mi">1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
@@ -2007,23 +2007,23 @@ keyword arguments are:</p>
             <span class="p">}</span>
 
             <span class="k">assert</span> <span class="p">(</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">_standard_axis</span>
-            <span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;Invalid standard axis </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]</span> <span class="ow">in</span> <span class="n">_standard_axis</span>
+            <span class="p">),</span> <span class="sa">f</span><span class="s1">'Invalid standard axis </span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="n">_dcm</span> <span class="o">=</span> <span class="n">euler_axis_angle2direction_cosine_matrix</span><span class="p">(</span>
-                <span class="n">_standard_axis</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;standard_axis&quot;</span><span class="p">]],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+                <span class="n">_standard_axis</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"standard_axis"</span><span class="p">]],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"angle"</span><span class="p">]</span>
             <span class="p">)</span>
 
-        <span class="k">elif</span> <span class="s2">&quot;quaternion&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="s2">&quot;dcm&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;axis&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
-            <span class="k">assert</span> <span class="s2">&quot;angle&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;Duplicate rotation definitions&quot;</span>
+        <span class="k">elif</span> <span class="s2">"quaternion"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="s2">"dcm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"axis"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
+            <span class="k">assert</span> <span class="s2">"angle"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">,</span> <span class="s2">"Duplicate rotation definitions"</span>
 
-            <span class="n">_quaternion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;quaternion&quot;</span><span class="p">])</span>
+            <span class="n">_quaternion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">"quaternion"</span><span class="p">])</span>
             <span class="n">_dcm</span> <span class="o">=</span> <span class="n">quaternion2direction_cosine_matrix</span><span class="p">(</span><span class="n">_quaternion</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_dcm</span><span class="p">(</span><span class="n">_dcm</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span> <span class="o">=</span> <span class="n">_Rotator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_dcm</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span> <span class="o">=</span> <span class="n">_Rotator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">_dcm</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2128,9 +2128,9 @@ requires a frame</p>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate a vector by this rotaion.</span>
+<span class="w">    </span><span class="sd">"""Rotate a vector by this rotaion.</span>
 
-<span class="sd">    !!! note &quot;Vector Objects&quot;</span>
+<span class="sd">    !!! note "Vector Objects"</span>
 <span class="sd">        gps_frames.vectors includes an object called Vector. This method</span>
 <span class="sd">        takes a numpy array that represents a vector. This is deliberate</span>
 <span class="sd">        because rotations are dependant on a frame and the Vector object</span>
@@ -2146,8 +2146,8 @@ requires a frame</p>
 <span class="sd">    np.array</span>
 <span class="sd">        The vector rotated into the new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotator</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2245,8 +2245,7 @@ of rotation, in radians.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">556</span>
-<span class="normal">557</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">557</span>
 <span class="normal">558</span>
 <span class="normal">559</span>
 <span class="normal">560</span>
@@ -2275,18 +2274,19 @@ of rotation, in radians.</p>
 <span class="normal">583</span>
 <span class="normal">584</span>
 <span class="normal">585</span>
-<span class="normal">586</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;Tuple((float64[:], float64))(float64[:,:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">586</span>
+<span class="normal">587</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"Tuple((float64[:], float64))(float64[:,:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">direction_cosine_matrix2euler_axis_angle</span><span class="p">(</span>
     <span class="n">dcm</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a Direction Cosine Matrix to an Euler axis and angle.</span>
+<span class="w">    </span><span class="sd">"""Convert a Direction Cosine Matrix to an Euler axis and angle.</span>
 
 <span class="sd">    This function simply calls direction_cosine_matrix2quaternion() to convert</span>
 <span class="sd">    the input DCM to the corresponding unit quaternion. From there, the</span>
 <span class="sd">    quaternion is converted to the corresponding Euler axis and angle using</span>
 <span class="sd">    quaternion2euler_axis_angle().</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -2303,7 +2303,7 @@ of rotation, in radians.</p>
 <span class="sd">        representing the rotation axis and the second element is the angle</span>
 <span class="sd">        of rotation, in radians.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">quaternion</span> <span class="o">=</span> <span class="n">direction_cosine_matrix2quaternion</span><span class="p">(</span><span class="n">dcm</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quaternion2euler_axis_angle</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2424,8 +2424,7 @@ be float arrays.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">323</span>
-<span class="normal">324</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
@@ -2508,9 +2507,10 @@ be float arrays.</p>
 <span class="normal">404</span>
 <span class="normal">405</span>
 <span class="normal">406</span>
-<span class="normal">407</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:,:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">407</span>
+<span class="normal">408</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:,:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">direction_cosine_matrix2quaternion</span><span class="p">(</span><span class="n">dcm</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create a rotation object from a Direction Cosine Matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Create a rotation object from a Direction Cosine Matrix.</span>
 
 <span class="sd">    Let the direction cosine matrix be \(\mathbf{R}\). The \(q_{w}\)</span>
 <span class="sd">    element of the quaternion can be computed as</span>
@@ -2555,7 +2555,7 @@ be float arrays.</p>
 <span class="sd">    eigenvalue with a value of 1. This is done by calling</span>
 <span class="sd">    euler_axis_angle2quaternion().</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -2570,7 +2570,7 @@ be float arrays.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The corresponding unit quaternion</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">qw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">dcm</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">if</span> <span class="n">qw</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
@@ -2583,7 +2583,7 @@ be float arrays.</p>
                 <span class="n">euler_axis</span> <span class="o">=</span> <span class="n">eig_axis</span><span class="p">[:,</span> <span class="n">_i</span><span class="p">]</span>
                 <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Encountered singular DCM&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Encountered singular DCM"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">euler_axis_angle2quaternion</span><span class="p">(</span><span class="n">euler_axis</span><span class="p">,</span> <span class="n">euler_angle</span><span class="p">)</span>
 
@@ -2695,8 +2695,7 @@ be float arrays.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">589</span>
-<span class="normal">590</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">590</span>
 <span class="normal">591</span>
 <span class="normal">592</span>
 <span class="normal">593</span>
@@ -2726,11 +2725,12 @@ be float arrays.</p>
 <span class="normal">617</span>
 <span class="normal">618</span>
 <span class="normal">619</span>
-<span class="normal">620</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">620</span>
+<span class="normal">621</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:,:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">euler_axis_angle2direction_cosine_matrix</span><span class="p">(</span>
     <span class="n">euler_axis</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">euler_angle</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an Euler axis and angle to a Direction Cosine Matrix.</span>
+<span class="w">    </span><span class="sd">"""Convert an Euler axis and angle to a Direction Cosine Matrix.</span>
 
 <span class="sd">    This function simply calls euler_axis_angle2quaternion() to convert</span>
 <span class="sd">    the input Euler axis and angle to the corresponding unit quaternion. From</span>
@@ -2738,7 +2738,7 @@ be float arrays.</p>
 <span class="sd">    quaternion2direction_cosine_matrix().</span>
 
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -2754,7 +2754,7 @@ be float arrays.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The direction cosine matrix (a 3x3 matrix)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">quaternion2direction_cosine_matrix</span><span class="p">(</span>
         <span class="n">euler_axis_angle2quaternion</span><span class="p">(</span><span class="n">euler_axis</span><span class="p">,</span> <span class="n">euler_angle</span><span class="p">)</span>
     <span class="p">)</span>
@@ -2872,8 +2872,7 @@ be float arrays.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">274</span>
-<span class="normal">275</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">275</span>
 <span class="normal">276</span>
 <span class="normal">277</span>
 <span class="normal">278</span>
@@ -2918,11 +2917,12 @@ be float arrays.</p>
 <span class="normal">317</span>
 <span class="normal">318</span>
 <span class="normal">319</span>
-<span class="normal">320</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">320</span>
+<span class="normal">321</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">euler_axis_angle2quaternion</span><span class="p">(</span>
     <span class="n">euler_axis</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">euler_angle</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert an Euler axis and angle to a quaternion.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Convert an Euler axis and angle to a quaternion.</span>
 
 <span class="sd">    Let the Euler axis and angle be \(\hat{\mathbf{e}}\) and</span>
 <span class="sd">    \(\Phi\), respectively. The equivalent quaternion is</span>
@@ -2942,7 +2942,7 @@ be float arrays.</p>
 <span class="sd">        \end{array}\right]</span>
 <span class="sd">    $$</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -2959,7 +2959,7 @@ be float arrays.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The quaternion equivalent to the the euler axis and angle</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">euler_axis</span> <span class="o">=</span> <span class="n">euler_axis</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">euler_axis</span><span class="p">)</span>  <span class="c1"># Normialize length</span>
     <span class="n">qijk</span> <span class="o">=</span> <span class="n">euler_axis</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">euler_angle</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">euler_axis</span><span class="p">)</span>
     <span class="n">quaternion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">euler_angle</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">qijk</span><span class="p">)</span>
@@ -3068,8 +3068,7 @@ be float arrays.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
-<span class="normal">411</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span>
 <span class="normal">414</span>
@@ -3143,9 +3142,10 @@ be float arrays.</p>
 <span class="normal">482</span>
 <span class="normal">483</span>
 <span class="normal">484</span>
-<span class="normal">485</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">485</span>
+<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:,:](float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">quaternion2direction_cosine_matrix</span><span class="p">(</span><span class="n">quaternion</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert quaternions to a direction cosine matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Convert quaternions to a direction cosine matrix.</span>
 
 <span class="sd">    A quaternions can be represented as</span>
 
@@ -3173,7 +3173,7 @@ be float arrays.</p>
 <span class="sd">    $$</span>
 
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -3188,8 +3188,8 @@ be float arrays.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The 3x3 Direction Cosine Matrix that represents the rotation</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Quaternions must have 4 elements&quot;</span>
+<span class="sd">    """</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"Quaternions must have 4 elements"</span>
 
     <span class="c1"># Normalize</span>
     <span class="n">quaternion</span> <span class="o">=</span> <span class="n">quaternion</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span>
@@ -3335,8 +3335,7 @@ of rotation, in radians.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">488</span>
-<span class="normal">489</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">489</span>
 <span class="normal">490</span>
 <span class="normal">491</span>
 <span class="normal">492</span>
@@ -3400,11 +3399,12 @@ of rotation, in radians.</p>
 <span class="normal">550</span>
 <span class="normal">551</span>
 <span class="normal">552</span>
-<span class="normal">553</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;Tuple((float64[:], float64))(float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">553</span>
+<span class="normal">554</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"Tuple((float64[:], float64))(float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">quaternion2euler_axis_angle</span><span class="p">(</span><span class="n">quaternion</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a quaternion to an euler axis and angle.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Convert a quaternion to an euler axis and angle.</span>
 
-<span class="sd">    !!! warning &quot;Directional Ambiguity&quot;</span>
+<span class="sd">    !!! warning "Directional Ambiguity"</span>
 <span class="sd">        There is directional ambitguity when using this function. This occurs</span>
 <span class="sd">        because rotating by an angle about a given axis is equivalent to</span>
 <span class="sd">        rotating by the same angle in the opposite direction about the</span>
@@ -3441,7 +3441,7 @@ of rotation, in radians.</p>
 <span class="sd">        }</span>
 <span class="sd">    $$</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. Unless otherwise stated, all inputs should</span>
 <span class="sd">        be float arrays.</span>
@@ -3458,7 +3458,7 @@ of rotation, in radians.</p>
 <span class="sd">        representing the rotation axis and the second element is the angle</span>
 <span class="sd">        of rotation, in radians.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">qw</span> <span class="o">=</span> <span class="n">quaternion</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">qijk</span> <span class="o">=</span> <span class="n">quaternion</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -3602,9 +3602,7 @@ floats and a float array.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">917</span>
-<span class="normal">918</span>
-<span class="normal">919</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">919</span>
 <span class="normal">920</span>
 <span class="normal">921</span>
 <span class="normal">922</span>
@@ -3639,11 +3637,13 @@ floats and a float array.</p>
 <span class="normal">951</span>
 <span class="normal">952</span>
 <span class="normal">953</span>
-<span class="normal">954</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64, float64, float64, float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">954</span>
+<span class="normal">955</span>
+<span class="normal">956</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64, float64, float64, float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">roll_pitch_yaw</span><span class="p">(</span>
     <span class="n">roll_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pitch_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate a vector through a roll-pitch-yaw sequence.</span>
+<span class="w">    </span><span class="sd">"""Rotate a vector through a roll-pitch-yaw sequence.</span>
 
 <span class="sd">    This function is an optimized way to rotate a vector through a</span>
 <span class="sd">    roll-ptich-yaw sequence. This sequence is a rotation about the 1, 2, and 3</span>
@@ -3653,7 +3653,7 @@ floats and a float array.</p>
 <span class="sd">    as it is signficantly simpler to instantiate. However, if a rotation needs</span>
 <span class="sd">    to be performed repeatedly, the Rotation class may be faster.</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are three</span>
 <span class="sd">        floats and a float array.</span>
@@ -3674,8 +3674,8 @@ floats and a float array.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The vector rotated to the new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-
+<span class="sd">    """</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">roll_pitch_yaw_matrix</span><span class="p">(</span><span class="n">roll_angle</span><span class="p">,</span> <span class="n">pitch_angle</span><span class="p">,</span> <span class="n">yaw_angle</span><span class="p">)</span> <span class="o">@</span> <span class="n">vector</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3811,9 +3811,7 @@ floats and a float array.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">836</span>
-<span class="normal">837</span>
-<span class="normal">838</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">838</span>
 <span class="normal">839</span>
 <span class="normal">840</span>
 <span class="normal">841</span>
@@ -3889,11 +3887,13 @@ floats and a float array.</p>
 <span class="normal">911</span>
 <span class="normal">912</span>
 <span class="normal">913</span>
-<span class="normal">914</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:, :](float64, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">914</span>
+<span class="normal">915</span>
+<span class="normal">916</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:, ::1](float64, float64, float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">roll_pitch_yaw_matrix</span><span class="p">(</span>
     <span class="n">roll_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pitch_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create the Direction Cosine Matrix fo a roll-pitch-yaw sequence.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Create the Direction Cosine Matrix fo a roll-pitch-yaw sequence.</span>
 
 <span class="sd">    This function is a way to generate the direction cosine matrix</span>
 <span class="sd">    representing a roll-pitch-yaw sequence. This sequence is a rotation about</span>
@@ -3918,7 +3918,7 @@ floats and a float array.</p>
 <span class="sd">            \end{array}\right]</span>
 <span class="sd">    $$</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are three</span>
 <span class="sd">        floats and a float array.</span>
@@ -3937,10 +3937,10 @@ floats and a float array.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The direction cosine matrix representing the rotation.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pitch_angle</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0e-8</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pitch_angle</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0e-8</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">objmode</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Singular rotation (gimbal lock) detected in roll_pitch_yaw_matrix&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Singular rotation (gimbal lock) detected in roll_pitch_yaw_matrix"</span><span class="p">)</span>
 
     <span class="n">_c_roll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">roll_angle</span><span class="p">)</span>
     <span class="n">_s_roll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">roll_angle</span><span class="p">)</span>
@@ -4088,8 +4088,7 @@ float, and a float array.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">623</span>
-<span class="normal">624</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">624</span>
 <span class="normal">625</span>
 <span class="normal">626</span>
 <span class="normal">627</span>
@@ -4133,11 +4132,13 @@ float, and a float array.</p>
 <span class="normal">665</span>
 <span class="normal">666</span>
 <span class="normal">667</span>
-<span class="normal">668</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](int8, float64, float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](int8, float64, float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">standard_rotation</span><span class="p">(</span>
     <span class="n">rotation_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate a vector about a principal axis.</span>
+<span class="w">    </span><span class="sd">"""Rotate a vector about a principal axis.</span>
 
 <span class="sd">    This function is an optimized way to rotate about one of the principal</span>
 <span class="sd">    axes. The inputs are the axis to rotate around and the angle of rotation,</span>
@@ -4147,7 +4148,7 @@ float, and a float array.</p>
 <span class="sd">    as it is signficantly simpler to instantiate. However, if a rotation needs</span>
 <span class="sd">    to be performed repeatedly, the Rotation class may be faster.</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are an int, a</span>
 <span class="sd">        float, and a float array.</span>
@@ -4166,11 +4167,12 @@ float, and a float array.</p>
 <span class="sd">    np.ndarray</span>
 <span class="sd">        The vector rotated to the new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
     <span class="n">_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
     <span class="n">_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
 
-    <span class="k">assert</span> <span class="n">rotation_axis</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;rotation_axis must be 1, 2, or 3&quot;</span>
+    <span class="k">assert</span> <span class="n">rotation_axis</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">"rotation_axis must be 1, 2, or 3"</span>
     <span class="k">if</span> <span class="n">rotation_axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">dcm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">_c</span><span class="p">,</span> <span class="n">_s</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">_s</span><span class="p">,</span> <span class="n">_c</span><span class="p">]])</span>
     <span class="k">elif</span> <span class="n">rotation_axis</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -4330,9 +4332,7 @@ a float.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">671</span>
-<span class="normal">672</span>
-<span class="normal">673</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">673</span>
 <span class="normal">674</span>
 <span class="normal">675</span>
 <span class="normal">676</span>
@@ -4397,9 +4397,11 @@ a float.</p>
 <span class="normal">735</span>
 <span class="normal">736</span>
 <span class="normal">737</span>
-<span class="normal">738</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](int8, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">738</span>
+<span class="normal">739</span>
+<span class="normal">740</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:,:](int8, float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">standard_rotation_matrix</span><span class="p">(</span><span class="n">rotation_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get a standard rotation matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Get a standard rotation matrix.</span>
 
 <span class="sd">    This function is used to compute the rotation matrix (direction cosine</span>
 <span class="sd">    matrix) for a rotation about one of the principle axes.</span>
@@ -4436,7 +4438,7 @@ a float.</p>
 <span class="sd">    rotation as a rotation about an Euler axis and simply converting to a</span>
 <span class="sd">    direction cosine matrix using euler_axis_angle2direction_cosion_matrix().</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are an int and</span>
 <span class="sd">        a float.</span>
@@ -4458,9 +4460,9 @@ a float.</p>
 <span class="sd">    ValueError</span>
 <span class="sd">        If the rotation axis is not 1, 2, or 3</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="k">assert</span> <span class="n">rotation_axis</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;rotation_axis must be 1, 2, or 3&quot;</span>
+    <span class="k">assert</span> <span class="n">rotation_axis</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">"rotation_axis must be 1, 2, or 3"</span>
     <span class="n">euler_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">euler_axis</span><span class="p">[</span><span class="n">rotation_axis</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
 
@@ -4643,9 +4645,7 @@ and rate of rotation</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>gps_frames/rotations.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">741</span>
-<span class="normal">742</span>
-<span class="normal">743</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">743</span>
 <span class="normal">744</span>
 <span class="normal">745</span>
 <span class="normal">746</span>
@@ -4735,11 +4735,13 @@ and rate of rotation</p>
 <span class="normal">830</span>
 <span class="normal">831</span>
 <span class="normal">832</span>
-<span class="normal">833</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:,:](int8, float64, float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">833</span>
+<span class="normal">834</span>
+<span class="normal">835</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:,:](int8, float64, float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">standard_rotation_matrix_rates</span><span class="p">(</span>
     <span class="n">rotation_axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the derivated of a standard rotation matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Get the derivated of a standard rotation matrix.</span>
 
 <span class="sd">    This function is used to compute the derivative of a rotation matrix</span>
 <span class="sd">    (direction cosine matrix) for a rotation about one of the principle axes.</span>
@@ -4785,7 +4787,7 @@ and rate of rotation</p>
 
 <span class="sd">    respectively for rotations about the 1, 2, or 3 axis.</span>
 
-<span class="sd">    !!! note &quot;Numba JIT Compiled&quot;</span>
+<span class="sd">    !!! note "Numba JIT Compiled"</span>
 <span class="sd">        This function is compiled using Numba. Use care when providing inputs</span>
 <span class="sd">        as Numba is strictly typed. The inputs to this function are an int and</span>
 <span class="sd">        two floats.</span>
@@ -4810,7 +4812,7 @@ and rate of rotation</p>
 <span class="sd">    ValueError</span>
 <span class="sd">        If the rotation axis is not 1, 2, or 3</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
 
@@ -4827,7 +4829,7 @@ and rate of rotation</p>
             <span class="p">[[</span><span class="o">-</span><span class="n">s</span> <span class="o">*</span> <span class="n">rate</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">rate</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="o">*</span> <span class="n">rate</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span> <span class="o">*</span> <span class="n">rate</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;rotation_axis must be 1, 2, or 3&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"rotation_axis must be 1, 2, or 3"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4893,7 +4895,7 @@ and rate of rotation</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

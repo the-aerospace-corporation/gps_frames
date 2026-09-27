@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1612,21 +1612,21 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">336</span>
 <span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Position</span><span class="p">(</span><span class="n">SerializeableVector</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represent a position in multiple frames.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Represent a position in multiple frames."""</span>
 
-    <span class="n">yaml_tag</span> <span class="o">=</span> <span class="s2">&quot;!SerializeableVector.Position&quot;</span>
+    <span class="n">yaml_tag</span> <span class="o">=</span> <span class="s2">"!SerializeableVector.Position"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for proper coordinate shape.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Check for proper coordinate shape."""</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many dimensions for position&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Too many dimensions for position"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a position object in new frame.</span>
+<span class="w">        </span><span class="sd">"""Get a position object in new frame.</span>
 
-<span class="sd">        !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">        !!! note "New Object Created on Output"</span>
 <span class="sd">            This function returns a new position object. It does not change</span>
 <span class="sd">            the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">            change the frame of the object.</span>
@@ -1646,7 +1646,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        switch_frame: Change the frame that the position is interally</span>
 <span class="sd">            expressed in</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
         <span class="p">)</span>
@@ -1654,14 +1654,14 @@ of objects and tools to manipulate the positions.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this position internally.</span>
+<span class="w">        </span><span class="sd">"""Change the frame used to store this position internally.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        to_frame : str</span>
 <span class="sd">            The desired new frame</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
         <span class="p">)</span>
@@ -1670,7 +1670,7 @@ of objects and tools to manipulate the positions.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">to_frame</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">        </span><span class="sd">"""Change the reference time for the frame.</span>
 
 <span class="sd">        Reference frames can be time dependant. This method is used to change</span>
 <span class="sd">        the time reference for a reference frame.</span>
@@ -1683,41 +1683,41 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        new_frame_time : GPSTime</span>
 <span class="sd">            The new frame reference time</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="n">delta_weeks</span> <span class="o">=</span> <span class="n">new_frame_time</span><span class="o">.</span><span class="n">week_number</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">week_number</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">add_weeks_eci</span><span class="p">(</span><span class="n">delta_weeks</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="n">coordinates</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">"ECEF"</span><span class="p">)</span>
             <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="n">coordinates</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">&quot;LLA&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">"LLA"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_msl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Altitude above Mean Sea Level.</span>
+<span class="w">        </span><span class="sd">"""Get the Altitude above Mean Sea Level.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
 <span class="sd">            The altitude above mean sea level</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">lla</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;LLA&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"LLA"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
         <span class="p">)</span>
 
         <span class="n">geoid_height</span> <span class="o">=</span> <span class="n">GeoidData</span><span class="o">.</span><span class="n">get_geoid_height</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lla</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -1725,22 +1725,22 @@ of objects and tools to manipulate the positions.</p>
         <span class="k">return</span> <span class="n">lla</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">geoid_height</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_hae</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the altitude, height above ellipsoid.</span>
+<span class="w">        </span><span class="sd">"""Get the altitude, height above ellipsoid.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
 <span class="sd">            The height above ellipsoid</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">lla</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;LLA&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"LLA"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">lla</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the radius of the position.</span>
+<span class="w">        </span><span class="sd">"""Get the radius of the position.</span>
 
 <span class="sd">        Get the radius of the position, i.e. the distance from the position to</span>
 <span class="sd">        the center of the Earth</span>
@@ -1750,15 +1750,15 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        float</span>
 <span class="sd">            The distance to the center of the Earth</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">ecef</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"ECEF"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ecef</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_spherical</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the altitude above the spherical Earth.</span>
+<span class="w">        </span><span class="sd">"""Get the altitude above the spherical Earth.</span>
 
 <span class="sd">        Get the altitude for the position if the Earth was a perfect sphere.</span>
 <span class="sd">        This is done by subtracting the radius of the Earth from the value</span>
@@ -1769,16 +1769,16 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        float</span>
 <span class="sd">            The altitude above the spherical Earth</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span> <span class="o">-</span> <span class="n">EarthParam</span><span class="o">.</span><span class="n">r_e</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make position hashable.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Make position hashable."""</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_vector</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a position from a vector.</span>
+<span class="w">        </span><span class="sd">"""Create a position from a vector.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1790,7 +1790,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        Position</span>
 <span class="sd">            The vector represented as a position</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
             <span class="n">coordinates</span><span class="o">=</span><span class="n">vector</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span>
             <span class="n">frame_time</span><span class="o">=</span><span class="n">vector</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span>
@@ -1798,20 +1798,20 @@ of objects and tools to manipulate the positions.</p>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">to_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recast Position as a Vector.</span>
+<span class="w">        </span><span class="sd">"""Recast Position as a Vector.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Vector</span>
 <span class="sd">            New vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span>
             <span class="n">coordinates</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">frame_time</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Equality Comparision.</span>
+<span class="w">        </span><span class="sd">"""Equality Comparision.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1828,16 +1828,16 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        TypeError</span>
 <span class="sd">            If the other value is not a Position</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Equality only defined between two Positions&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Equality only defined between two Positions"</span><span class="p">)</span>
 
         <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
 
         <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a vector to a position.</span>
+<span class="w">        </span><span class="sd">"""Add a vector to a position.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1854,9 +1854,9 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        TypeError</span>
 <span class="sd">            Other is not a vector</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a vector&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a vector"</span><span class="p">)</span>
 
         <span class="n">vec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
 
@@ -1865,7 +1865,7 @@ of objects and tools to manipulate the positions.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_vector</span><span class="p">(</span><span class="n">new_vec</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subtract a vector from a position.</span>
+<span class="w">        </span><span class="sd">"""Subtract a vector from a position.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1881,9 +1881,9 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">        ------</span>
 <span class="sd">        TypeError</span>
 <span class="sd">            If other is not a vector</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a vector&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a vector"</span><span class="p">)</span>
 
         <span class="n">vec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
 
@@ -2036,7 +2036,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">308</span>
 <span class="normal">309</span>
 <span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a vector to a position.</span>
+<span class="w">    </span><span class="sd">"""Add a vector to a position.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2053,9 +2053,9 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">    TypeError</span>
 <span class="sd">        Other is not a vector</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a vector&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a vector"</span><span class="p">)</span>
 
     <span class="n">vec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
 
@@ -2191,7 +2191,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">280</span>
 <span class="normal">281</span>
 <span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Equality Comparision.</span>
+<span class="w">    </span><span class="sd">"""Equality Comparision.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2208,9 +2208,9 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">    TypeError</span>
 <span class="sd">        If the other value is not a Position</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Equality only defined between two Positions&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Equality only defined between two Positions"</span><span class="p">)</span>
 
     <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
 
@@ -2240,7 +2240,7 @@ of objects and tools to manipulate the positions.</p>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make position hashable.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Make position hashable."""</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2270,11 +2270,11 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check for proper coordinate shape.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Check for proper coordinate shape."""</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many dimensions for position&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Too many dimensions for position"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2410,7 +2410,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">335</span>
 <span class="normal">336</span>
 <span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subtract a vector from a position.</span>
+<span class="w">    </span><span class="sd">"""Subtract a vector from a position.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2426,9 +2426,9 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">    ------</span>
 <span class="sd">    TypeError</span>
 <span class="sd">        If other is not a vector</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Vector</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;other must be a vector&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"other must be a vector"</span><span class="p">)</span>
 
     <span class="n">vec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_vector</span><span class="p">()</span>
 
@@ -2546,7 +2546,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">242</span>
 <span class="normal">243</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_vector</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="n">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a position from a vector.</span>
+<span class="w">    </span><span class="sd">"""Create a position from a vector.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2558,7 +2558,7 @@ of objects and tools to manipulate the positions.</p>
 <span class="sd">    Position</span>
 <span class="sd">        The vector represented as a position</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
         <span class="n">coordinates</span><span class="o">=</span><span class="n">vector</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span>
         <span class="n">frame_time</span><span class="o">=</span><span class="n">vector</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span>
@@ -2623,16 +2623,16 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_hae</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the altitude, height above ellipsoid.</span>
+<span class="w">    </span><span class="sd">"""Get the altitude, height above ellipsoid.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    float</span>
 <span class="sd">        The height above ellipsoid</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">lla</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;LLA&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"LLA"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">lla</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -2697,16 +2697,16 @@ of objects and tools to manipulate the positions.</p>
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_msl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the Altitude above Mean Sea Level.</span>
+<span class="w">    </span><span class="sd">"""Get the Altitude above Mean Sea Level.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    float</span>
 <span class="sd">        The altitude above mean sea level</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">lla</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;LLA&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"LLA"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
     <span class="p">)</span>
 
     <span class="n">geoid_height</span> <span class="o">=</span> <span class="n">GeoidData</span><span class="o">.</span><span class="n">get_geoid_height</span><span class="p">(</span><span class="n">lla</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lla</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -2774,7 +2774,7 @@ returned by get_radius() method.</p>
 <span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_altitude_spherical</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the altitude above the spherical Earth.</span>
+<span class="w">    </span><span class="sd">"""Get the altitude above the spherical Earth.</span>
 
 <span class="sd">    Get the altitude for the position if the Earth was a perfect sphere.</span>
 <span class="sd">    This is done by subtracting the radius of the Earth from the value</span>
@@ -2785,7 +2785,7 @@ returned by get_radius() method.</p>
 <span class="sd">    float</span>
 <span class="sd">        The altitude above the spherical Earth</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span> <span class="o">-</span> <span class="n">EarthParam</span><span class="o">.</span><span class="n">r_e</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2909,9 +2909,9 @@ change the frame of the object.</p>
 <span class="normal">97</span>
 <span class="normal">98</span>
 <span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Position</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a position object in new frame.</span>
+<span class="w">    </span><span class="sd">"""Get a position object in new frame.</span>
 
-<span class="sd">    !!! note &quot;New Object Created on Output&quot;</span>
+<span class="sd">    !!! note "New Object Created on Output"</span>
 <span class="sd">        This function returns a new position object. It does not change</span>
 <span class="sd">        the reference frame used in this object. Use `switch_frame()` to</span>
 <span class="sd">        change the frame of the object.</span>
@@ -2931,7 +2931,7 @@ change the frame of the object.</p>
 <span class="sd">    switch_frame: Change the frame that the position is interally</span>
 <span class="sd">        expressed in</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">out_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
     <span class="p">)</span>
@@ -3001,7 +3001,7 @@ the center of the Earth</p>
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the radius of the position.</span>
+<span class="w">    </span><span class="sd">"""Get the radius of the position.</span>
 
 <span class="sd">    Get the radius of the position, i.e. the distance from the position to</span>
 <span class="sd">    the center of the Earth</span>
@@ -3011,9 +3011,9 @@ the center of the Earth</p>
 <span class="sd">    float</span>
 <span class="sd">        The distance to the center of the Earth</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">ecef</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="s2">"ECEF"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ecef</span><span class="p">)</span>
@@ -3085,14 +3085,14 @@ the center of the Earth</p>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the frame used to store this position internally.</span>
+<span class="w">    </span><span class="sd">"""Change the frame used to store this position internally.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    to_frame : str</span>
 <span class="sd">        The desired new frame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">new_coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">position_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span>
     <span class="p">)</span>
@@ -3161,14 +3161,14 @@ the center of the Earth</p>
 <span class="normal">254</span>
 <span class="normal">255</span>
 <span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Vector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recast Position as a Vector.</span>
+<span class="w">    </span><span class="sd">"""Recast Position as a Vector.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    Vector</span>
 <span class="sd">        New vector</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span>
         <span class="n">coordinates</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">frame_time</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span>
     <span class="p">)</span>
@@ -3266,7 +3266,7 @@ frame at the new reference time.</p>
 <span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_frame_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the reference time for the frame.</span>
+<span class="w">    </span><span class="sd">"""Change the reference time for the frame.</span>
 
 <span class="sd">    Reference frames can be time dependant. This method is used to change</span>
 <span class="sd">    the time reference for a reference frame.</span>
@@ -3279,29 +3279,29 @@ frame at the new reference time.</p>
 <span class="sd">    new_frame_time : GPSTime</span>
 <span class="sd">        The new frame reference time</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
         <span class="n">delta_weeks</span> <span class="o">=</span> <span class="n">new_frame_time</span><span class="o">.</span><span class="n">week_number</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="o">.</span><span class="n">week_number</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">add_weeks_eci</span><span class="p">(</span><span class="n">delta_weeks</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="n">coordinates</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">"ECEF"</span><span class="p">)</span>
         <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">rotate_ecef</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span> <span class="n">new_frame_time</span><span class="p">,</span> <span class="n">coordinates</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">=</span> <span class="n">new_frame_time</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">&quot;LLA&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">"LLA"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3457,7 +3457,7 @@ used.</p>
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">position1</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">position2</span><span class="p">:</span> <span class="n">Position</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the distance between two positions.</span>
+<span class="w">    </span><span class="sd">"""Compute the distance between two positions.</span>
 
 <span class="sd">    This function is used to calculate the distance between two positions. To</span>
 <span class="sd">    do this, it first computes the positions in their ECEF reference frames</span>
@@ -3481,10 +3481,10 @@ used.</p>
 <span class="sd">    float</span>
 <span class="sd">        The distance between `position1` and `position2`</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Get both positions in the ECEF frame</span>
-    <span class="n">eci_position1</span> <span class="o">=</span> <span class="n">position1</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECI&quot;</span><span class="p">)</span>
-    <span class="n">eci_position2</span> <span class="o">=</span> <span class="n">position2</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECI&quot;</span><span class="p">)</span>
+    <span class="n">eci_position1</span> <span class="o">=</span> <span class="n">position1</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECI"</span><span class="p">)</span>
+    <span class="n">eci_position2</span> <span class="o">=</span> <span class="n">position2</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECI"</span><span class="p">)</span>
 
     <span class="c1"># Rotate the second into the frame of the first</span>
     <span class="n">eci_position2</span><span class="o">.</span><span class="n">update_frame_time</span><span class="p">(</span><span class="n">eci_position1</span><span class="o">.</span><span class="n">frame_time</span><span class="p">)</span>
@@ -3557,7 +3557,7 @@ used.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

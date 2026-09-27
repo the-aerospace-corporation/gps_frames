@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1144,7 +1144,7 @@
 <span class="n">r_eci_coords</span> <span class="o">=</span> <span class="n">orbit_rotation</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">r_pqw</span><span class="p">)</span>
 
 <span class="c1"># Wrap in a Position object</span>
-<span class="n">sat_pos_eci</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="n">r_eci_coords</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="s2">&quot;ECI&quot;</span><span class="p">)</span>
+<span class="n">sat_pos_eci</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="n">r_eci_coords</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="s2">"ECI"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="2-time-control-gpstime-arithmetic">2. Time Control (GPSTime Arithmetic)</h3>
 <p>The <code>gps_time.GPSTime</code> objects support direct addition of seconds (as <code>float</code> or <code>int</code>), making simulation loops extremely clean:</p>
@@ -1154,7 +1154,7 @@
 <h3 id="3-automatic-frame-transformations">3. Automatic Frame Transformations</h3>
 <p>Once the satellite is in a <code>Position</code> object, we can transform it to the Earth-Fixed (ECEF) frame without manually calculating Sidereal Time. The library handles the time-dependent rotation internally through the <code>get_position</code> method.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># The library handles the ECI -&gt; ECEF rotation for current_time</span>
-<span class="n">sat_pos_ecef</span> <span class="o">=</span> <span class="n">sat_pos_eci</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+<span class="n">sat_pos_ecef</span> <span class="o">=</span> <span class="n">sat_pos_eci</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECEF"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="4-topocentric-horizon-frame-enu-basis">4. Topocentric Horizon Frame (ENU Basis)</h3>
 <p>To compute Azimuth and Elevation, we project the satellite position into the station's local <strong>East-North-Up (ENU)</strong> frame using the <code>gps_frames.basis.Basis</code> object.</p>
@@ -1248,7 +1248,7 @@ Contact Windows (&gt;5 deg):
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       

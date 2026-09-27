@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -886,16 +886,16 @@
 
 <span class="c1"># Example: Ranging from a ground antenna to spacecraft</span>
 <span class="c1"># ====================================================</span>
-<span class="c1"># This example demonstrates how to use the &#39;gps_frames&#39; library to perform</span>
+<span class="c1"># This example demonstrates how to use the 'gps_frames' library to perform</span>
 <span class="c1"># common astrodynamics calculations, such as frame conversions, visibility</span>
 <span class="c1"># checks, and range/azimuth/elevation computations.</span>
 
 <span class="c1"># 1. Imports</span>
 <span class="c1"># ----------</span>
-<span class="c1"># We start by importing the necessary libraries. &#39;numpy&#39; is used for array</span>
-<span class="c1"># manipulations, which is central to the &#39;gps_frames&#39; library. &#39;gps_time&#39; is</span>
+<span class="c1"># We start by importing the necessary libraries. 'numpy' is used for array</span>
+<span class="c1"># manipulations, which is central to the 'gps_frames' library. 'gps_time' is</span>
 <span class="c1"># used for precise time handling, which is crucial for frame transformations</span>
-<span class="c1"># (e.g., ECEF to ECI) that depend on the Earth&#39;s rotation.</span>
+<span class="c1"># (e.g., ECEF to ECI) that depend on the Earth's rotation.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
@@ -930,8 +930,8 @@
 <span class="c1"># Create a Position object for the ground antenna.</span>
 <span class="c1"># Note:</span>
 <span class="c1">#   - Input coordinates must be converted to radians for the Position object.</span>
-<span class="c1">#   - We specify &#39;LLA&#39; as the frame type.</span>
-<span class="c1">#   - The &#39;time&#39; object associates this position with our scenario time.</span>
+<span class="c1">#   - We specify 'LLA' as the frame type.</span>
+<span class="c1">#   - The 'time' object associates this position with our scenario time.</span>
 <span class="n">ground_antenna_position</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span>
     <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
         <span class="p">[</span>
@@ -941,7 +941,7 @@
         <span class="p">]</span>
     <span class="p">),</span>
     <span class="n">time</span><span class="p">,</span>
-    <span class="s2">&quot;LLA&quot;</span><span class="p">,</span>
+    <span class="s2">"LLA"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># 4. Define Satellites</span>
@@ -965,7 +965,7 @@
         <span class="p">]</span>
     <span class="p">),</span>
     <span class="n">time</span><span class="p">,</span>
-    <span class="s2">&quot;LLA&quot;</span><span class="p">,</span>
+    <span class="s2">"LLA"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Define Satellite 2 (GEO)</span>
@@ -982,7 +982,7 @@
         <span class="p">]</span>
     <span class="p">),</span>
     <span class="n">time</span><span class="p">,</span>
-    <span class="s2">&quot;LLA&quot;</span><span class="p">,</span>
+    <span class="s2">"LLA"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># 5. Frame Conversions</span>
@@ -991,12 +991,12 @@
 <span class="c1"># Here we extract the coordinates of Satellite 1 in both Earth-Centered, Earth-Fixed (ECEF)</span>
 <span class="c1"># and Earth-Centered Inertial (ECI) frames. The library handles the necessary rotations</span>
 <span class="c1"># based on the time associated with the Position object.</span>
-<span class="n">satellite1_ecef_coords</span> <span class="o">=</span> <span class="n">satellite1_position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">coordinates</span>
-<span class="n">satellite1_eci_coords</span> <span class="o">=</span> <span class="n">satellite1_position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">&quot;ECI&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">coordinates</span>
+<span class="n">satellite1_ecef_coords</span> <span class="o">=</span> <span class="n">satellite1_position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECEF"</span><span class="p">)</span><span class="o">.</span><span class="n">coordinates</span>
+<span class="n">satellite1_eci_coords</span> <span class="o">=</span> <span class="n">satellite1_position</span><span class="o">.</span><span class="n">get_position</span><span class="p">(</span><span class="s2">"ECI"</span><span class="p">)</span><span class="o">.</span><span class="n">coordinates</span>
 
 <span class="c1"># 6. Visibility Checks</span>
 <span class="c1"># --------------------</span>
-<span class="c1"># We use &#39;check_earth_obscuration&#39; to determine if there is a direct line of sight</span>
+<span class="c1"># We use 'check_earth_obscuration' to determine if there is a direct line of sight</span>
 <span class="c1"># between two objects, blocked by the Earth.</span>
 <span class="c1">#   - earth_adjustment_m: Optional parameter to adjust the effective Earth radius</span>
 <span class="c1">#     (e.g., to account for atmosphere or terrain). Here set to 0.</span>
@@ -1019,7 +1019,7 @@
 <span class="c1"># 7. Distance Calculations</span>
 <span class="c1"># ------------------------</span>
 <span class="c1"># Compute the straight-line Euclidean distance between the objects.</span>
-<span class="c1"># The &#39;distance&#39; function handles frame harmonization automatically (converting</span>
+<span class="c1"># The 'distance' function handles frame harmonization automatically (converting</span>
 <span class="c1"># both to ECEF before calculation).</span>
 <span class="n">ga_to_sat1_distance</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">ground_antenna_position</span><span class="p">,</span> <span class="n">satellite1_position</span><span class="p">)</span>
 <span class="n">ga_to_sat2_distance</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">ground_antenna_position</span><span class="p">,</span> <span class="n">satellite2_position</span><span class="p">)</span>
@@ -1029,7 +1029,7 @@
 <span class="c1"># ------------------------</span>
 <span class="c1"># Calculate the look angles (Azimuth and Elevation) from an observer to a target.</span>
 <span class="c1"># This requires defining a local reference frame (East-North-Up or ENU) at the</span>
-<span class="c1"># observer&#39;s location.</span>
+<span class="c1"># observer's location.</span>
 
 <span class="c1"># From Ground Antenna to Satellite 1</span>
 <span class="c1"># First, get the basis vectors for the local ENU frame centered at the ground antenna.</span>
@@ -1053,75 +1053,75 @@
 
 <span class="c1"># 9. Report Results</span>
 <span class="c1"># -----------------</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Ground Antenna Information *************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Ground Antenna Information *************************"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">ground_antenna_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">ground_antenna_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="p">)</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Altitude (km):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ground_antenna_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Altitude (km):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ground_antenna_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Satellite 1 Information (w/ other frames) **********&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Satellite 1 Information (w/ other frames) **********"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="s2">"Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="s2">"Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Altitude (km):   </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECEF X (km):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECEF Y (km):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECEF Z (km):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECI X (km):   </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECI Y (km):   </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; ECI Z (km):   </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Altitude (km):   </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECEF X (km):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECEF Y (km):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECEF Z (km):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_ecef_coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECI X (km):   </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECI Y (km):   </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-&gt; ECI Z (km):   </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite1_eci_coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Satellite 2 Information ****************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Satellite 2 Information ****************************"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="s2">"Latitude (deg):  </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="s2">"Longitude (deg): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Altitude (km):   </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Altitude (km):   </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">satellite2_position</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Line of Sight **************************************&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ground Antenna to Satellite 1: </span><span class="si">{</span><span class="n">ga_to_sat1_in_view</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ground Antenna to Satellite 2: </span><span class="si">{</span><span class="n">ga_to_sat2_in_view</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Satellite 1 to Satellite 2:    </span><span class="si">{</span><span class="n">sat1_to_sat2_in_view</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Line of Sight **************************************"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ground Antenna to Satellite 1: </span><span class="si">{</span><span class="n">ga_to_sat1_in_view</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ground Antenna to Satellite 2: </span><span class="si">{</span><span class="n">ga_to_sat2_in_view</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Satellite 1 to Satellite 2:    </span><span class="si">{</span><span class="n">sat1_to_sat2_in_view</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Distances ******************************************&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ground Antenna to Satellite 1 (km): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ga_to_sat1_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ground Antenna to Satellite 2 (km): </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ga_to_sat2_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Distances ******************************************"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ground Antenna to Satellite 1 (km): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ga_to_sat1_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ground Antenna to Satellite 2 (km): </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ga_to_sat2_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Satellite 1 to Satellite 2 (km):    </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sat1_to_sat2_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span>
+    <span class="s2">"Satellite 1 to Satellite 2 (km):    </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sat1_to_sat2_distance</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**** Azimuth/Elevation **********************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">**** Azimuth/Elevation **********************************"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Ground Antenna to Satellite 1 (deg): </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Ground Antenna to Satellite 1 (deg): </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">ga_to_sat1_azimuth</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">ga_to_sat1_elevation</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Ground Antenna to Satellite 2 (deg): </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Ground Antenna to Satellite 2 (deg): </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">ga_to_sat2_azimuth</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">ga_to_sat2_elevation</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Satellite 1 to Satellite 2 (deg):    </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Satellite 1 to Satellite 2 (deg):    </span><span class="si">{:.2f}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">sat1_to_sat2_azimuth</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">sat1_to_sat2_elevation</span> <span class="o">*</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -1175,7 +1175,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       

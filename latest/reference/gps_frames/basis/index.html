@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1525,7 +1525,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Basis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Basis of a reference frame.</span>
+<span class="w">    </span><span class="sd">"""Basis of a reference frame.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -1545,15 +1545,15 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        - The axes are not orthogonal</span>
 <span class="sd">        - The basis is not right-handed</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">UNSAFE</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">yaml_tag</span> <span class="o">=</span> <span class="s2">&quot;!Basis&quot;</span>
+    <span class="n">yaml_tag</span> <span class="o">=</span> <span class="s2">"!Basis"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">axis1</span><span class="p">:</span> <span class="n">UnitVector</span><span class="p">,</span> <span class="n">axis2</span><span class="p">:</span> <span class="n">UnitVector</span><span class="p">,</span> <span class="n">axis3</span><span class="p">:</span> <span class="n">UnitVector</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Object constructor.</span>
+<span class="w">        </span><span class="sd">"""Object constructor.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1566,7 +1566,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        axis3 : UnitVector</span>
 <span class="sd">            The 3-axis (e.g. Z)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">:</span> <span class="n">Position</span> <span class="o">=</span> <span class="n">origin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UnitVector</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">,</span> <span class="n">axis3</span><span class="p">]</span>
 
@@ -1579,7 +1579,7 @@ type. This represent the axes that make up the basis.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_yaml</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">representer</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Representer</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">SerializeableVector</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the class into a mapping node for serialzation.</span>
+<span class="w">        </span><span class="sd">"""Convert the class into a mapping node for serialzation.</span>
 
 <span class="sd">        Takes the attributes of the class and converts them to ScalarNode</span>
 <span class="sd">        used in a ruamel.yaml MappingNode to dump the object in a specific</span>
@@ -1599,14 +1599,14 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">            A mapping node which describes to the yaml dumper how to serialize</span>
 <span class="sd">            the object</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">representer</span><span class="o">.</span><span class="n">represent_mapping</span><span class="p">(</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_tag</span><span class="p">,</span>
             <span class="p">{</span>
-                <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span>
-                <span class="s2">&quot;axis1&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="s2">&quot;axis2&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                <span class="s2">&quot;axis3&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                <span class="s2">"origin"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span>
+                <span class="s2">"axis1"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s2">"axis2"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="s2">"axis3"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
             <span class="p">},</span>
         <span class="p">)</span>
 
@@ -1614,7 +1614,7 @@ type. This represent the axes that make up the basis.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_yaml</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">constructor</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Constructor</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SerializeableVector</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a class from a MappingNode.</span>
+<span class="w">        </span><span class="sd">"""Construct a class from a MappingNode.</span>
 
 <span class="sd">        This method is called when using yaml.load if the</span>
 <span class="sd">        SerializeableVector class has been registered to the</span>
@@ -1634,26 +1634,26 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        SerializeableVector</span>
 <span class="sd">            Instance of serialized class</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
         <span class="n">origin</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)):</span>
             <span class="n">node_name</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-            <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis1&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis1"</span><span class="p">:</span>
                 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis2&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis2"</span><span class="p">:</span>
                 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis3&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis3"</span><span class="p">:</span>
                 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;origin&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"origin"</span><span class="p">:</span>
                 <span class="n">origin</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">axes</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">check_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that the frames are consistent.</span>
+<span class="w">        </span><span class="sd">"""Ensure that the frames are consistent.</span>
 
-<span class="sd">        !!! note &quot;LLA Frame&quot;</span>
+<span class="sd">        !!! note "LLA Frame"</span>
 <span class="sd">            If the LLA frame is provided for the origin, will attempt to</span>
 <span class="sd">            convert to the ECEF frame. Will log an error</span>
 
@@ -1662,22 +1662,22 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        ValueError</span>
 <span class="sd">            If the axes are not all in the same frame as the origin</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;LLA frame used for basis of origin, ECEF will be used&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"LLA frame used for basis of origin, ECEF will be used"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="o">=</span><span class="s2">"ECEF"</span><span class="p">)</span>
 
         <span class="n">origin_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span>
         <span class="n">origin_frame_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame_time</span>
 
         <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">axis</span><span class="o">.</span><span class="n">frame</span> <span class="o">!=</span> <span class="n">origin_frame</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not all axes and origin in the same frame&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Not all axes and origin in the same frame"</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">axis</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">!=</span> <span class="n">origin_frame_time</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not all axes and origin have same frame time&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Not all axes and origin have same frame time"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">check_orthogonality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that the axes are orthogonal.</span>
+<span class="w">        </span><span class="sd">"""Check that the axes are orthogonal.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1689,7 +1689,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        ValueError</span>
 <span class="sd">            If the axes are not mutually orthogonal</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">v1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
         <span class="n">v2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
         <span class="n">v3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
@@ -1698,10 +1698,10 @@ type. This represent the axes that make up the basis.</p>
             <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">v1</span><span class="p">))]</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">checks</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Axes are not orthogonal&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Axes are not orthogonal"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">check_right_handedness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that the axes are right-handed.</span>
+<span class="w">        </span><span class="sd">"""Check that the axes are right-handed.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1713,7 +1713,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">        ValueError</span>
 <span class="sd">            If the basis is not right-handed</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">Basis</span><span class="o">.</span><span class="n">right_hand_numba</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
                 <span class="p">[</span>
@@ -1737,10 +1737,10 @@ type. This represent the axes that make up the basis.</p>
         <span class="n">check3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">v1</span><span class="p">)</span> <span class="o">-</span> <span class="n">v2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps</span>
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">check1</span><span class="p">,</span> <span class="n">check2</span><span class="p">,</span> <span class="n">check3</span><span class="p">])):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Basis is not right-handed&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Basis is not right-handed"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make basis hashable.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Make basis hashable."""</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
             <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">))</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
@@ -1787,7 +1787,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make basis hashable.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Make basis hashable."""</span>
     <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span>
         <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">))</span>
         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
@@ -1941,7 +1941,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">axis1</span><span class="p">:</span> <span class="n">UnitVector</span><span class="p">,</span> <span class="n">axis2</span><span class="p">:</span> <span class="n">UnitVector</span><span class="p">,</span> <span class="n">axis3</span><span class="p">:</span> <span class="n">UnitVector</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Object constructor.</span>
+<span class="w">    </span><span class="sd">"""Object constructor.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1954,7 +1954,7 @@ type. This represent the axes that make up the basis.</p>
 <span class="sd">    axis3 : UnitVector</span>
 <span class="sd">        The 3-axis (e.g. Z)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">:</span> <span class="n">Position</span> <span class="o">=</span> <span class="n">origin</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UnitVector</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">,</span> <span class="n">axis3</span><span class="p">]</span>
 
@@ -2037,9 +2037,9 @@ convert to the ECEF frame. Will log an error</p>
 <span class="normal">268</span>
 <span class="normal">269</span>
 <span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure that the frames are consistent.</span>
+<span class="w">    </span><span class="sd">"""Ensure that the frames are consistent.</span>
 
-<span class="sd">    !!! note &quot;LLA Frame&quot;</span>
+<span class="sd">    !!! note "LLA Frame"</span>
 <span class="sd">        If the LLA frame is provided for the origin, will attempt to</span>
 <span class="sd">        convert to the ECEF frame. Will log an error</span>
 
@@ -2048,19 +2048,19 @@ convert to the ECEF frame. Will log an error</p>
 <span class="sd">    ValueError</span>
 <span class="sd">        If the axes are not all in the same frame as the origin</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;LLA frame used for basis of origin, ECEF will be used&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"LLA frame used for basis of origin, ECEF will be used"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="n">to_frame</span><span class="o">=</span><span class="s2">"ECEF"</span><span class="p">)</span>
 
     <span class="n">origin_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span>
     <span class="n">origin_frame_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame_time</span>
 
     <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">axis</span><span class="o">.</span><span class="n">frame</span> <span class="o">!=</span> <span class="n">origin_frame</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not all axes and origin in the same frame&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Not all axes and origin in the same frame"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">axis</span><span class="o">.</span><span class="n">frame_time</span> <span class="o">!=</span> <span class="n">origin_frame_time</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not all axes and origin have same frame time&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Not all axes and origin have same frame time"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2160,7 +2160,7 @@ convert to the ECEF frame. Will log an error</p>
 <span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_orthogonality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check that the axes are orthogonal.</span>
+<span class="w">    </span><span class="sd">"""Check that the axes are orthogonal.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2172,7 +2172,7 @@ convert to the ECEF frame. Will log an error</p>
 <span class="sd">    ValueError</span>
 <span class="sd">        If the axes are not mutually orthogonal</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">v1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
     <span class="n">v2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
     <span class="n">v3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span>
@@ -2181,7 +2181,7 @@ convert to the ECEF frame. Will log an error</p>
         <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">v1</span><span class="p">))]</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">checks</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Axes are not orthogonal&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Axes are not orthogonal"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2281,7 +2281,7 @@ convert to the ECEF frame. Will log an error</p>
 <span class="normal">316</span>
 <span class="normal">317</span>
 <span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_right_handedness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check that the axes are right-handed.</span>
+<span class="w">    </span><span class="sd">"""Check that the axes are right-handed.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2293,7 +2293,7 @@ convert to the ECEF frame. Will log an error</p>
 <span class="sd">    ValueError</span>
 <span class="sd">        If the basis is not right-handed</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">Basis</span><span class="o">.</span><span class="n">right_hand_numba</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
             <span class="p">[</span>
@@ -2465,7 +2465,7 @@ ruamel.yaml.YAML object</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_yaml</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">constructor</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Constructor</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SerializeableVector</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct a class from a MappingNode.</span>
+<span class="w">    </span><span class="sd">"""Construct a class from a MappingNode.</span>
 
 <span class="sd">    This method is called when using yaml.load if the</span>
 <span class="sd">    SerializeableVector class has been registered to the</span>
@@ -2485,19 +2485,19 @@ ruamel.yaml.YAML object</p>
 <span class="sd">    SerializeableVector</span>
 <span class="sd">        Instance of serialized class</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
     <span class="n">origin</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)):</span>
         <span class="n">node_name</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-        <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis1&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis1"</span><span class="p">:</span>
             <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis2&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis2"</span><span class="p">:</span>
             <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;axis3&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"axis3"</span><span class="p">:</span>
             <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">&quot;origin&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">node_name</span> <span class="o">==</span> <span class="s2">"origin"</span><span class="p">:</span>
             <span class="n">origin</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="n">construct_object</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">axes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2643,7 +2643,7 @@ the object</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_yaml</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span> <span class="n">representer</span><span class="p">:</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">Representer</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">SerializeableVector</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">MappingNode</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert the class into a mapping node for serialzation.</span>
+<span class="w">    </span><span class="sd">"""Convert the class into a mapping node for serialzation.</span>
 
 <span class="sd">    Takes the attributes of the class and converts them to ScalarNode</span>
 <span class="sd">    used in a ruamel.yaml MappingNode to dump the object in a specific</span>
@@ -2663,14 +2663,14 @@ the object</p>
 <span class="sd">        A mapping node which describes to the yaml dumper how to serialize</span>
 <span class="sd">        the object</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">representer</span><span class="o">.</span><span class="n">represent_mapping</span><span class="p">(</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">yaml_tag</span><span class="p">,</span>
         <span class="p">{</span>
-            <span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span>
-            <span class="s2">&quot;axis1&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="s2">&quot;axis2&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="s2">&quot;axis3&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"origin"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">origin</span><span class="p">,</span>
+            <span class="s2">"axis1"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"axis2"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s2">"axis3"</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
         <span class="p">},</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2813,7 +2813,7 @@ the basis.</p>
 <span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">coordinates_in_basis</span><span class="p">(</span><span class="n">position</span><span class="p">:</span> <span class="n">Position</span><span class="p">,</span> <span class="n">basis</span><span class="p">:</span> <span class="n">Basis</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the coordinates of a position in a basis.</span>
+<span class="w">    </span><span class="sd">"""Get the coordinates of a position in a basis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2828,7 +2828,7 @@ the basis.</p>
 <span class="sd">        A three element array reprenting the coordinates of the position in</span>
 <span class="sd">        the basis.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">origin_frame</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame</span>
     <span class="n">origin_frame_time</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame_time</span>
 
@@ -2839,7 +2839,7 @@ the basis.</p>
     <span class="c1"># Find the relative position</span>
     <span class="n">rp</span> <span class="o">=</span> <span class="n">_position</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">-</span> <span class="n">basis</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">coordinates</span>
 
-    <span class="c1"># Project the relative position onto the basis&#39; axes</span>
+    <span class="c1"># Project the relative position onto the basis' axes</span>
     <span class="n">v1</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">rp</span><span class="p">)</span>
     <span class="n">v2</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">rp</span><span class="p">)</span>
     <span class="n">v3</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">rp</span><span class="p">)</span>
@@ -2949,7 +2949,7 @@ the basis.</p>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_ecef_basis</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Basis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the ECE basis.</span>
+<span class="w">    </span><span class="sd">"""Get the ECE basis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2961,18 +2961,18 @@ the basis.</p>
 <span class="sd">    Basis</span>
 <span class="sd">        The ECEF basis</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">origin</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECEF"</span>
     <span class="p">)</span>
     <span class="n">x_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECEF"</span>
     <span class="p">)</span>
     <span class="n">y_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECEF"</span>
     <span class="p">)</span>
     <span class="n">z_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECEF&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECEF"</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">Basis</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">axis1</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">axis2</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> <span class="n">axis3</span><span class="o">=</span><span class="n">z_axis</span><span class="p">)</span>
@@ -3080,7 +3080,7 @@ the basis.</p>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_eci_basis</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Basis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the ECI basis.</span>
+<span class="w">    </span><span class="sd">"""Get the ECI basis.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3092,18 +3092,18 @@ the basis.</p>
 <span class="sd">    Basis</span>
 <span class="sd">        The ECI basis</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">origin</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECI&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECI"</span>
     <span class="p">)</span>
     <span class="n">x_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECI&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECI"</span>
     <span class="p">)</span>
     <span class="n">y_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECI&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECI"</span>
     <span class="p">)</span>
     <span class="n">z_axis</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
-        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ECI&quot;</span>
+        <span class="n">coordinates</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> <span class="n">frame_time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"ECI"</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">Basis</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">axis1</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">axis2</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> <span class="n">axis3</span><span class="o">=</span><span class="n">z_axis</span><span class="p">)</span>
@@ -3234,7 +3234,7 @@ rotated according to the given rotation.</p>
 <span class="normal">376</span>
 <span class="normal">377</span>
 <span class="normal">378</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rotate_basis</span><span class="p">(</span><span class="n">rotation</span><span class="p">:</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">basis</span><span class="p">:</span> <span class="n">Basis</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Basis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate a basis about its origin.</span>
+<span class="w">    </span><span class="sd">"""Rotate a basis about its origin.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3249,7 +3249,7 @@ rotated according to the given rotation.</p>
 <span class="sd">        A basis with the same origin as the input basis, but whose axes are</span>
 <span class="sd">        rotated according to the given rotation.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">v1</span> <span class="o">=</span> <span class="n">UnitVector</span><span class="p">(</span>
         <span class="n">rotation</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span>
         <span class="n">basis</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">frame_time</span><span class="p">,</span>
@@ -3332,7 +3332,7 @@ rotated according to the given rotation.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

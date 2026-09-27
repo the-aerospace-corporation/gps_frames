@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -1186,7 +1186,7 @@ frames.</p>
 
 
 <h3 id="gps_frames.transforms.VALID_FRAMES" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">VALID_FRAMES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ECI&#39;</span><span class="p">,</span> <span class="s1">&#39;ECEF&#39;</span><span class="p">,</span> <span class="s1">&#39;LLA&#39;</span><span class="p">]</span></code>
+            <code class="highlight language-python"><span class="n">VALID_FRAMES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'ECI'</span><span class="p">,</span> <span class="s1">'ECEF'</span><span class="p">,</span> <span class="s1">'LLA'</span><span class="p">]</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
@@ -1365,9 +1365,9 @@ to advance.</p>
 <span class="normal">605</span>
 <span class="normal">606</span>
 <span class="normal">607</span>
-<span class="normal">608</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](int64, float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">608</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](int64, float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">add_weeks_eci</span><span class="p">(</span><span class="n">num_weeks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Move ECI frame to new week.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Move ECI frame to new week.</span>
 
 <span class="sd">    Because the ECI frame is reference to the start of the week, if the frame</span>
 <span class="sd">    is moved to a new week, the coordinates change. The purpose of this</span>
@@ -1396,7 +1396,7 @@ to advance.</p>
 <span class="sd">    standard_rotation_matrix: Used to get the rotation matrix for the</span>
 <span class="sd">        transformation</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">num_weeks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">coordinates</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1578,9 +1578,9 @@ coordinates is</p>
 <span class="normal">308</span>
 <span class="normal">309</span>
 <span class="normal">310</span>
-<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">ecef2eci</span><span class="p">(</span><span class="n">ecef_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">time_of_week</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate from the ECEF to the ECI frame.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Rotate from the ECEF to the ECI frame.</span>
 
 <span class="sd">    This function rotates the ECEF coordinates into the ECI frame. Note that</span>
 <span class="sd">    the ECI and ECEF frames are aligned at the start of the week.</span>
@@ -1623,7 +1623,7 @@ coordinates is</p>
 <span class="sd">    standard_rotation_matrix: Used to get the rotation matrix for the</span>
 <span class="sd">        transformation</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="c1"># Angle from the ECI to the ECEF frame</span>
     <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="n">_w_e</span> <span class="o">*</span> <span class="n">time_of_week</span>
@@ -1892,9 +1892,9 @@ message.</p>
 <span class="normal">485</span>
 <span class="normal">486</span>
 <span class="normal">487</span>
-<span class="normal">488</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">488</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">ecef2lla</span><span class="p">(</span><span class="n">ecef_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Transform an ECEF position to LLA position.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Transform an ECEF position to LLA position.</span>
 
 <span class="sd">    The purpose of this function is to convert a position in the ECEF frame to</span>
 <span class="sd">    the LLA frame relative to the WGS84 ellipsoid. Let the coordinates in the</span>
@@ -1957,7 +1957,7 @@ message.</p>
 
 <span class="sd">    This function is based on the development provided by [1]_</span>
 
-<span class="sd">    !!! quote &quot;Todo&quot;</span>
+<span class="sd">    !!! quote "Todo"</span>
 <span class="sd">        If the latitude does not converge, this function prints a warning </span>
 <span class="sd">        instead of using the logger. This is necessary because of use of</span>
 <span class="sd">        Numba. In the future, this should be changed to logging a warning</span>
@@ -1978,7 +1978,7 @@ message.</p>
 <span class="sd">    .. [1] MathWorks Aerospace Blockset</span>
 <span class="sd">        https://www.mathworks.com/help/aeroblks/ecefpositiontolla.html</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">ecef_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">ecef_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">ecef_coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -2004,11 +2004,11 @@ message.</p>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">&quot;ecef2lla &gt;&gt; WARNING: latitude did not converge: &quot;</span><span class="p">,</span>
+            <span class="s2">"ecef2lla &gt;&gt; WARNING: latitude did not converge: "</span><span class="p">,</span>
             <span class="n">latitude</span> <span class="o">-</span> <span class="n">old_latitude</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="c1"># logger.debug(f&quot;ecef2lla took {ii} iterations to converge.&quot;)</span>
+    <span class="c1"># logger.debug(f"ecef2lla took {ii} iterations to converge.")</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="n">_wgs84a</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">_wgs84ecc</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -2176,9 +2176,9 @@ coordinates is</p>
 <span class="normal">532</span>
 <span class="normal">533</span>
 <span class="normal">534</span>
-<span class="normal">535</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">535</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">eci2ecef</span><span class="p">(</span><span class="n">eci_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">time_of_week</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate from the ECI to the ECEF frame.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Rotate from the ECI to the ECEF frame.</span>
 
 <span class="sd">    This function rotates the ECI coordinates into the ECEF frame. Note that</span>
 <span class="sd">    the ECI and ECEF frames are aligned at the start of the week.</span>
@@ -2215,7 +2215,7 @@ coordinates is</p>
 <span class="sd">    standard_rotation_matrix: Used to get the rotation matrix for the</span>
 <span class="sd">        transformation</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Angle from the ECI to the ECEF frame</span>
     <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="n">_w_e</span> <span class="o">*</span> <span class="n">time_of_week</span>
     <span class="c1"># rotation = Rotation(axis=np.array((0., 0., 1.)), angle=angle_of_rotation)</span>
@@ -2346,9 +2346,9 @@ ecef2lla: Convert ECEF coordinates to LLA position</p>
 <span class="normal">560</span>
 <span class="normal">561</span>
 <span class="normal">562</span>
-<span class="normal">563</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">563</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">eci2lla</span><span class="p">(</span><span class="n">eci_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform the ECI coordinates into an LLA position.</span>
+<span class="w">    </span><span class="sd">"""Transform the ECI coordinates into an LLA position.</span>
 
 <span class="sd">    The purpose of this function is to transform ECI coordinates into LLA</span>
 <span class="sd">    coordinates. It does to by calling `eci2ecef()` and `ecef2lla()`</span>
@@ -2370,7 +2370,7 @@ ecef2lla: Convert ECEF coordinates to LLA position</p>
 <span class="sd">    eci2ecef: Convert coordinates (and time) to ECEF frame</span>
 <span class="sd">    ecef2lla: Convert ECEF coordinates to LLA position</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">ecef2lla</span><span class="p">(</span><span class="n">eci2ecef</span><span class="p">(</span><span class="n">eci_coordinates</span><span class="p">,</span> <span class="n">time</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2525,9 +2525,9 @@ repsectively. The effective radius of the Earth is</p>
 <span class="normal">254</span>
 <span class="normal">255</span>
 <span class="normal">256</span>
-<span class="normal">257</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:])&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">257</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:])"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">lla2ecef</span><span class="p">(</span><span class="n">lla_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert LLA to ECEF position.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Convert LLA to ECEF position.</span>
 
 <span class="sd">    Computes the ECEF position based on the WGS84 ellipsoid latitude,</span>
 <span class="sd">    longitude, and altitude. The inputs is are numpy arrays. Returns a</span>
@@ -2564,10 +2564,10 @@ repsectively. The effective radius of the Earth is</p>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] G. Xu and Y. Xu, &quot;GPS: Theory, Algorithms and Applications&quot; 3rd ed.</span>
+<span class="sd">    .. [1] G. Xu and Y. Xu, "GPS: Theory, Algorithms and Applications" 3rd ed.</span>
 <span class="sd">        https://doi.org/10.1007/978-3-662-50367-6</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">latitude</span> <span class="o">=</span> <span class="n">lla_coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">longitude</span> <span class="o">=</span> <span class="n">lla_coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">altitude</span> <span class="o">=</span> <span class="n">lla_coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -2708,9 +2708,9 @@ ecef2eci: Convert ECEF coordinates into ECI coordinates</p>
 <span class="normal">338</span>
 <span class="normal">339</span>
 <span class="normal">340</span>
-<span class="normal">341</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">&quot;float64[:](float64[:], float64)&quot;</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="normal">341</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@jit</span><span class="p">(</span><span class="s2">"float64[:](float64[:], float64)"</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">lla2eci</span><span class="p">(</span><span class="n">lla_coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tranform LLA coordinates into ECI.</span>
+<span class="w">    </span><span class="sd">"""Tranform LLA coordinates into ECI.</span>
 
 <span class="sd">    This function is used to transform an LLA position into ECI coordinates.</span>
 <span class="sd">    To do this, the coordinates are first converted to ECEF coordinates using</span>
@@ -2734,7 +2734,7 @@ ecef2eci: Convert ECEF coordinates into ECI coordinates</p>
 <span class="sd">    lla2ecef: Convert LLA coordinates to ECEF coordinates</span>
 <span class="sd">    ecef2eci: Convert ECEF coordinates into ECI coordinates</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">ecef2eci</span><span class="p">(</span><span class="n">lla2ecef</span><span class="p">(</span><span class="n">lla_coordinates</span><span class="p">),</span> <span class="n">time</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -2979,7 +2979,7 @@ time is the same for both the <code>from_frame</code> and <code>to_frame</code><
 <span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">position_transform</span><span class="p">(</span>
     <span class="n">from_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_frame</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">GPSTime</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a position from one frame to another.</span>
+<span class="w">    </span><span class="sd">"""Convert a position from one frame to another.</span>
 
 <span class="sd">    The purpose of this function is to create a general tool to convert a</span>
 <span class="sd">    position from one frame to another. The current frame is given as the</span>
@@ -3019,38 +3019,38 @@ time is the same for both the <code>from_frame</code> and <code>to_frame</code><
 <span class="sd">    This function is used to transform a position in one frame to another. The</span>
 <span class="sd">    time is the same for both the `from_frame` and `to_frame`</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">from_frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID_FRAMES</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(from_frame) Unknown Frame: </span><span class="si">{</span><span class="n">from_frame</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(from_frame) Unknown Frame: </span><span class="si">{</span><span class="n">from_frame</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">to_frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID_FRAMES</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(to_frame) Unknown Frame: </span><span class="si">{</span><span class="n">to_frame</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(to_frame) Unknown Frame: </span><span class="si">{</span><span class="n">to_frame</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">coordinates</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">lla2ecef</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">lla2eci</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ecef2lla</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">coordinates</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ecef2eci</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">eci2lla</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">eci2ecef</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">coordinates</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Transformation Failed. Returning input&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">"Transformation Failed. Returning input"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">coordinates</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3213,7 +3213,7 @@ updates the coordinates accordingly.</p>
 <span class="normal">650</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rotate_ecef</span><span class="p">(</span>
     <span class="n">old_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">,</span> <span class="n">new_time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate the coordinates in one ECEF frame to a new ECEF frame.</span>
+<span class="w">    </span><span class="sd">"""Rotate the coordinates in one ECEF frame to a new ECEF frame.</span>
 
 <span class="sd">    Because the Earth is rotating, the ECEF frame is constantly moving and the</span>
 <span class="sd">    coordinates in the ECEF frame at one time are different than the</span>
@@ -3240,7 +3240,7 @@ updates the coordinates accordingly.</p>
 <span class="sd">    standard_rotation_matrix: Used to get the rotation matrix for the</span>
 <span class="sd">        transformation</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">time_delta</span> <span class="o">=</span> <span class="n">new_time</span> <span class="o">-</span> <span class="n">old_time</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time_delta</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
 
@@ -3484,7 +3484,7 @@ or from_frame are not valid frames.</p>
     <span class="n">velocity_components</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">time</span><span class="p">:</span> <span class="n">GPSTime</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform velocity from one frame to another.</span>
+<span class="w">    </span><span class="sd">"""Transform velocity from one frame to another.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -3507,32 +3507,32 @@ or from_frame are not valid frames.</p>
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
-<span class="sd">        Does not work with the &#39;LLA&#39; frame, so raises an error if the to_frame</span>
-<span class="sd">        or from_frame are specified as &#39;LLA&#39;. Will also raise if the to_frame</span>
+<span class="sd">        Does not work with the 'LLA' frame, so raises an error if the to_frame</span>
+<span class="sd">        or from_frame are specified as 'LLA'. Will also raise if the to_frame</span>
 <span class="sd">        or from_frame are not valid frames.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">position_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">position_coordinates</span><span class="p">)</span>
     <span class="n">velocity_components</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">velocity_components</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span> <span class="ow">or</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;LLA&quot;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;from_frame and to_frame cannot be LLA&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span> <span class="ow">or</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"LLA"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"from_frame and to_frame cannot be LLA"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">from_frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID_FRAMES</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;from_frame (</span><span class="si">{</span><span class="n">from_frame</span><span class="si">}</span><span class="s2">) not valid&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"from_frame (</span><span class="si">{</span><span class="n">from_frame</span><span class="si">}</span><span class="s2">) not valid"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">to_frame</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">VALID_FRAMES</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;to_frame (</span><span class="si">{</span><span class="n">to_frame</span><span class="si">}</span><span class="s2">) not valid&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"to_frame (</span><span class="si">{</span><span class="n">to_frame</span><span class="si">}</span><span class="s2">) not valid"</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="n">rotation_rate</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="o">-</span><span class="n">_w_e</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span>
             <span class="n">rotation_rate</span> <span class="o">=</span> <span class="o">-</span><span class="n">_w_e</span>
-    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECEF&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">from_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECEF"</span><span class="p">:</span>
             <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="n">_w_e</span> <span class="o">*</span> <span class="n">time</span><span class="o">.</span><span class="n">time_of_week</span>
             <span class="n">rotation_rate</span> <span class="o">=</span> <span class="n">_w_e</span>
-        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">&quot;ECI&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">to_frame</span> <span class="o">==</span> <span class="s2">"ECI"</span><span class="p">:</span>
             <span class="n">angle_of_rotation</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="n">rotation_rate</span> <span class="o">=</span> <span class="mf">0.0</span>
 
@@ -3605,7 +3605,7 @@ or from_frame are not valid frames.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
